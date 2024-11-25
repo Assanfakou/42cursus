@@ -34,3 +34,6 @@ tcp=$(ss -ta | grep ESTAB | wc -l)
 echo "#TCP : $tcp ESTABLISHED"
 user=$(users | wc -w)
 echo "#User log : $user"
+ip=$(hostname -I | awk '{print $1}')
+macadd=$(ip link | grep "link/ether" | awk '{print $2}')
+echo "#Network : IP $ip ($macadd)"
