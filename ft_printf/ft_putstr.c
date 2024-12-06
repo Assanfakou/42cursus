@@ -1,6 +1,6 @@
 #include "printf.h"
 
-int ft_putstr(char *st)
+i r *st)
 {
     int i;
     int re;

@@ -1,18 +1,18 @@
 #include "printf.h"
 
-int     ft_putaddre(void *ptr)
+int     ft_putaddre(unsigned long add)
 {
     int re;
-    unsigned long pr;
+    int d;
+    char *base;
 
-    pr = (unsigned long) ptr;
+    base = "0123456789abcdef";
     re = 0;
-    re += ft_putchar('0');
-    re += ft_putchar('x');
-    re += ft_putnum_lhex((unsigned long)pr);
+    if (add >= 16)
+    {
+        re = ft_putaddre(add / 16);
+    }
+    else
+        re += ft_putchar(base[add % 16]);
     return (re);
-}
-int main ()
-{
-    printf(" numprinted[%d]", ft_putaddre("e"));
 }

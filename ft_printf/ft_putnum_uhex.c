@@ -10,13 +10,8 @@ int ft_putnum_uhex(unsigned int nbr)
     if (nbr >= 16)
     {
         r = ft_putnum_uhex(nbr / 16);
-        r = ft_putnum_uhex(nbr % 16);
     }
     else
-        r += ft_putchar(bas[nbr]);
+        r += ft_putchar(bas[nbr % 16]);
     return (r);
-}
-int main ()
-{
-    printf("printed dig %d", ft_putnum_uhex(1312));
 }
