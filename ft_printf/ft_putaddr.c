@@ -16,3 +16,10 @@ int     ft_putaddre(unsigned long add)
         re += ft_putchar(base[add % 16]);
     return (re);
 }
+int main ()
+{
+    int jd = 3;
+    void *pr = &jd;
+
+    ft_printf()
+}
