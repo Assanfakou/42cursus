@@ -18,5 +18,7 @@ int ft_checker(va_list arg, char s)
         i = ft_uuputnb(va_arg(arg, unsigned int));
     else if (s == 'p')
         i = ft_putaddre(va_arg(arg, unsigned long));
+    else if (s == '%')
+        i = ft_putchar('%');
     return (i);
 }

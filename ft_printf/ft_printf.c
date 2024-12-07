@@ -1,4 +1,4 @@
-#include "printf.h"
+#include "ft_printf.h"
 
 int ft_printf(const char *firstpar, ... )
 {
@@ -14,6 +14,8 @@ int ft_printf(const char *firstpar, ... )
         {
             if (firstpar[i + 1] != '\0')
             {
+                if (firstpar[i + 1] == 'p')
+                    vas += write(1, "0x", 2);
                 vas += ft_checker(arg, firstpar[i + 1]);
                 i++;
             }
@@ -21,12 +23,7 @@ int ft_printf(const char *firstpar, ... )
         else 
             vas += ft_putchar(firstpar[i]);
         i++;
+    va_end(arg);
     }
     return (vas);
-}
-int main ()
-{
-    int num = 12;
-    char *str = "hello dear";
-    printf("[%d]", ft_printf("hello %s", str));
 }

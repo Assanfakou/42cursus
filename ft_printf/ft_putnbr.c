@@ -18,7 +18,3 @@ int ft_putnbr(int nbs)
     se += ft_putchar((s % 10) + '0');
     return (se);
 }
-int main ()
-{
-    printf("[%d]", ft_putnbr(11123));
-}

@@ -1,12 +1,12 @@
 #include "ft_printf.h"
-void ft_chhfjf(int i, ...)
-{
-    va_list asa;
 
-    va_start(asa, i);
-    printf("%d", (int *)asa->reg_save_area + 8);
-}
 int main ()
 {
-    ft_chhfjf(2, 35,27,23,24);
+    char *st = "hello Assan you are legend!";
+    int s = 1211225;
+    void *ptr = &s;
+    char e = 'a';
+
+    ft_printf("str : %s, \n digit = %d,\n address :%p,\n char : %c,\n {%%} the hex lower :%x and upper %X", st, s, (unsigned long)ptr, e, s, s);
+    printf("str : %s, \ns = %d,m\n address :%p,\n char : %c,\n {%%} the hex lower :%x and upper %X", st, s, ptr, e, s, s);
 }
