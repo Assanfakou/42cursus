@@ -14,8 +14,8 @@
 
 int	ft_putstr(char *st)
 {
-	int i;
-	int re;
+	int		i;
+	int		re;
 
 	re = 0;
 	i = 0;

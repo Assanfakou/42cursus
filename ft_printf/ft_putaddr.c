@@ -14,8 +14,8 @@
 
 int	ft_putaddre(unsigned long add)
 {
-	int re;
-	char *base;
+	int		re;
+	char	*base;
 
 	base = "0123456789abcdef";
 	re = 0;

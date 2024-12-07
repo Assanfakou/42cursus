@@ -14,7 +14,7 @@
 
 int	ft_checker(va_list arg, char s)
 {
-	int i;
+	int		i;
 
 	if (s == 'd' || s == 'i')
 		i = ft_putnbr(va_arg(arg, int));

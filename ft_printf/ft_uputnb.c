@@ -14,7 +14,7 @@
 
 int	ft_uuputnb(unsigned int n)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	if (n > 9)

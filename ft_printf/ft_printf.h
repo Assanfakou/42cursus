@@ -10,10 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H    
+
+# include <stdarg.h>
+# include <stdio.h> //it has to be remeved
+# include <unistd.h>
 
 int	ft_putnbr(int n);
 int	ft_putstr(char *st);
@@ -24,3 +26,5 @@ int	ft_uuputnb(unsigned int nbs);
 int	ft_putaddre(unsigned long add);
 int	ft_checker(va_list arg, char s);
 int	ft_printf(const char *firstpar, ...);
+
+#endif

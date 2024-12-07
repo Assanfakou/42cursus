@@ -14,8 +14,8 @@
 
 int	ft_putnum_uhex(unsigned int nbr)
 {
-	int r;
-	char *bas;
+	int		r;
+	char	*bas;
 
 	bas = "0123456789ABCDEF";
 	r = 0;
