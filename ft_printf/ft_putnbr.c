@@ -21,7 +21,7 @@ int	ft_putnbr(int nbs)
 	if (nbs < 0)
 	{
 		se += ft_putchar('-');
-		s = nbs;
+		s = -nbs;
 	}
 	else
 		s = nbs;
