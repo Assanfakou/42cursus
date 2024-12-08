@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putaddr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:44:49 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/07 14:44:50 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/08 14:22:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+#include <stdio.h>
 int	ft_putaddre(unsigned long add)
 {
 	int		re;

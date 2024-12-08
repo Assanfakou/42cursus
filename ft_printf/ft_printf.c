@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:44:02 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/07 14:44:04 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/08 14:26:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_printf(const char *firstpar, ...)
 	int		i;
 	int		vas;
 	va_list	arg;
-
+ 
 	va_start(arg, firstpar);
 	i = 0;
 	vas = 0;
@@ -27,8 +27,6 @@ int	ft_printf(const char *firstpar, ...)
 		{
 			if (firstpar[i + 1] != '\0')
 			{
-				if (firstpar[i + 1] == 'p' && firstpar[i + 1] != 0)
-					vas += write(1, "0x", 2);
 				vas += ft_checker(arg, firstpar[i + 1]);
 				i++;
 			}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:43:45 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/07 14:43:50 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/08 14:28:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_checker(va_list arg, char s)
 {
 	int		i;
 
+	i = 0;
 	if (s == 'd' || s == 'i')
 		i = ft_putnbr(va_arg(arg, int));
 	else if (s == 'x')
@@ -29,7 +30,10 @@ int	ft_checker(va_list arg, char s)
 	else if (s == 'u')
 		i = ft_uuputnb(va_arg(arg, unsigned int));
 	else if (s == 'p')
-		i = ft_putaddre(va_arg(arg, unsigned long));
+	{
+		i += write(1, "0x", 2);
+		i += ft_putaddre(va_arg(arg, unsigned long));
+	}
 	else if (s == '%')
 		i = ft_putchar('%');
 	return (i);
