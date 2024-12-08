@@ -17,6 +17,8 @@ int	ft_putaddre(unsigned long add)
 	int		re;
 	char	*base;
 
+	if (add == 0)
+		return (write (1, "(nil)", 5));
 	base = "0123456789abcdef";
 	re = 0;
 	if (add >= 16)

@@ -19,6 +19,8 @@ int	ft_putstr(char *st)
 
 	re = 0;
 	i = 0;
+	if (st == NULL)
+		return (write (1, "(null)", 6));
 	while (st[i])
 	{
 		re += ft_putchar(st[i]);

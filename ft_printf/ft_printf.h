@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdio.h> //it has to be remeved
 # include <unistd.h>
 
 int	ft_putnbr(int n);

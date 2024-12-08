@@ -7,17 +7,19 @@ SRC = ft_checker.c ft_printf.c ft_putaddr.c ft_putchar.c ft_putnbr.c ft_putnum_l
 
 OBJ = $(SRC:%.c=%.o)
 
-NAME = ft_printf.a
+NAME = libftprintf.a
 
 all: $(NAME)
-
+ 
 $(NAME): $(OBJ)
 	ar rcs $@ $?
 %.o: %.c
 	$(cc) $(CFLAGS) -c $^ -o $@
 clean:
-	rm -rf *.o
+	rm -rf $(OBJ)
 
 fclean : clean
-	rm -rf *.a
+	rm -rf $(NAME)
 re: fclean all
+
+.PHONY : clean fclean re all
