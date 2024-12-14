@@ -47,14 +47,12 @@ char *ft_strdup(char *str)
 	allocated[s] = 0;
 	return (allocated);
 }
-/*  */
+
 char *get_next_line(int fd)
 {
 	int suit_up;
 	static int stat;
-	char buffer[BUFFER_SIZE];
-	char *line;
-	char *remander;
+	char buffer[1030];
 	char *str_nline_found;
 
 	suit_up = read(fd, (buffer - 1), BUFFER_SIZE);
@@ -62,9 +60,8 @@ char *get_next_line(int fd)
 	str_nline_found = ft_strchr(buffer, '\n');
 	if (str_nline_found != NULL)
 	{
-		line = ft_strdup(buffer);
-		reminder = 
-		return (line);
+		
+		return (buffer);
 	}
 	else if (str_nline_found == NULL)
 	{
