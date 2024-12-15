@@ -16,25 +16,30 @@ char *ft_strchr(char *str, char to_find)
 	return (NULL);
 }
 
-size_t ft_strlen(char *str)
+char *extract_then_update(char *rem)
 {
-	size_t i;
+	char *allocated;
+	char *cash;
+	char *temp;
 
-	i = 0;
-	while (str[i] || str[i] != '\n')
+	if (!rem)
+		return (NULL);
+	cash = ft_strchr(rem, '\n');
+	if (cach)
 	{
-		i++;
+		allocated = ft_strdup(cach);
+		temp = ft_strdup(rem + 1);
 	}
-	return (i);
 }
-
 char *ft_strdup(char *str)
 {
 	size_t s;
 	size_t robe;
 	char *allocated;
 
-	robe = ft_strlen(str);
+	robe = 0;
+	while (str[i] || str[i] == '\n')
+		i++;
 	allocated = malloc(sizeof(char) * (robe + 1));
 	if (allocated == NULL)
 		return (NULL);
