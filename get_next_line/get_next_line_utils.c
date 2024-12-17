@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/17 20:00:43 by hfakou            #+#    #+#             */
+/*   Updated: 2024/12/17 20:00:46 by hfakou           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char *ft_strchr(const char *str, char to_find)
@@ -18,49 +30,34 @@ char *ft_strchr(const char *str, char to_find)
 	return (NULL);
 }
 
-char *ft_strdup(const char *str)
+char *ft_strduptoc(const char *str, char c)
 {
 	size_t s;
 	size_t robe;
 	char *allocated;
 
 	robe = 0;
-	while (str[robe])
+	while (str[robe] && str[robe] != c)
 		robe++;
-	allocated = malloc(sizeof(char) * (robe + 1));
+	if (str[robe] != c)
+		return (NULL);
+    if (c == '\0')
+	    allocated = malloc(sizeof(char) * (robe + 1));
+    else
+        allocated = malloc(sizeof(char) * (robe + 2));
 	if (allocated == NULL)
 		return (NULL);
 	s = 0;
-	while (s < robe)
+	while (s <= robe)
 	{
 		allocated[s] = str[s];
 		s++;
 	}
-	allocated[s] = 0;
+    if (c != '\0')
+	    allocated[s] = '\0';
 	return (allocated);
 }
 
-char *ft_strdup_nline(const char *str)
-{
-	size_t s;
-	size_t robe;
-	char *allocated;
-
-	robe = 0;
-	while (str[robe] || str[robe] == '\n')
-		robe++;
-	allocated = malloc(sizeof(char) * (robe + 1));
-	if (allocated == NULL)
-		return (NULL);
-	s = 0;
-	while (s < robe)
-	{
-		allocated[s] = str[s];
-		s++;
-	}
-	allocated[s] = 0;
-	return (allocated);
-}
 size_t ft_strlen(char *str)
 {
 	size_t i;

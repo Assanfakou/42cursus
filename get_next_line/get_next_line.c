@@ -6,11 +6,12 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:08:15 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/16 18:51:34 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/17 17:33:35 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
 char *handle_read_until_newline(int fd, char **buff)
 {
 	char *str;
@@ -19,6 +20,7 @@ char *handle_read_until_newline(int fd, char **buff)
 	free(*buff);
 	n_reads = read(fd, str, BUFFER_SIZE + 1);
 }
+
 char *extract_then_update(char **buffer)
 {
 	char *allocated;
@@ -30,8 +32,8 @@ char *extract_then_update(char **buffer)
 	new_line_pos = ft_strchr(*buffer, '\n');
 	if (new_line_pos)
 	{
-		allocated = ft_strdup_nline(*buffer);
-		cache = ft_strdup(new_line_pos + 1);
+		allocated = ft_strduptoc(*buffer, '\n');
+		cache = ft_strduptoc(new_line_pos + 1, '\0');
 		free(*buffer);
 		*buffer = cache;
 		return (allocated);
