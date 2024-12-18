@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:50 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/17 20:00:57 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/18 19:46:06 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #define BUFFER_SIZE
 
 char *ft_strchr(const char *str, char to_find);
-size_t ft_strlen(char *str);
+size_t ft_strlen(const char *str);
 char *ft_strduptoc(const char *str, char c);
 char *get_next_line(int fd);
 char *ft_strjoin(const char *s1, const char *s2);

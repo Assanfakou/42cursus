@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:43 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/17 20:00:46 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/18 19:46:12 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ char *ft_strchr(const char *str, char to_find)
 	while (str[i])
 	{
 		if (str[i] == to_find)
-			return (&str[i]);
+			return (void *)(&str[i]);
 		i++;
 	}
 	if (str[i] == '\0')
-		return (&str[i]);
+		return (void *)(&str[i]);
 	return (NULL);
 }
 
@@ -58,7 +58,7 @@ char *ft_strduptoc(const char *str, char c)
 	return (allocated);
 }
 
-size_t ft_strlen(char *str)
+size_t ft_strlen(const char *str)
 {
 	size_t i;
 

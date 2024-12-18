@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.4buffer.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 15:08:15 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/17 17:33:35 by hfakou           ###   ########.fr       */
+/*   Created: buffer0buffer4/1buffer/16 15:08:15 by hfakou            #+#    #+#             */
+/*   Updated: buffer0buffer4/1buffer/18 19:14:40 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *handle_read_until_newline(int fd, char **buff)
-{
-	char *str;
-	int n_reads;
+// char *handle_read_until_newline(int fd, char **buff)
+// {
+// 	char *str;
+// 	int n_reads;
 	
-	free(*buff);
-	n_reads = read(fd, str, BUFFER_SIZE + 1);
-}
+// 	free(*buff);
+// 	n_reads = read(fd, str, BUFFER_SIZE + 1);
+// }
 
-char *extract_then_update(char **buffer)
+char *extract_then_update(char **temp)
 {
 	char *allocated;
 	char *new_line_pos;
 	char *cache;
 
-	if (!*buffer)
+	if (!*temp)
 		return (NULL);
-	new_line_pos = ft_strchr(*buffer, '\n');
+	new_line_pos = ft_strchr(*temp, '\n');
 	if (new_line_pos)
 	{
-		allocated = ft_strduptoc(*buffer, '\n');
+		allocated = ft_strduptoc(*temp, '\n');
 		cache = ft_strduptoc(new_line_pos + 1, '\0');
-		free(*buffer);
-		*buffer = cache;
+		free(*temp); 
+		*temp = cache;
 		return (allocated);
 	}
 	return (NULL);
@@ -43,12 +43,24 @@ char *extract_then_update(char **buffer)
 
 char *get_next_line(int fd)
 {
-	int suit_up;
-	static char buffer[1030];
+	ssize_t suit_up;
+	char *buffer;
+	static char temp[BUFFER_SIZE + 1];
 	char *str_nline_found;
 
-	suit_up = read(fd, buffer, (BUFFER_SIZE - 1));
-	buffer[suit_up] = 0;	
+	buffer = NULL;
+	str_nline_found = extract_then_update(&buffer);
+	if (str_nline_found)
+		return (str_nline_found);
+	suit_up = read(fd, temp, (BUFFER_SIZE - 1));
+	while (suit_up = read(fd, temp, (BUFFER_SIZE - 1)) > 0)
+		temp[suit_up] = 0;
+	buffer = ft_strjoin(buffer, temp);
+	str_nline_found = extract_then_update(&buffer);
+	if (str_nline_found)
+		return (str_nline_found);
+	
+	return (NULL);
 }
 
 
