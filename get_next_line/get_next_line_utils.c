@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:43 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/18 19:46:12 by assankou         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:55:35 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ char *ft_strchr(const char *str, char to_find)
 	int i;
 
 	if (!str)
-		return(NULL);
+	{
+		char *str = "the issue";
+		return (str);
+	}
 	i = 0;
 	while (str[i])
 	{
