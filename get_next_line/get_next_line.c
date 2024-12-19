@@ -64,16 +64,20 @@ char *get_next_line(int fd)
 }
 
 
-// int main ()
-// {
-// 	printf("%p", ft_strchr("he\0llo", '\0', 5));
-// }
-// int main ()
-// {
-// 	int fd = open("lile_is_passed.txt", O_CREAT | O_RDWR , 0777);
-// 	write(fd, "hello", 5);
-// 	lseek(fd, 0, SEEK_SET);
-// 	func(fd);
-// 	close(fd);
-// }
+int main ()
+{
+	int fd = open("lile_is_passed.txt", O_CREAT | O_RDWR , 0777);
+	write(fd, "1hello[\n]", 9);
+	lseek(fd, 0, SEEK_SET);
+	char *str_to_return = get_next_line(fd);
+	if (str_to_return)
+	{
+		printf("%s", str_to_return);
+		free(str_to_return);
+	}
+	else
+		perror("the ereour is occured");
+	close(fd);
+	// printf("%d", fd);
+}
 
