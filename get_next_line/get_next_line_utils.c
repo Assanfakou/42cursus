@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:43 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/19 16:55:35 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/19 18:49:04 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ char *ft_strchr(const char *str, char to_find)
 	int i;
 
 	if (!str)
-	{
-		char *str = "the issue";
-		return (str);
-	}
+		return (NULL);
 	i = 0;
 	while (str[i])
 	{
@@ -64,7 +61,8 @@ char *ft_strduptoc(const char *str, char c)
 size_t ft_strlen(const char *str)
 {
 	size_t i;
-
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 		i++;
