@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:43 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/19 18:49:04 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/20 17:53:37 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ char *ft_strduptoc(const char *str, char c)
     if (c == '\0')
 	    allocated = malloc(sizeof(char) * (robe + 1));
     else
+	{
         allocated = malloc(sizeof(char) * (robe + 2));
-	if (allocated == NULL)
+		if (allocated == NULL)
 		return (NULL);
+	}
 	s = 0;
 	while (s <= robe)
 	{
@@ -75,8 +77,12 @@ char *ft_strjoin(const char *s1, const char *s2)
 	size_t s;
 	size_t total;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return(NULL);
+	if (!s1)
+		return (ft_strduptoc(s2, '\0'));
+	else if (!s2)
+		return (ft_strduptoc(s1, '\0'));
 	total = ft_strlen(s1) + ft_strlen(s2);
 	final_string = malloc(sizeof(char) * (total + 1));
 	if (!final_string)

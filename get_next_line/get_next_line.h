@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:50 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/19 19:50:00 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/20 21:47:40 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#define BUFFER_SIZE 20
+#define BUFFER_SIZE 120
 
 char *ft_strchr(const char *str, char to_find);
 size_t ft_strlen(const char *str);
