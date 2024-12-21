@@ -35,59 +35,39 @@ char *get_next_line(int fd)
 {
 	ssize_t suit_up;
 	static char *stat = NULL;
- 	char buffer[BUFFER_SIZE + 1];
+ 	char *buffer;
 	char *str_nline_found;
-	//  char *zebi = "fuck off this is a dick";
 
+	buffer = ft_calloc(BUFFER_SIZE, sizeof(char));
 	if (stat)
 	{
 		str_nline_found = extract_then_update(&stat);
 		if (str_nline_found)
+		{
+			free(buffer);
 			return (str_nline_found);
+		}
 	}
-	suit_up = read(fd, buffer, (BUFFER_SIZE - 1));
-	printf("suit up : (%ld)  ", suit_up);
-	// while (suit_up = read(fd, buffer, (BUFFER_SIZE - 1)) > 0)
+	while (1)
+	{
+		suit_up = read(fd, buffer, (BUFFER_SIZE));
 		if (suit_up > 0)
 			buffer[suit_up] = '\0';
-	// printf("BUUFR before join: %s\n", buffer);
-
-	stat = ft_strjoin(stat, buffer);
-	// printf("stat after join the string /%s/", stat);
-	str_nline_found = extract_then_update(&stat);
-	if (str_nline_found)
-		return (str_nline_found);
-	// if read does work 
-	// printf("suit up : %ld", suit_up);
-	// if (suit_up == 0 && buffer) 
-	// {
-    // 	str_nline_found = buffer;
-    //     stat = NULL; // Clear static buffer
-    //     // return (str_nline_found);
-	// }
-	if (suit_up == -1) { // Error
-        free(stat);
-        stat = NULL;
-        return (NULL);
+		stat = ft_strjoin(stat, buffer);
+		str_nline_found = extract_then_update(&stat);
+		if (str_nline_found)
+		{
+			free(buffer);
+			return (str_nline_found);
+		}
+		if (suit_up <= 0) 
+		{
+			free(stat);
+			free(buffer);
+			stat = NULL;
+			return (NULL);
+		}
 	}
 	return (NULL);
 }
-
-
-// int main ()
-// {
-// 	int fd = open("lile_is_passed.txt", O_CREAT | O_RDWR , 0777);
-// 	write(fd, "1hello[\n]Assan\nsan", 18);
-// 	lseek(fd, 0, SEEK_SET);
-// 	char *str_to_return = get_next_line(fd);
-// 	if (fd != -1)
-// 	{	
-// 		printf("%s", str_to_return);
-// 		 free(str_to_return);
-// 	}
-// 	else
-// 		perror("the ereour is occured");
-// 	close(fd);
-// 	 printf("%d", fd);
-// }
 

@@ -6,12 +6,32 @@
 /*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:43 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/20 17:53:37 by assankou         ###   ########.fr       */
+/*   Updated: 2024/12/21 20:28:33 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+char *ft_calloc(size_t chunk, size_t size)
+{
+	char *south;
+	size_t i;
+
+	if (chunk == 0 || size == 0)
+		return (malloc(0));
+	if (chunk > SIZE_MAX / size)
+		return (NULL);
+	south = malloc(chunk * size);
+	if (!south)
+		return(NULL);
+	i = 0;
+	while (i < (chunk * size))
+	{
+		south[i] = 0;
+		i++;
+	}
+	return (south);
+}
 char *ft_strchr(const char *str, char to_find)
 {
 	int i;
@@ -47,7 +67,7 @@ char *ft_strduptoc(const char *str, char c)
 	{
         allocated = malloc(sizeof(char) * (robe + 2));
 		if (allocated == NULL)
-		return (NULL);
+			return (NULL);
 	}
 	s = 0;
 	while (s <= robe)
@@ -63,8 +83,7 @@ char *ft_strduptoc(const char *str, char c)
 size_t ft_strlen(const char *str)
 {
 	size_t i;
-	if (!str)
-		return (0);
+	
 	i = 0;
 	while (str[i])
 		i++;
@@ -81,7 +100,7 @@ char *ft_strjoin(const char *s1, const char *s2)
 		return(NULL);
 	if (!s1)
 		return (ft_strduptoc(s2, '\0'));
-	else if (!s2)
+	if (!s2)
 		return (ft_strduptoc(s1, '\0'));
 	total = ft_strlen(s1) + ft_strlen(s2);
 	final_string = malloc(sizeof(char) * (total + 1));
