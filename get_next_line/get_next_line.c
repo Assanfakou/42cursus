@@ -10,30 +10,29 @@
 // 	n_reads = read(fd, str, BUFFER_SIZE + 1);
 // }
 
-char *extract_then_update(char **somth)
+char *extract_then_update(char **stati)
 {
 	char *allocated;
 	char *new_line_pos;
 	char *cache;
 
-	if (!*somth)
+	if (!*stati)
 		return (NULL);
-	new_line_pos = ft_strchr(*somth, '\n');
+	new_line_pos = ft_strchr(*stati, '\n');
 	if (new_line_pos)
 	{
-		allocated = ft_strduptoc(*somth, '\n');
+		allocated = ft_strduptoc(*stati, '\n');
 		if (*(new_line_pos + 1) != '\0')
 		{
 			cache = ft_strduptoc(new_line_pos + 1, '\0');
-			free(*somth); 
-			*somth = cache;
+			free(*stati);
+			*stati = cache;
 		}
 		else {
-			free(*somth); 
-			*somth = NULL;
+			free(*stati);
+			*stati = NULL;
 		}
 		return (allocated);
-
 	}
 	return (NULL);
 }
