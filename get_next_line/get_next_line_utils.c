@@ -16,18 +16,20 @@ char *ft_calloc(size_t chunk, size_t size)
 {
 	char *south;
 	size_t i;
+	size_t total;
 
 	if (chunk == 0 || size == 0)
 		return (malloc(0));
 	if (chunk > SIZE_MAX / size)
 		return (NULL);
-	south = malloc(chunk * size);
+	total = chunk * size;
+	south = malloc(total);
 	if (!south)
 		return(NULL);
 	i = 0;
-	while (i < (chunk * size))
+	while (i < total)
 	{
-		south[i] = 0;
+		south[i] = '\0';
 		i++;
 	}
 	return (south);
@@ -91,59 +93,61 @@ size_t ft_strlen(const char *str)
 		i++;
 	return (i);
 }
-// char *ft_strjoin(const char *s1, const char *s2)
-// {
-// 	char *final_string;
-// 	size_t i;
-// 	size_t s;
-// 	size_t total;
-
-// 	if (!s1 && !s2)
-// 		return(NULL);
-// 	if (!s1)
-// 		return (ft_strduptoc(s2, '\0'));
-// 	if (!s2)
-// 		return (ft_strduptoc(s1, '\0'));
-// 	total = ft_strlen(s1) + ft_strlen(s2);
-// 	final_string = malloc(sizeof(char) * (total + 1));
-// 	if (!final_string)
-// 		return (NULL);
-// 	i = 0;
-// 	while (s1[i])
-// 	{
-// 		final_string[i] = s1[i];
-// 		i++;
-// 	}
-// 	s = 0;
-// 	while (s2[s])
-// 		final_string[i++] = s2[s++];
-// 	final_string[i] = '\0';
-// 	return (final_string);
-// }
-char	*ft_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(const char *s1, const char *s2)
 {
-	size_t	i;
-	size_t	j;
-	char	*buff;
+	char *final_string;
+	size_t i;
+	size_t s;
+	size_t total;
 
-	i = 0;
-	j = 0;
-	while (s1 && s1[i])
-		i++;
-	while (s2 && s2[j])
-		j++;
-	buff = malloc(sizeof(char) * (i + j + 1));
-	if (!buff)
+	if (!s1 && !s2)
+		return(NULL);
+	if (!s1)
+		return (ft_strduptoc(s2, '\0'));
+	if (!s2)
+		return (ft_strduptoc(s1, '\0'));
+	total = ft_strlen(s1) + ft_strlen(s2);
+	final_string = malloc(sizeof(char) * (total + 1));
+	if (!final_string)
 		return (NULL);
 	i = 0;
-	j = 0;
-	if (s1)
-		while (s1[j])
-			buff[i++] = s1[j++];
-	j = 0;
-	if (s2)
-		while (s2[j])
-			buff[i++] = s2[j++];
-	buff[i] = '\0';
-	return (buff);
+	while (s1[i])
+	{
+		final_string[i] = s1[i];
+		i++;
+	}
+	s = 0;
+	while (s2[s])
+		final_string[i++] = s2[s++];
+	final_string[i] = '\0';
+	return (final_string);
 }
+// ali's  
+
+// char	*ft_strjoin(char const *s1, char const *s2)
+// {
+// 	size_t	i;
+// 	size_t	j;
+// 	char	*buff;
+
+// 	i = 0;
+// 	j = 0;
+// 	while (s1 && s1[i])
+// 		i++;
+// 	while (s2 && s2[j])
+// 		j++;
+// 	buff = malloc(sizeof(char) * (i + j + 1));
+// 	if (!buff)
+// 		return (NULL);
+// 	i = 0;
+// 	j = 0;
+// 	if (s1)
+// 		while (s1[j])
+// 			buff[i++] = s1[j++];
+// 	j = 0;
+// 	if (s2)
+// 		while (s2[j])
+// 			buff[i++] = s2[j++];
+// 	buff[i] = '\0';
+// 	return (buff);
+// }
