@@ -3,37 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:43 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/24 11:21:43 by codespace        ###   ########.fr       */
+/*   Updated: 2024/12/24 16:43:26 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *ft_calloc(size_t chunk, size_t size)
-{
-	char *south;
-	size_t i;
-	size_t total;
 
-	if (chunk == 0 || size == 0)
-		return (malloc(0));
-	if (chunk > SIZE_MAX / size)
-		return (NULL);
-	total = chunk * size;
-	south = malloc(total);
-	if (!south)
-		return(NULL);
-	i = 0;
-	while (i < total)
-	{
-		south[i] = '\0';
-		i++;
-	}
-	return (south);
-}
 char *ft_strchr(char *str, char to_find)
 {
 	int i;

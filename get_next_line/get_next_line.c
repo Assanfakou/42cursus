@@ -1,6 +1,28 @@
 #include "get_next_line.h"
 #include <string.h>
 
+char *ft_calloc(size_t chunk, size_t size)
+{
+	char *south;
+	size_t i;
+	size_t total;
+
+	if (chunk == 0 || size == 0)
+		return (malloc(0));
+	if (chunk > SIZE_MAX / size)
+		return (NULL);
+	total = chunk * size;
+	south = malloc(total);
+	if (!south)
+		return(NULL);
+	i = 0;
+	while (i < total)
+	{
+		south[i] = '\0';
+		i++;
+	}
+	return (south);
+}
 char *extract_then_update(char **stati, char **buffer)
 {
 	char *allocated;
@@ -24,15 +46,43 @@ char *extract_then_update(char **stati, char **buffer)
 			*stati = NULL;
 		}
 		return (allocated);
-	}
+		}
 	else
 	{
 		free(*buffer);
 		*buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	}
-	return (NULL);	
+	return (NULL);
 }
+// freeze = will change and tha names of parammeters too
+char *freeeze(ssize_t readed, char **statttt, char **bufferrrr)
+{
+	char *temp;
 
+	if (*statttt)
+	{
+		if (readed < 0)
+		{
+			free(*statttt);
+			free(*bufferrrr);
+			*statttt = NULL;
+			return (NULL);
+		}
+		if (readed == 0)
+		{
+			free(*bufferrrr);
+			if(*statttt)
+			{
+				temp = ft_strdup(*statttt);
+				free(*statttt);
+				*statttt = NULL;
+				return(temp);
+			}
+		}
+	}
+	free(*bufferrrr);
+	return (NULL);
+}
 
 char *get_next_line(int fd)
 {
@@ -42,50 +92,23 @@ char *get_next_line(int fd)
 	char *str_nline_found;
 	char *temp;
 
+	if (BUFFER_SIZE <= 0)
+		return (NULL);
 	buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	suit_up = 1;
 	while (1)
 	{
-		// int s = 69;
-		// 	printf("|%d|", s);
 		str_nline_found = extract_then_update(&stat, &buffer);
 		if (str_nline_found)
 		{
 			free(buffer);
-			// printf("statfirst[%s]",stat);
-			// printf("the issue is the first return");
 			return (str_nline_found);
 		}
 		suit_up = read(fd, buffer, BUFFER_SIZE);
-		// printf("buffer >>|%s|", buffer);
-		if (suit_up < 0)
-		{
-			free(stat);
-			free(buffer);
-			stat = NULL;
-			return (NULL);
-		}	
-		if (suit_up == 0)
-		{
-			free(buffer);
-			if (stat)
-			{
-				// printf("statsecond%s", stat);
-				temp = ft_strdup(stat);
-				free(stat);
-				stat = NULL;
-				// printf("the [%s]", temp);
-				return (temp);
-			}
-			return (NULL);
-		}
+		if (suit_up <= 0)
+			return (freeeze(suit_up, &stat ,&buffer));
 		temp = ft_strjoin(stat, buffer);
-		// printf("temp value {%s}", temp);
-		// free(buffer);
 		free(stat);
 		stat = temp;
-		// printf("stat [%s]", stat);
-		
 	}
 	return (NULL);
 }

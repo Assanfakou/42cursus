@@ -27,12 +27,12 @@ int main()
 
     char *line;
     line = get_next_line(fd);
-    printf("/%s", line);
-    free(line);
-
-    line = get_next_line(fd);
     printf("%s", line);
     free(line);
+
+    // line = get_next_line(fd);
+    // printf("%s", line);
+    // free(line);
 
     // line = get_next_line(fd);
     //  printf("%s", line);
