@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:43 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/23 15:17:22 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/24 11:21:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,36 +52,51 @@ char *ft_strchr(char *str, char to_find)
 	return (NULL);
 }
 
-char *ft_strduptoc(const char *str, char c)
+char	*ft_strdup(const char *str)
 {
-	size_t s;
-	size_t robe;
-	char *allocated;
+	char	*buffer;
+	size_t	i;
 
 	if (!str)
-		return (NULL); 
-	robe = 0;
-	while (str[robe] && str[robe] != c)
-		robe++;
-	if (str[robe] != c)
 		return (NULL);
-    if (c == '\0')
-	    allocated = malloc(sizeof(char) * (robe + 1));
-    else
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	buffer = malloc(sizeof(char) * i + 1);
+	if (buffer == NULL)
+		return (NULL);
+	i = 0;
+	while (str[i])
 	{
-        allocated = malloc(sizeof(char) * (robe + 2));
-		if (allocated == NULL)
-			return (NULL);
+		buffer[i] = str[i];
+		i++;
 	}
-	s = 0;
-	while (s <= robe)
+	buffer[i] = '\0';
+	return (buffer);
+}
+
+char	*ft_strdup_nln(const char *str)
+{
+	char	*buffer;
+	size_t	i;
+	size_t j;
+
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	buffer = malloc(sizeof(char) * i + 2);
+	if (buffer == NULL)
+		return (NULL);
+	j = 0;
+	while (j <= i)
 	{
-		allocated[s] = str[s];
-		s++;
+		buffer[j] = str[j];
+		j++;
 	}
-    if (c != '\0')
-	    allocated[s] = '\0';
-	return (allocated);
+	buffer[j] = '\0';
+	return (buffer);
 }
 
 size_t ft_strlen(const char *str)
@@ -98,16 +113,14 @@ char *ft_strjoin(const char *s1, const char *s2)
 	char *final_string;
 	size_t i;
 	size_t s;
-	size_t total;
-
+	
 	if (!s1 && !s2)
 		return(NULL);
 	if (!s1)
-		return (ft_strduptoc(s2, '\0'));
+		return (ft_strdup(s2));
 	if (!s2)
-		return (ft_strduptoc(s1, '\0'));
-	total = ft_strlen(s1) + ft_strlen(s2);
-	final_string = malloc(sizeof(char) * (total + 1));
+		return (ft_strdup(s1));
+	final_string = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!final_string)
 		return (NULL);
 	i = 0;
@@ -122,32 +135,35 @@ char *ft_strjoin(const char *s1, const char *s2)
 	final_string[i] = '\0';
 	return (final_string);
 }
-// ali's  
 
-// char	*ft_strjoin(char const *s1, char const *s2)
+// char *ft_strduptoc(const char *str, char c)
 // {
-// 	size_t	i;
-// 	size_t	j;
-// 	char	*buff;
+// 	size_t s;
+// 	size_t robe;
+// 	char *allocated;
 
-// 	i = 0;
-// 	j = 0;
-// 	while (s1 && s1[i])
-// 		i++;
-// 	while (s2 && s2[j])
-// 		j++;
-// 	buff = malloc(sizeof(char) * (i + j + 1));
-// 	if (!buff)
+// 	if (!str)
+// 		return (NULL); 
+// 	robe = 0;
+// 	while (str[robe] && str[robe] != c)
+// 		robe++;
+// 	if (str[robe] != c)
 // 		return (NULL);
-// 	i = 0;
-// 	j = 0;
-// 	if (s1)
-// 		while (s1[j])
-// 			buff[i++] = s1[j++];
-// 	j = 0;
-// 	if (s2)
-// 		while (s2[j])
-// 			buff[i++] = s2[j++];
-// 	buff[i] = '\0';
-// 	return (buff);
+//     if (c == '\0')
+// 	    allocated = malloc(sizeof(char) * (robe + 1));
+//     else
+// 	{
+//         allocated = malloc(sizeof(char) * (robe + 2));
+// 		if (allocated == NULL)
+// 			return (NULL);
+// 	}
+// 	s = 0;
+// 	while (s <= robe)
+// 	{
+// 		allocated[s] = str[s];
+// 		s++;
+// 	}
+//     if (c != '\0')
+// 	    allocated[s] = '\0';
+// 	return (allocated);
 // }

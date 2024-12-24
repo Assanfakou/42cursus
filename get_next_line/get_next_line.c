@@ -12,10 +12,10 @@ char *extract_then_update(char **stati, char **buffer)
 	new_line_pos = ft_strchr(*stati, '\n');
 	if (new_line_pos)
 	{
-		allocated = ft_strduptoc(*stati, '\n');
+		allocated = ft_strdup_nln(*stati);
 		if (*(new_line_pos + 1) != '\0')
 		{
-			cache = ft_strduptoc(new_line_pos + 1, '\0');
+			cache = ft_strdup(new_line_pos + 1);
 			free(*stati);
 			*stati = cache;
 		}
@@ -71,7 +71,7 @@ char *get_next_line(int fd)
 			if (stat)
 			{
 				// printf("statsecond%s", stat);
-				temp = ft_strduptoc(stat, '\0');
+				temp = ft_strdup(stat);
 				free(stat);
 				stat = NULL;
 				// printf("the [%s]", temp);
