@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:43 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/24 16:43:26 by assankou         ###   ########.fr       */
+/*   Updated: 2024/12/24 22:45:20 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-
-char *ft_strchr(char *str, char to_find)
+char	*ft_strchr(char *str, char to_find)
 {
-	int i;
+	int	i;
 
 	if (!str)
 		return (NULL);
@@ -58,7 +57,7 @@ char	*ft_strdup_nln(const char *str)
 {
 	char	*buffer;
 	size_t	i;
-	size_t j;
+	size_t	j;
 
 	if (!str)
 		return (NULL);
@@ -78,23 +77,24 @@ char	*ft_strdup_nln(const char *str)
 	return (buffer);
 }
 
-size_t ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	size_t i;
-	
+	size_t	i;
+
 	i = 0;
 	while (str[i])
 		i++;
 	return (i);
 }
-char *ft_strjoin(const char *s1, const char *s2)
+
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	char *final_string;
-	size_t i;
-	size_t s;
-	
+	char	*final_string;
+	size_t	i;
+	size_t	s;
+
 	if (!s1 && !s2)
-		return(NULL);
+		return (NULL);
 	if (!s1)
 		return (ft_strdup(s2));
 	if (!s2)
@@ -122,14 +122,14 @@ char *ft_strjoin(const char *s1, const char *s2)
 // 	char *allocated;
 
 // 	if (!str)
-// 		return (NULL); 
+// 		return (NULL);
 // 	robe = 0;
 // 	while (str[robe] && str[robe] != c)
 // 		robe++;
 // 	if (str[robe] != c)
 // 		return (NULL);
 //     if (c == '\0')
-// 	    allocated = malloc(sizeof(char) * (robe + 1));
+// 		 allocated = malloc(sizeof(char) * (robe + 1));
 //     else
 // 	{
 //         allocated = malloc(sizeof(char) * (robe + 2));
@@ -143,6 +143,6 @@ char *ft_strjoin(const char *s1, const char *s2)
 // 		s++;
 // 	}
 //     if (c != '\0')
-// 	    allocated[s] = '\0';
+// 		 allocated[s] = '\0';
 // 	return (allocated);
 // }
