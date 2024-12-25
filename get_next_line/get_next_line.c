@@ -6,7 +6,7 @@
 /*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 22:28:48 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/25 15:05:51 by assankou         ###   ########.fr       */
+/*   Updated: 2024/12/25 18:26:21 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > INT_MAX)
 		return (NULL);
 	buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	while (1)
-	{
+	while (buffer)
+	{	
 		str_nline_found = extract_then_update(&stat);
 		if (str_nline_found)
 			return (free(buffer), str_nline_found);
