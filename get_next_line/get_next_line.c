@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 22:28:48 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/24 22:48:34 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/25 15:05:51 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_calloc(size_t chunk, size_t size)
 	return (south);
 }
 
-char	*extract_then_update(char **stati, char **buffer)
+char	*extract_then_update(char **stati)
 {
 	char	*allocated;
 	char	*new_line_pos;
@@ -60,11 +60,6 @@ char	*extract_then_update(char **stati, char **buffer)
 		}
 		return (allocated);
 	}
-	else
-	{
-		free(*buffer);
-		*buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	}
 	return (NULL);
 }
 
@@ -73,28 +68,21 @@ char	*freeeze(ssize_t readed, char **statttt, char **bufferrrr)
 {
 	char	*temp;
 
-	if (*statttt)
+	if (readed < 0)
 	{
-		if (readed < 0)
-		{
-			free(*statttt);
-			free(*bufferrrr);
-			*statttt = NULL;
-			return (NULL);
-		}
-		if (readed == 0)
-		{
-			free(*bufferrrr);
-			if (*statttt)
-			{
-				temp = ft_strdup(*statttt);
-				free(*statttt);
-				*statttt = NULL;
-				return (temp);
-			}
-		}
+		free(*statttt);
+		free(*bufferrrr);
+		*statttt = NULL;
+		return (NULL);
 	}
-	free(*bufferrrr);
+	if (readed == 0)
+	{
+		free(*bufferrrr);
+		temp = ft_strdup(*statttt);
+		free(*statttt);
+		*statttt = NULL;
+		return (temp);
+	}
 	return (NULL);
 }
 
@@ -111,11 +99,13 @@ char	*get_next_line(int fd)
 	buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	while (1)
 	{
-		str_nline_found = extract_then_update(&stat, &buffer);
+		str_nline_found = extract_then_update(&stat);
 		if (str_nline_found)
+			return (free(buffer), str_nline_found);
+		else
 		{
 			free(buffer);
-			return (str_nline_found);
+			buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 		}
 		suit_up = read(fd, buffer, BUFFER_SIZE);
 		if (suit_up <= 0)
