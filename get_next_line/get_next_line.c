@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 22:28:48 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/25 18:26:21 by assankou         ###   ########.fr       */
+/*   Updated: 2024/12/26 17:54:59 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,52 +35,51 @@ char	*ft_calloc(size_t chunk, size_t size)
 	return (south);
 }
 
-char	*extract_then_update(char **stati)
+char	*extract_then_update(char **static_buffer)
 {
-	char	*allocated;
+	char	*line;
 	char	*new_line_pos;
 	char	*cache;
 
-	if (!*stati)
+	if (!*static_buffer)
 		return (NULL);
-	new_line_pos = ft_strchr(*stati, '\n');
+	new_line_pos = ft_strchr(*static_buffer, '\n');
 	if (new_line_pos)
 	{
-		allocated = ft_strdup_nln(*stati);
+		line = ft_strdup_nln(*static_buffer);
 		if (*(new_line_pos + 1) != '\0')
 		{
 			cache = ft_strdup(new_line_pos + 1);
-			free(*stati);
-			*stati = cache;
+			free(*static_buffer);
+			*static_buffer = cache;
 		}
 		else
 		{
-			free(*stati);
-			*stati = NULL;
+			free(*static_buffer);
+			*static_buffer = NULL;
 		}
-		return (allocated);
+		return (line);
 	}
 	return (NULL);
 }
 
-// freeze = will change and tha names of parammeters too
-char	*freeeze(ssize_t readed, char **statttt, char **bufferrrr)
+char	*handle_read_result(ssize_t bytes_read, char **static_buffer, char **read_buffer)
 {
 	char	*temp;
 
-	if (readed < 0)
+	if (bytes_read < 0)
 	{
-		free(*statttt);
-		free(*bufferrrr);
-		*statttt = NULL;
+		free(*static_buffer);
+		free(*read_buffer);
+		*static_buffer = NULL;
 		return (NULL);
 	}
-	if (readed == 0)
+	if (bytes_read == 0)
 	{
-		free(*bufferrrr);
-		temp = ft_strdup(*statttt);
-		free(*statttt);
-		*statttt = NULL;
+		free(*read_buffer);
+		temp = ft_strdup(*static_buffer);
+		free(*static_buffer);
+		*static_buffer = NULL;
 		return (temp);
 	}
 	return (NULL);
@@ -88,31 +87,31 @@ char	*freeeze(ssize_t readed, char **statttt, char **bufferrrr)
 
 char	*get_next_line(int fd)
 {
-	static char	*stat;
-	ssize_t		suit_up;
+	static char	*static_buffer;
+	ssize_t		bytes_read;
 	char		*buffer;
-	char		*str_nline_found;
-	char		*temp;
+	char		*line;
+	char		*temp_buffer;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > INT_MAX)
 		return (NULL);
 	buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	while (buffer)
 	{	
-		str_nline_found = extract_then_update(&stat);
-		if (str_nline_found)
-			return (free(buffer), str_nline_found);
+		line = extract_then_update(&static_buffer);
+		if (line)
+			return (free(buffer), line);
 		else
 		{
 			free(buffer);
 			buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 		}
-		suit_up = read(fd, buffer, BUFFER_SIZE);
-		if (suit_up <= 0)
-			return (freeeze(suit_up, &stat, &buffer));
-		temp = ft_strjoin(stat, buffer);
-		free(stat);
-		stat = temp;
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read <= 0)
+			return (freeeze(bytes_read, &static_buffer, &buffer));
+		temp_buffer = ft_strjoin(static_buffer, buffer);
+		free(static_buffer);
+		static_buffer = temp_buffer;
 	}
 	return (NULL);
 }

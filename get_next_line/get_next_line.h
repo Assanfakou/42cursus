@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:50 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/25 15:21:04 by assankou         ###   ########.fr       */
+/*   Updated: 2024/12/26 17:54:22 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 
 char	*ft_strchr(char *str, char to_find);
 size_t	ft_strlen(const char *str);
-char	*ft_calloc(size_t chunk, size_t size);
 char	*ft_strdup(const char *str);
 char	*ft_strdup_nln(const char *str);
 char	*get_next_line(int fd);
