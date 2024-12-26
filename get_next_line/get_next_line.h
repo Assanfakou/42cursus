@@ -14,11 +14,11 @@
 # define GET_NEXT_LINE_H
 
 # include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdint.h>
 # include <limits.h>
+# include <stdint.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 char	*ft_strchr(char *str, char to_find);
 size_t	ft_strlen(const char *str);

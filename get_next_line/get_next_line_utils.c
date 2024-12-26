@@ -129,7 +129,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 // 	if (str[robe] != c)
 // 		return (NULL);
 //     if (c == '\0')
-// 		 allocated = malloc(sizeof(char) * (robe + 1));
+// 			allocated = malloc(sizeof(char) * (robe + 1));
 //     else
 // 	{
 //         allocated = malloc(sizeof(char) * (robe + 2));
@@ -143,6 +143,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 // 		s++;
 // 	}
 //     if (c != '\0')
-// 		 allocated[s] = '\0';
+// 			allocated[s] = '\0';
 // 	return (allocated);
 // }
