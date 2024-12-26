@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:31:42 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/26 16:31:46 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/26 18:17:44 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*ft_strchr(char *str, char c)
 		return (str + i);
 	return (NULL);
 }
+
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
@@ -36,6 +37,7 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
+
 char	*ft_strdup_nln(const char *str)
 {
 	char	*allocated;
@@ -59,6 +61,7 @@ char	*ft_strdup_nln(const char *str)
 	allocated[l] = '\0';
 	return (allocated);
 }
+
 char	*ft_strdup(const char *str)
 {
 	char	*allocated;
@@ -78,6 +81,7 @@ char	*ft_strdup(const char *str)
 	allocated[i] = '\0';
 	return (allocated);
 }
+
 char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*joined;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:32:23 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/26 16:32:25 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/26 18:17:13 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	*ft_calloc(size_t numb, size_t size)
 	}
 	return (reserved);
 }
+
 char	*ft_isolate_line_and_update(char **stat)
 {
 	char	*reserved;
@@ -61,6 +62,7 @@ char	*ft_isolate_line_and_update(char **stat)
 	}
 	return (NULL);
 }
+
 char	*instructions_for_read(ssize_t readdd, char **stattt, char **buffer)
 {
 	char	*temp;
