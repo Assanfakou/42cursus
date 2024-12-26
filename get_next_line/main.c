@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/26 18:45:17 by assankou          #+#    #+#             */
+/*   Updated: 2024/12/26 18:48:08 by assankou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 #include <stdlib.h>
 
@@ -27,7 +39,7 @@ int	main(void)
 		perror("Error opening file");
 		return (1);
 	}
-	line = get_next_line(fd);
+	line = get_next_line);
 	printf("%s", line);
 	free(line);
 	// line = get_next_line(fd);

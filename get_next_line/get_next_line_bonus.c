@@ -6,7 +6,7 @@
 /*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:32:23 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/26 18:17:13 by assankou         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:42:49 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,16 +102,12 @@ char	*get_next_line(int fd)
 		if (nlnfound)
 			return (free(buffer), nlnfound);
 		else
-		{
-			free(buffer);
-			buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-		}
+			(free(buffer), buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char)));
 		readed = read(fd, buffer, BUFFER_SIZE);
 		if (readed <= 0)
 			return (instructions_for_read(readed, &statyc[fd], &buffer));
 		reserved = ft_strjoin(statyc[fd], buffer);
-		free(statyc[fd]);
-		statyc[fd] = reserved;
+		(free(statyc[fd]), statyc[fd] = reserved);
 	}
 	return (NULL);
 }
