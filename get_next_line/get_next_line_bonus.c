@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:32:23 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/26 18:42:49 by assankou         ###   ########.fr       */
+/*   Updated: 2024/12/26 21:59:37 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,51 +35,51 @@ char	*ft_calloc(size_t numb, size_t size)
 	return (reserved);
 }
 
-char	*ft_isolate_line_and_update(char **stat)
+char	*ft_isolate_line_and_update(char **static_buffer)
 {
-	char	*reserved;
+	char	*line;
 	char	*nln_post;
 	char	*afternln;
 
-	if (!*stat)
+	if (!*static_buffer)
 		return (NULL);
-	nln_post = ft_strchr(*stat, '\n');
+	nln_post = ft_strchr(*static_buffer, '\n');
 	if (nln_post)
 	{
-		reserved = ft_strdup_nln(*stat);
+		line = ft_strdup_nln(*static_buffer);
 		if (*(nln_post + 1) != '\0')
 		{
 			afternln = ft_strdup(nln_post + 1);
-			free(*stat);
-			*stat = afternln;
+			free(*static_buffer);
+			*static_buffer = afternln;
 		}
 		else
 		{
-			free(*stat);
-			*stat = NULL;
+			free(*static_buffer);
+			*static_buffer = NULL;
 		}
-		return (reserved);
+		return (line);
 	}
 	return (NULL);
 }
 
-char	*instructions_for_read(ssize_t readdd, char **stattt, char **buffer)
+char	*instructions_for_read(ssize_t readdd, char **static_buffer, char **buffer)
 {
 	char	*temp;
 
 	if (readdd < 0)
 	{
 		free(*buffer);
-		free(*stattt);
-		*stattt = NULL;
+		free(*static_buffer);
+		*static_buffer = NULL;
 		return (NULL);
 	}
 	if (readdd == 0)
 	{
 		free(*buffer);
-		temp = ft_strdup(*stattt);
-		free(*stattt);
-		*stattt = NULL;
+		temp = ft_strdup(*static_buffer);
+		free(*static_buffer);
+		*static_buffer = NULL;
 		return (temp);
 	}
 	return (NULL);
@@ -87,7 +87,7 @@ char	*instructions_for_read(ssize_t readdd, char **stattt, char **buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*statyc[2048];
+	static char	*static_buffer[2048];
 	char		*buffer;
 	char		*reserved;
 	ssize_t		readed;
@@ -98,16 +98,16 @@ char	*get_next_line(int fd)
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	while (buffer)
 	{
-		nlnfound = ft_isolate_line_and_update(&statyc[fd]);
+		nlnfound = ft_isolate_line_and_update(&static_buffer[fd]);
 		if (nlnfound)
 			return (free(buffer), nlnfound);
 		else
 			(free(buffer), buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char)));
 		readed = read(fd, buffer, BUFFER_SIZE);
 		if (readed <= 0)
-			return (instructions_for_read(readed, &statyc[fd], &buffer));
-		reserved = ft_strjoin(statyc[fd], buffer);
-		(free(statyc[fd]), statyc[fd] = reserved);
+			return (instructions_for_read(readed, &static_buffer[fd], &buffer));
+		reserved = ft_strjoin(static_buffer[fd], buffer);
+		(free(static_buffer[fd]), static_buffer[fd] = reserved);
 	}
 	return (NULL);
 }
