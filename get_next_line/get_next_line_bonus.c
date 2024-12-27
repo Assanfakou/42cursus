@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:32:23 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/26 21:59:37 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/27 17:29:01 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*ft_isolate_line_and_update(char **static_buffer)
 	return (NULL);
 }
 
-char	*instructions_for_read(ssize_t readdd, char **static_buffer, char **buffer)
+char	*read_result(ssize_t readdd, char **static_buffer, char **buffer)
 {
 	char	*temp;
 
@@ -87,7 +87,7 @@ char	*instructions_for_read(ssize_t readdd, char **static_buffer, char **buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*static_buffer[2048];
+	static char	*static_buffer[1024];
 	char		*buffer;
 	char		*reserved;
 	ssize_t		readed;
@@ -105,9 +105,10 @@ char	*get_next_line(int fd)
 			(free(buffer), buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char)));
 		readed = read(fd, buffer, BUFFER_SIZE);
 		if (readed <= 0)
-			return (instructions_for_read(readed, &static_buffer[fd], &buffer));
+			return (read_result(readed, &static_buffer[fd], &buffer));
 		reserved = ft_strjoin(static_buffer[fd], buffer);
-		(free(static_buffer[fd]), static_buffer[fd] = reserved);
+		free(static_buffer[fd]);
+		static_buffer[fd] = reserved;
 	}
 	return (NULL);
 }

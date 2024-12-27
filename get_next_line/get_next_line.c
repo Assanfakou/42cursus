@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 22:28:48 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/26 21:49:36 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/27 17:29:53 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,8 @@ char	*get_next_line(int fd)
 		if (bytes_read <= 0)
 			return (read_result(bytes_read, &static_buffer, &buffer));
 		temp_buffer = ft_strjoin(static_buffer, buffer);
-		(free(static_buffer), static_buffer = temp_buffer);
+		free(static_buffer);
+		static_buffer = temp_buffer;
 	}
 	return (NULL);
 }
