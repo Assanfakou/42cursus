@@ -16,7 +16,6 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <stdint.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -28,6 +27,6 @@ char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strchr(char *str, char c);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 66
+#  define BUFFER_SIZE 69
 # endif
 #endif

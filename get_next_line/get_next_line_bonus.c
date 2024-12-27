@@ -93,7 +93,7 @@ char	*get_next_line(int fd)
 	ssize_t		readed;
 	char		*nlnfound;
 
-	if (BUFFER_SIZE > INT_MAX)
+	if (BUFFER_SIZE > INT_MAX || fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	while (buffer)
