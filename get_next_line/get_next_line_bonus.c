@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:32:23 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/27 17:29:01 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/28 13:06:22 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	*get_next_line(int fd)
 	ssize_t		readed;
 	char		*nlnfound;
 
-	if (BUFFER_SIZE > INT_MAX || fd < 0 || BUFFER_SIZE <= 0)
+	if (BUFFER_SIZE > INT_MAX || fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	while (buffer)
