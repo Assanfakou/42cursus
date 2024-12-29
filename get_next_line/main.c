@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:45:17 by assankou          #+#    #+#             */
-/*   Updated: 2024/12/28 13:06:32 by hfakou           ###   ########.fr       */
+/*   Updated: 2024/12/29 10:13:30 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ int	main(void)
 		perror("Error opening file");
 		return (1);
 	}
-	line = get_next_line(2000);
-	printf("%s", line);
+	line = get_next_line(fd);
+	// printf("%s", line);
 	free(line);
-	line = get_next_line(1025);
-	printf("%s", line);
+	line = get_next_line(fd);
+	// printf("%s", line);
 	free(line);
 	// line = get_next_line(fd);
 	//  printf("%s", line);

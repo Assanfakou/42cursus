@@ -1,6 +1,6 @@
 # 🚀 42 School Projects
 
-![42 School](https://img.shields.io/badge/42-School-blue)
+![42 School](https://www.42network.org/)
 ![Progress](https://img.shields.io/badge/Progress-Ongoing-green)
 ![Commits](https://img.shields.io/badge/Commits-62-orange)
 
@@ -28,8 +28,8 @@ Welcome to my 42 school journey! This repository contains my solutions for vario
 
 ## ⚙️ Usage
 ```bash
-git clone https://github.com/yourusername/42_Projects.git
-cd project_folder
+git clone https://github.com/Assanfakou/42cursus.git
+cd 42cursus
 make
 ```
 
