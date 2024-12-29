@@ -1,6 +1,6 @@
 # 🚀 42 School Projects
 
-![42 School](https://www.42network.org/)
+![42 School](https://img.shields.io/badge/42-School-blue)
 ![Progress](https://img.shields.io/badge/Progress-Ongoing-green)
 ![Commits](https://img.shields.io/badge/Commits-62-orange)
 
