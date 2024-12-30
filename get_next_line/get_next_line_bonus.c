@@ -95,14 +95,14 @@ char	*get_next_line(int fd)
 
 	if (BUFFER_SIZE > INT_MAX || fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	buffer = ft_calloc((size_t)BUFFER_SIZE + 1, 1);
 	while (buffer)
 	{
 		nlnfound = ft_isolate_line_and_update(&static_buffer[fd]);
 		if (nlnfound)
 			return (free(buffer), nlnfound);
 		else
-			(free(buffer), buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char)));
+			(free(buffer), buffer = ft_calloc((size_t)BUFFER_SIZE + 1, 1));
 		readed = read(fd, buffer, BUFFER_SIZE);
 		if (readed <= 0)
 			return (read_result(readed, &static_buffer[fd], &buffer));
