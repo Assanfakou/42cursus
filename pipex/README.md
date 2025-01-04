@@ -1,7 +1,5 @@
 # pipex and syscalls
 
-[https://www.notion.so](https://www.notion.so)
-
 # Fork Function
 
 # Fork Function Overview
@@ -16,11 +14,11 @@ The fork() function in C is a system call that creates a new process by duplicat
     - Child process: Returns 0
     - Error case: Returns -1
 - After fork(), both processes execute the same code but can be identified by the return value
-    
+
     ![Screenshot from 2025-01-04 10-54-53.png](pipex%20and%20syscalls%201337f060fbb18056902aec0adbaf9720/e652995e-5eb5-4043-9df5-067a508eb0b6.png)
-    
+
     ## code
-    
+
 
 ```c
 #include <stdio.h>
@@ -28,7 +26,7 @@ The fork() function in C is a system call that creates a new process by duplicat
 
 int main() {
     pid_t pid = fork();
-    
+
     if (pid < 0) {
         // Fork failed
         printf("Fork failed\n");
@@ -68,7 +66,7 @@ pid_t wait(int *status);
 int main() {
     pid_t pid = fork();
     int status;
-    
+
     if (pid == 0) {
         printf("Child process\n");
         exit(0);
@@ -114,7 +112,7 @@ These functions are particularly useful when working with multiple processes to 
 
 int main() {
     pid_t pid = fork();
-    
+
     if (pid == 0) {
         printf("Child Process - PID: %d, Parent PID: %d\n", getpid(), getppid());
     } else {
