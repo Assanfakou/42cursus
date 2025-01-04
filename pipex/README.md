@@ -1,9 +1,5 @@
 # pipex and syscalls
 
-[https://www.notion.so](https://www.notion.so)
-
-# Fork Function
-
 # Fork Function Overview
 
 The fork() function in C is a system call that creates a new process by duplicating the existing (parent) process. The new process is called the child process.
