@@ -1,7 +1,5 @@
 # pipex and syscalls
 
-[https://www.notion.so](https://www.notion.so)
-
 # Fork Function
 
 # Fork Function Overview
