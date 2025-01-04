@@ -16,6 +16,11 @@ The fork() function in C is a system call that creates a new process by duplicat
     - Child process: Returns 0
     - Error case: Returns -1
 - After fork(), both processes execute the same code but can be identified by the return value
+    
+    ![Screenshot from 2025-01-04 10-54-53.png](pipex%20and%20syscalls%201337f060fbb18056902aec0adbaf9720/e652995e-5eb5-4043-9df5-067a508eb0b6.png)
+    
+    ## code
+    
 
 ```c
 #include <stdio.h>
