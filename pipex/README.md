@@ -1,5 +1,7 @@
 # pipex and syscalls
 
+[https://www.notion.so](https://www.notion.so)
+
 # Fork Function
 
 # Fork Function Overview
@@ -14,42 +16,41 @@ The fork() function in C is a system call that creates a new process by duplicat
     - Child process: Returns 0
     - Error case: Returns -1
 - After fork(), both processes execute the same code but can be identified by the return value
-
-
-## child and parent Process communication
-
+    
+    ## child and parent process cominication
+    
     ```mermaid
     graph TD;
         A["Parent Process"] --> B["fork()"];
         B -- "Returns Child PID > 0" --> C["Parent continues"];
         B -- "Returns 0" --> D["Child Process"];
-
+        
         C --> E["Parent can:"];
         E --> F["Wait for child"];
         E --> G["Continue executing"];
         E --> H["Create more children"];
-
+        
         D --> I["Child can:"];
         I --> J["Execute new program"];
         I --> K["Run parallel tasks"];
         I --> L["Communicate via pipe"];
-
+    
         %% Process states and relationships
         C -.-> M["Can read/write to pipe"];
         D -.-> N["Can read/write to pipe"];
         M <-.-> N;
     ```
+    
+    ## Basic Usage
+    
 
-
-	
-## code
 ```c
 #include <stdio.h>
 #include <unistd.h>
 
 int main() {
     pid_t pid = fork();
-
+    
     if (pid < 0) {
         // Fork failed
         printf("Fork failed\n");
@@ -89,7 +90,7 @@ pid_t wait(int *status);
 int main() {
     pid_t pid = fork();
     int status;
-
+    
     if (pid == 0) {
         printf("Child process\n");
         exit(0);
@@ -135,7 +136,7 @@ These functions are particularly useful when working with multiple processes to 
 
 int main() {
     pid_t pid = fork();
-
+    
     if (pid == 0) {
         printf("Child Process - PID: %d, Parent PID: %d\n", getpid(), getppid());
     } else {
@@ -165,14 +166,14 @@ The pipe() system call creates a unidirectional communication channel that can b
 int main() {
     int fd[2];
     char buffer[20];
-
+    
     if (pipe(fd) == -1) {
         printf("Pipe failed\n");
         return 1;
     }
-
+    
     pid_t pid = fork();
-
+    
     if (pid == 0) {
         // Child process
         close(fd[0]);  // Close unused read end
