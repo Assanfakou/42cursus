@@ -40,9 +40,9 @@ The fork() function in C is a system call that creates a new process by duplicat
         M <-.-> N;
     ```
 
-    ## code
 
-
+	
+## code
 ```c
 #include <stdio.h>
 #include <unistd.h>
