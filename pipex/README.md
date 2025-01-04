@@ -1,5 +1,7 @@
 # pipex and syscalls
 
+[https://www.notion.so](https://www.notion.so)
+
 # Fork Function
 
 # Fork Function Overview
@@ -14,11 +16,35 @@ The fork() function in C is a system call that creates a new process by duplicat
     - Child process: Returns 0
     - Error case: Returns -1
 - After fork(), both processes execute the same code but can be identified by the return value
-
+    
     ![Screenshot from 2025-01-04 10-54-53.png](pipex%20and%20syscalls%201337f060fbb18056902aec0adbaf9720/e652995e-5eb5-4043-9df5-067a508eb0b6.png)
-
+    
+    explantion
+    
+    ```mermaid
+    graph TD;
+        A["Parent Process"] --> B["fork()"];
+        B -- "Returns Child PID > 0" --> C["Parent continues"];
+        B -- "Returns 0" --> D["Child Process"];
+        
+        C --> E["Parent can:"];
+        E --> F["Wait for child"];
+        E --> G["Continue executing"];
+        E --> H["Create more children"];
+        
+        D --> I["Child can:"];
+        I --> J["Execute new program"];
+        I --> K["Run parallel tasks"];
+        I --> L["Communicate via pipe"];
+    
+        %% Process states and relationships
+        C -.-> M["Can read/write to pipe"];
+        D -.-> N["Can read/write to pipe"];
+        M <-.-> N;
+    ```
+    
     ## code
-
+    
 
 ```c
 #include <stdio.h>
@@ -26,7 +52,7 @@ The fork() function in C is a system call that creates a new process by duplicat
 
 int main() {
     pid_t pid = fork();
-
+    
     if (pid < 0) {
         // Fork failed
         printf("Fork failed\n");
@@ -66,7 +92,7 @@ pid_t wait(int *status);
 int main() {
     pid_t pid = fork();
     int status;
-
+    
     if (pid == 0) {
         printf("Child process\n");
         exit(0);
@@ -112,7 +138,7 @@ These functions are particularly useful when working with multiple processes to 
 
 int main() {
     pid_t pid = fork();
-
+    
     if (pid == 0) {
         printf("Child Process - PID: %d, Parent PID: %d\n", getpid(), getppid());
     } else {
@@ -121,3 +147,49 @@ int main() {
     return 0;
 }
 ```
+
+# Pipe System Call
+
+The pipe() system call creates a unidirectional communication channel that can be used for interprocess communication. It creates two file descriptors: one for reading (fd[0]) and one for writing (fd[1]).
+
+## Key Characteristics
+
+- Creates two file descriptors in an array
+- Data written to fd[1] can be read from fd[0]
+- Data flows in one direction only (unidirectional)
+- Commonly used with fork() for parent-child communication
+
+## Basic Example
+
+```c
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+    int fd[2];
+    char buffer[20];
+    
+    if (pipe(fd) == -1) {
+        printf("Pipe failed\n");
+        return 1;
+    }
+    
+    pid_t pid = fork();
+    
+    if (pid == 0) {
+        // Child process
+        close(fd[0]);  // Close unused read end
+        write(fd[1], "Hello, Parent!", 13);
+        close(fd[1]);
+    } else {
+        // Parent process
+        close(fd[1]);  // Close unused write end
+        read(fd[0], buffer, 13);
+        printf("Message from child: %s\n", buffer);
+        close(fd[0]);
+    }
+    return 0;
+}
+```
+
+In this example, the child process writes a message to the pipe, and the parent process reads it. The unused ends of the pipe are closed in each process to prevent potential deadlocks and resource leaks.
