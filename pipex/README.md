@@ -2,8 +2,6 @@
 
 # Fork Function
 
-# Fork Function Overview
-
 The fork() function in C is a system call that creates a new process by duplicating the existing (parent) process. The new process is called the child process.
 
 ## Key Points
@@ -169,9 +167,7 @@ int main() {
         printf("Pipe failed\n");
         return 1;
     }
-    
     pid_t pid = fork();
-    
     if (pid == 0) {
         // Child process
         close(fd[0]);  // Close unused read end
@@ -189,3 +185,27 @@ int main() {
 ```
 
 In this example, the child process writes a message to the pipe, and the parent process reads it. The unused ends of the pipe are closed in each process to prevent potential deadlocks and resource leaks.
+
+# Perror Function
+
+`perror()` is a C library function that prints a descriptive error message to `stderr`. It combines a custom message with the error description based on the global `errno` variable, which contains the most recent error code.
+
+### syntax :
+
+```c
+void perror(const char *str);
+```
+
+- **`str`**: A custom message to display before the error description.
+
+```c
+if (some_error_condition) {
+    perror("Error occurred");
+}
+```
+
+### This would output:
+
+```c
+Error occurred: [error description from errno]
+```
