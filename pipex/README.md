@@ -249,6 +249,6 @@ if (permission == -1)
 }
 ```
 
-# Dup() Funcyion:
+# Dup() Function:
 
 `dup()` function duplicates an existing file discriptor
