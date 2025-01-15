@@ -1,6 +1,8 @@
 # pipex and syscalls
 
-# Fork Function
+# Fork() Function
+
+# Fork() Function Overview
 
 The fork() function in C is a system call that creates a new process by duplicating the existing (parent) process. The new process is called the child process.
 
@@ -63,7 +65,7 @@ int main() {
 }
 ```
 
-# Wait System Call
+# Wait() System Call
 
 The wait() system call is used by a parent process to wait for its child process to terminate. It suspends the calling process until one of its child processes ends or a signal is received.
 
@@ -142,7 +144,7 @@ int main() {
 }
 ```
 
-# Pipe System Call
+# Pipe() System Call
 
 The pipe() system call creates a unidirectional communication channel that can be used for interprocess communication. It creates two file descriptors: one for reading (fd[0]) and one for writing (fd[1]).
 
@@ -186,7 +188,7 @@ int main() {
 
 In this example, the child process writes a message to the pipe, and the parent process reads it. The unused ends of the pipe are closed in each process to prevent potential deadlocks and resource leaks.
 
-# Perror Function
+# Perror() Function
 
 `perror()` is a C library function that prints a descriptive error message to `stderr`. It combines a custom message with the error description based on the global `errno` variable, which contains the most recent error code.
 
@@ -209,3 +211,44 @@ if (some_error_condition) {
 ```c
 Error occurred: [error description from errno]
 ```
+
+# Access() Function
+
+`access()` checks if a file is accessible with the specified permissions for the calling process.
+
+### Syntax:
+
+```c
+int access(const char *pathfile, int file_mode);
+```
+
+- **Parameters**
+
+**1-pathfile** : the file’s path to check.
+
+**2-file_mode** : the permission to check.
+
+- `F_OK` : check if the file exists.
+- `R_OK` : check if the file readable.
+- `W_OK` : check if the file has the write permission.
+- `X_OK` : check if the file has the exicute permission.
+
+### Return value:
+
+- `0` : file is accessible.
+- `-1` : ile is not accessible or an error occurred (`errno` is set).
+
+### Example :
+
+```c
+int permission = access("file_path", F_OK);
+
+if (permission == -1)
+{
+			printf("the file deosn't exist");
+}
+```
+
+# Dup() Funcyion:
+
+`dup()` function duplicates an existing file discriptor
