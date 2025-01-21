@@ -1,17 +1,15 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void print_bits(char c)
+void print_bits(unsigned char c)
 {
-    int i = 0;
+    int i = 7;
+    char bit;
 
-    while (i <= 7)
+    while (i >= 0)
     {
-        printf("%d", (c >> i) & 1);
-        i++;
+        bit = ((c >> i) & 1) + '0';
+        write(1, &bit, 1);
+        i--;
     }
-}
-int main ()
-{
-    print_bits(0b11110000);
 }

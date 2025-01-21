@@ -1,7 +1,7 @@
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
 
-int ft_check(char *str, char c, int len)
+int check(char *str, char c, int len)
 {
     int i;
 
@@ -16,6 +16,7 @@ int ft_check(char *str, char c, int len)
     }
     return (0);
 }
+
 int main (int ac, char **av)
 {
     int i;
@@ -23,23 +24,23 @@ int main (int ac, char **av)
 
     if (ac == 3)
     {
-        i = 0;
-        while (av[1][i])
-        {
-            if (ft_check(av[1], av[1][i], i) == 0)
-            {
-                write(1, &av[1][i], 1);
-            }
-            i++;
-        }
         j = 0;
         while (av[2][j])
         {
-            if(ft_check(av[1], av[2][j], i) == 0 && ft_check(av[2], av[2][j], j) == 0)
+            if (check(av[1], av[2][j], i) == 0 && check(av[2], av[2][j], j) == 0) 
             {
                 write(1, &av[2][j], 1);
             }
             j++;
+        }
+        i = 0;
+        while (av[1][i])
+        {
+            if (check(av[1], av[1][i], i) == 0)
+            {
+                write(1, &av[1][i], 1);
+            }
+            i++;
         }
     }
     write(1, "\n", 1);
