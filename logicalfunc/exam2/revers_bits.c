@@ -1,21 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
 
-
-// unsigned char reves_bits(unsigned char oc)
-// {
-//     int c = 0;
-//     unsigned char bite = 0x0;
-
-//     while (c < 8)
-//     {
-//         bite = bite << 1;
-//         bite = bite | (oc & 1);
-//         oc = oc >> 1;
-//         c++;
-//     }
-//     return (bite);
-// }
 void print_bits(unsigned char c)
 {
     int i = 7;
@@ -31,21 +16,21 @@ void print_bits(unsigned char c)
 unsigned char	reverse_bits(unsigned char octet)
 {
 	// return ((octet >> 4) | (octet << 4));
-    int pocket;
+    unsigned char pocket = 0x0;
     int i = 0;
-    int n;
 
-    while (i >= 7)
+    while (i <= 7)
     {
-        pocket = (octet >> i) & 1;
-        n = (n << 1) | pocket;
-        i--;
+        pocket = pocket << 1;
+        pocket = pocket | (octet & 1);
+        octet = octet >> 1;
+        i++;
     }
-    return(n);
+    return(pocket);
 
 }
 int main ()
 {
-    unsigned char st = reverse_bits(0b11110000);
+    unsigned char st = reverse_bits(0b01000001);
     print_bits(st);
 }
