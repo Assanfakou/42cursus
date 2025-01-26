@@ -51,10 +51,12 @@ void ra(s_stack **stack_a)
     s_stack *walk;
 
     temp = *stack_a;
+    *stack_a = (*stack_a)->next;
     walk = *stack_a;
     while ((walk->next) != NULL)
         walk = walk->next;
-    *stack_a = walk;
+    walk->next = temp;
+    temp->next = NULL;
     (*stack_a)->next = temp->next;
     walk = temp;
     walk->next = NULL;

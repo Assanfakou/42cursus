@@ -10,8 +10,8 @@ int main ()
     b->num=69;
     b->next = NULL;
 
+    sa(&stack);
     s_stack *head = stack;
-    addfront(&head, b);
     while (head)
     {
         printf("%d->", head->num);
