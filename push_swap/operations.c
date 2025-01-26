@@ -1,11 +1,6 @@
 #include <unistd.h>
 #include "push.h"
 
-// void addfront(s_stack **stack_a, s_stack *new_node)
-// {
-//     new_node->next = *stack_a;
-//     *stack_a = new_node;
-// }
 void pb(s_stack **stack_a, s_stack **stack_b)
 {
     s_stack *temp;
@@ -15,6 +10,7 @@ void pb(s_stack **stack_a, s_stack **stack_b)
     *stack_a = (*stack_a)->next;
     (*stack_b)->next = temp;
 }
+
 void pa(s_stack **stack_a, s_stack **stack_b)
 {
     s_stack *temp;
@@ -24,6 +20,7 @@ void pa(s_stack **stack_a, s_stack **stack_b)
     *stack_b = (*stack_b)->next;
     (*stack_a)->next = temp;
 }
+
 void sb(s_stack **stack_b)
 {
     s_stack *temp;
@@ -32,6 +29,7 @@ void sb(s_stack **stack_b)
     *stack_b = (*stack_b)->next;
     (*stack_b)->next = temp;
 }
+
 void sa(s_stack **stack_a)
 {
     s_stack *temp;
@@ -40,11 +38,13 @@ void sa(s_stack **stack_a)
     *stack_a = (*stack_a)->next;
     (*stack_a)->next = temp;
 }
+
 void ss(s_stack **stack_a, s_stack **stack_b)
 {
     sa(stack_a);
     sb(stack_b);
 }
+
 void ra(s_stack **stack_a)
 {
     s_stack *temp;
@@ -57,7 +57,21 @@ void ra(s_stack **stack_a)
         walk = walk->next;
     walk->next = temp;
     temp->next = NULL;
-    (*stack_a)->next = temp->next;
-    walk = temp;
-    walk->next = NULL;
+}
+
+void rra_or_b(s_stack **stack)
+{
+	s_stack *prev;
+	s_stack *walk;
+	
+	prev = NULL;
+	walk = *stack;
+	while ((walk->next) != NULL)
+	{
+		prev = walk;
+		walk = walk->next;
+	}	
+	*stack = walk;
+	prev->next = NULL;
+	
 }

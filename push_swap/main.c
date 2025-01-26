@@ -7,7 +7,7 @@ int main ()
 
     stack->num = 10;
     stack->next = b;
-    b->num=69;
+    b->num = 69;
     b->next = NULL;
 
     sa(&stack);
