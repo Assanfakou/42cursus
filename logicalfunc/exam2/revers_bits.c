@@ -13,7 +13,7 @@ void print_bits(unsigned char c)
         i--;
     }
 }
-unsigned char	reverse_bits(unsigned char octet)
+unsigned char   reverse_bits(unsigned char octet)
 {
 	// return ((octet >> 4) | (octet << 4));
     unsigned char pocket = 0x0;
@@ -27,8 +27,8 @@ unsigned char	reverse_bits(unsigned char octet)
         i++;
     }
     return(pocket);
-
 }
+
 int main ()
 {
     unsigned char st = reverse_bits(0b01000001);
