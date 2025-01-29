@@ -19,3 +19,5 @@ void pb(s_stack **stack_a, s_stack **stack_b);
 
 void ra(s_stack **stack_a);
 void rb(s_stack **stack_b);
+
+void rra(s_stack **stack);

@@ -5,7 +5,7 @@ void pb(s_stack **stack_a, s_stack **stack_b)
 {
     s_stack *temp;
 
-    temp = *stack_b;   
+    temp = *stack_b;
     *stack_b = *stack_a;
     *stack_a = (*stack_a)->next;
     (*stack_b)->next = temp;
@@ -59,19 +59,32 @@ void ra(s_stack **stack_a)
     temp->next = NULL;
 }
 
-void rra_or_b(s_stack **stack)
+void rb(s_stack **stack_b)
+{
+    s_stack *temp;
+    s_stack *walk;
+
+    temp = *stack_b;
+    *stack_b = (*stack_b)->next;
+    walk = *stack_b;
+    while ((walk->next) != NULL)
+        walk = walk->next;
+    walk->next = temp;
+    temp->next = NULL;
+}
+
+void rra(s_stack **stack)
 {
 	s_stack *prev;
 	s_stack *walk;
-	
+
 	prev = NULL;
 	walk = *stack;
 	while ((walk->next) != NULL)
 	{
 		prev = walk;
 		walk = walk->next;
-	}	
+	}
 	*stack = walk;
 	prev->next = NULL;
-	
 }
