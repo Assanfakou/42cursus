@@ -8,39 +8,45 @@ int *ft_range(int start, int end)
     int *aa;
 
     if (end >= start)
-        total = end - start + 1;
+    {
+        total = end - start;
+        aa = malloc(sizeof(int) * (total + 1));
+        if (!aa)
+            return (NULL);
+    }
     else
-        total = start - end + 1;
-
-    aa = malloc(sizeof(int) * total);
-    if (!aa)
-        return (NULL);
-
+    {
+        total = start - end;
+        aa = malloc(sizeof(int) * (total + 1));
+        if (!aa)
+            return (NULL);
+    }
     int i = 0;
     if (end >= start)
     {
         while (start <= end)
         {
             aa[i] = start;
-            start = start + 1;
-            i = i + 1;
+            start++;
+            i++;
         }
     }
     else
     {
-        while (start >= end)
+        while(end <= start)
         {
             aa[i] = start;
-            start = start - 1;
-            i = i + 1;
+            start--;
+            i++;
         }
     }
+    // aa[i] = 0;
     return (aa);
 }
 
 int main()
 {
-    int *ft = ft_range(-2, 3);
+    int *ft = ft_range(-3, 3);
     if (!ft)
         return (1);
 
