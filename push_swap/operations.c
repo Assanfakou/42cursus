@@ -9,6 +9,8 @@ void pb(s_stack **stack_a, s_stack **stack_b)
     *stack_b = *stack_a;
     *stack_a = (*stack_a)->next;
     (*stack_b)->next = temp;
+    if (I != 0)
+        printf("pb\n");
 }
 
 void pa(s_stack **stack_a, s_stack **stack_b)
@@ -19,6 +21,8 @@ void pa(s_stack **stack_a, s_stack **stack_b)
     *stack_a = *stack_b;
     *stack_b = (*stack_b)->next;
     (*stack_a)->next = temp;
+    if (I != 0)
+        printf("pa\n");
 }
 
 void sb(s_stack **stack_b)
@@ -27,7 +31,10 @@ void sb(s_stack **stack_b)
 
     temp = *stack_b;
     *stack_b = (*stack_b)->next;
+    temp->next = (*stack_b)->next;
     (*stack_b)->next = temp;
+    if (I != 0)
+        printf("sb\n");
 }
 
 void sa(s_stack **stack_a)
@@ -36,13 +43,18 @@ void sa(s_stack **stack_a)
 
     temp = *stack_a;
     *stack_a = (*stack_a)->next;
+    temp->next = (*stack_a)->next;
     (*stack_a)->next = temp;
+    if (I != 0)
+        printf("sa\n");
 }
 
 void ss(s_stack **stack_a, s_stack **stack_b)
 {
     sa(stack_a);
     sb(stack_b);
+    if (I != 0)
+        printf("ss\n");
 }
 
 void ra(s_stack **stack_a)
@@ -57,6 +69,8 @@ void ra(s_stack **stack_a)
         walk = walk->next;
     walk->next = temp;
     temp->next = NULL;
+    if (I != 0)
+        printf("ra\n");
 }
 
 void rb(s_stack **stack_b)
@@ -71,6 +85,8 @@ void rb(s_stack **stack_b)
         walk = walk->next;
     walk->next = temp;
     temp->next = NULL;
+    if (I != 0)
+        printf("rb\n");
 }
 
 void rra(s_stack **stack)
@@ -85,6 +101,27 @@ void rra(s_stack **stack)
 		prev = walk;
 		walk = walk->next;
 	}
+	add_nodeint(stack, walk);
 	*stack = walk;
 	prev->next = NULL;
+	if (I != 0)
+        printf("rra\n");
+}
+void rrb(s_stack **stack)
+{
+	s_stack *prev;
+	s_stack *walk;
+
+	prev = NULL;
+	walk = *stack;
+	while ((walk->next) != NULL)
+	{
+		prev = walk;
+		walk = walk->next;
+	}
+	add_nodeint(stack, walk);
+	*stack = walk;
+	prev->next = NULL;
+	if (I != 0)
+        printf("rrb\n");
 }

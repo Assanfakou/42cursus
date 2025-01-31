@@ -11,7 +11,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
     if (!head || !*head)
         return (NULL);
     tmp = malloc(sizeof(listint_t));
-    tmp->n =n;
+    tmp->n = n;
     walk = get_nodeint_at_index(*head, (idx - 1));
     listint_t *next_of_walk = walk->next;
     walk->next = tmp;
