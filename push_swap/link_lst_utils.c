@@ -29,9 +29,10 @@ size_t print_listint(s_stack *h)
     while (h)
     {
         i++;
-        printf("%d\n", h->num);
+        printf("%d -> ", h->num);
         h = h->next;
     }
+    printf("\n");
     return (i);
 }
 s_stack *add_nodeint(s_stack **head, s_stack *new)
@@ -48,15 +49,15 @@ s_stack *add_nodeint(s_stack **head, s_stack *new)
     }
     return (new);
 }
-// int listint_len(s_stack *h)
-// {
-//     int i;
+int listint_len(s_stack *h)
+{
+    int i;
 
-//     i = 0;
-//     while (h)
-//     {
-//         i++;
-//         h = h->next;
-//     }
-//     return (i);
-// }
+    i = 0;
+    while (h)
+    {
+        i++;
+        h = h->next;
+    }
+    return (i);
+}

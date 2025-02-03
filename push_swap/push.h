@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
+/*   Updated: 2025/02/03 18:08:18 by hfakou           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "../ft_printf/ft_printf.h"
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 # ifndef I
 # define I 1
@@ -30,3 +42,6 @@ s_stack *add_nodeint_end(s_stack **head, int n);
 size_t print_listint(s_stack *h);
 s_stack *add_nodeint(s_stack **head, s_stack *ne);
 int listint_len(s_stack *h);
+
+long ft_atol(const char *str);
+char **fsplit(char *str, char c);
