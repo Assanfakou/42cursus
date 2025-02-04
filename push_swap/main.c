@@ -7,12 +7,7 @@ int main(int ac, char **av)
     s_stack *stack_b = NULL;
     
    int j = ac - 1;
-    i = 0;
-    while (av[i])
-    {
-        stack_a = pars_args(&av[i], j);
-        i++;
-    }
+    stack_a = pars_args(&av[1], j);
     print_listint(stack_a);
 }
 

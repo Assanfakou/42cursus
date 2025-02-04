@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   parssing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:49:31 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/04 13:11:23 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/04 16:07:36 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push.h"
 
@@ -63,7 +62,6 @@ s_stack *pars_args(char **arg, int size)
         if (!pars_str(arg[i], &stackd))
         {
             clear_stack(&stackd);
-
             return (NULL);
         }
         i++;
