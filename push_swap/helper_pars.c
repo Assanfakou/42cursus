@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   helper_pars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:04:45 by hfakou            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/02/04 15:13:40 by hfakou           ###   ########.fr       */
+=======
+/*   Updated: 2025/02/04 15:58:09 by assankou         ###   ########.fr       */
+>>>>>>> 10c836b2be074488db224bf6831c11d723aaf8f0
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +75,7 @@ long ft_atol(const char *str)
     }
     return (res * signe);
 }
+
 void free_arr(char **arr)
 {
     int i;

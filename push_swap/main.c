@@ -61,6 +61,7 @@ int main(int ac, char **av)
     s_stack *stack_b = NULL;
     
    int j = ac - 1;
+<<<<<<< HEAD
 
     stack_a = pars_args(&av[1], j);
     if (!stack_a)
@@ -73,6 +74,10 @@ int main(int ac, char **av)
     for(int i = 0; i < 14; i++)
         ft_printf("%d\n", arr[i]);
 
+=======
+    stack_a = pars_args(&av[1], j);
+    print_listint(stack_a);
+>>>>>>> 10c836b2be074488db224bf6831c11d723aaf8f0
 }
 
 
