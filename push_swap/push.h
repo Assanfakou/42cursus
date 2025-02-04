@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/03 18:08:18 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/04 13:11:42 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ s_stack *add_nodeint_end(s_stack **head, int n);
 size_t print_listint(s_stack *h);
 s_stack *add_nodeint(s_stack **head, s_stack *ne);
 int listint_len(s_stack *h);
+void clear_stack(s_stack **stack);
 
 long ft_atol(const char *str);
 char **fsplit(char *str, char c);
+int is_valid_input(char *input);
+int pars_arr(char **arr, s_stack **stack);
+s_stack *pars_args(char **arg, int size);
+void free_arr(char **arr);

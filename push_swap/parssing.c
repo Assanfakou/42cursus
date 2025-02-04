@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parssing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 10:53:14 by assankou          #+#    #+#             */
-/*   Updated: 2025/02/04 11:42:56 by assankou         ###   ########.fr       */
+/*   Created: 2025/02/04 11:49:31 by hfakou            #+#    #+#             */
+/*   Updated: 2025/02/04 13:11:23 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "push.h"
 
-int pase_arr(char **arr, s_stack **stack)
+int pars_arr(char **arr, s_stack **stack)
 {
     int i;
     long num;
@@ -27,8 +28,8 @@ int pase_arr(char **arr, s_stack **stack)
         num = ft_atol(arr[i]);
         if (num > INT_MAX || num < INT_MIN)
             return (0);
-        add_nodeint_end(*stack, (int)num);
-        i++;
+        add_nodeint_end(stack, (int)num);
+        i++; 
     }
     return (1);
 }
@@ -50,16 +51,22 @@ int pars_str(char *input, s_stack **stack_s)
     free_arr(arr);
     return (1);
 }
-s_stack pars_args(char **arg, int size)
+s_stack *pars_args(char **arg, int size)
 {
     int i;
-    s_stack *stack;
+    s_stack *stackd;
 
+    stackd = NULL;
+    i = 0;
     while (i < size)
     {
-        if (!pars_str(arg[i], &stack))
+        if (!pars_str(arg[i], &stackd))
         {
-            fr
+            clear_stack(&stackd);
+
+            return (NULL);
         }
+        i++;
     }
+    return (stackd);
 }
