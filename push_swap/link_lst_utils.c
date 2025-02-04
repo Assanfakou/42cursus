@@ -61,3 +61,4 @@ int listint_len(s_stack *h)
     }
     return (i);
 }
+s_stack 
