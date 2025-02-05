@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/05 10:01:09 by hfakou            #+#    #+#             */
+/*   Updated: 2025/02/05 10:35:10 by hfakou           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push.h"
 int *fill_arr(s_stack *stack_h)
 {
@@ -61,7 +73,6 @@ int main(int ac, char **av)
     s_stack *stack_b = NULL;
     
    int j = ac - 1;
-<<<<<<< HEAD
 
     stack_a = pars_args(&av[1], j);
     if (!stack_a)
@@ -71,13 +82,12 @@ int main(int ac, char **av)
     // for(int i = 0; i < 14; i++)
     //     ft_printf("%d\n", arr[i]);
     sort_arr(arr);
-    for(int i = 0; i < 14; i++)
+   i = 0;
+   while (arr[i]){
         ft_printf("%d\n", arr[i]);
+        i++;
+    }
 
-=======
-    stack_a = pars_args(&av[1], j);
-    print_listint(stack_a);
->>>>>>> 10c836b2be074488db224bf6831c11d723aaf8f0
 }
 
 
