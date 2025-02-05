@@ -1,0 +1,7 @@
+*.out
+run
+*.vscode
+*.zed
+*.o
+/pp
+*.gch
