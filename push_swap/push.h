@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/06 23:16:15 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/06 23:42:20 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 
 # ifndef I
-# define I 0
+# define I 0 
 # endif
 typedef struct s_stack
 {
