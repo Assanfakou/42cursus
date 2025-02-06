@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:48:30 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/04 16:40:04 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/06 23:17:15 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ size_t print_listint(s_stack *h)
         ft_printf("%d -> ", h->num);
         h = h->next;
     }
+    ft_printf("\n");
     return (i);
 }
 s_stack *add_nodeint(s_stack **head, s_stack *new)

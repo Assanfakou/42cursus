@@ -6,55 +6,54 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 10:01:09 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/05 23:01:54 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/06 23:32:01 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
-int *fill_arr(s_stack *stack_h)
+void push_to_b(s_stack **a, s_stack **b, int small, int big)
 {
-    int *arr;
-    int size_lis;
-    int i;
+    int size_of_b;
 
-    size_lis = listint_len(stack_h);
-    
-    arr = malloc(sizeof(int) * (size_lis));
-    if (!arr)
-        return (NULL);
-    i = 0;
-    while (i < size_lis && stack_h)
+    while (1)
     {
-        arr[i] = stack_h->num;
-        i++;
-        stack_h = stack_h->next;
-    }
-    return (arr);
-}  
-void sort_arr(int *arr, int size)
-{
-    int i;
-    int j;
-
-    i = 0;
-    while (i < size)
-    {
-        int sorted = 0;
-        j = i + 1;
-        while (j < size)
+        size_of_b = listint_len(*b);
+        if ((*a)->num <= small)
         {
-            if (arr[i] > arr[j])
-            {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-                sorted = 1;
-            }
-            j++;
+            pb(a, b);
+            rb(b);
+            return ;
         }
-        i++;
-        if (sorted == 0)
-            break;
+        else if ((*a)->num <= big)
+        {
+            pb(a, b);
+            if (size_of_b > 1 && (*b)->num < (*b)->next->num)
+                sb(b);
+            return ;
+        }
+        else
+            ra(a);
+    }
+}
+void sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr, int size_ofstack)
+{
+    int big;
+    int i;
+    if (size_ofstack >= 100)
+        big = size_ofstack / 13;
+    else
+        big = size_ofstack / 6;
+    i = 0;
+    while (listint_len(*stack_a) > 0)
+    {
+        print_listint(*stack_b);
+        ft_printf("^ b\n");
+        print_listint(*stack_a);
+        push_to_b(stack_a, stack_b, arr[i], arr[big]);
+        if (i < big)
+            i++;
+        if (big < listint_len(*stack_a))
+            big++;
     }
 }
 int main(int ac, char **av)
@@ -69,16 +68,14 @@ int main(int ac, char **av)
     stack_a = pars_args(&av[1], j);
     if (!stack_a)
         write(2, "Erour\n", 6);
-    // print_listint(stack_a);
     arr = fill_arr(stack_a);
-    // for(int i = 0; i < 14; i++)
-    //     ft_printf("%d\n", arr[i]);
-    sort_arr(arr, listint_len(stack_a));
-   i = 0;
-   while (i < 9){
-        ft_printf("%d\n", arr[i]);
-        i++;
-    }
+//    i = 0;
+//    while (i < listint_len(stack_a)){
+//         ft_printf("%d\n", arr[i]);
+//         i++;
+//     }
+    sort_stack(&stack_a, &stack_b, arr, listint_len(stack_a));
+    // print_listint(stack_b);
 
 }
 

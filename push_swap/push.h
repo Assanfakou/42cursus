@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/04 13:11:42 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/06 23:16:15 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 
 # ifndef I
-# define I 1
+# define I 0
 # endif
 typedef struct s_stack
 {
@@ -50,3 +50,7 @@ int is_valid_input(char *input);
 int pars_arr(char **arr, s_stack **stack);
 s_stack *pars_args(char **arg, int size);
 void free_arr(char **arr);
+
+
+int *fill_arr(s_stack *stack_h);
+void sort_arr(int *arr, int size);

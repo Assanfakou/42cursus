@@ -6,7 +6,6 @@ SRC_FIL = operations.c fsplit.c parssing.c link_lst_utils.c helper_pars.c \
 
 OBJ_FILE = $(SRC_FIL:%.c=%.o)
 
-
 NAME = push_swap.a
 
 all : $(NAME)
