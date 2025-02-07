@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/06 23:42:20 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/07 19:45:35 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,8 @@ void free_arr(char **arr);
 
 int *fill_arr(s_stack *stack_h);
 void sort_arr(int *arr, int size);
+
+int calcul_ops(s_stack **b, int ind_big);
+int get_big_idx(s_stack **b);
+void push_to_b(s_stack **a, s_stack **b, int small, int big);
+void sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr, int size_ofstack);

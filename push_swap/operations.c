@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:07:57 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/03 18:08:01 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/07 16:31:40 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void pb(s_stack **stack_a, s_stack **stack_b)
 {
     s_stack *temp;
 
+    if (!*stack_a)
+        return ;
     temp = *stack_b;
     *stack_b = *stack_a;
     *stack_a = (*stack_a)->next;
@@ -28,6 +30,8 @@ void pa(s_stack **stack_a, s_stack **stack_b)
 {
     s_stack *temp;
 
+    if (!*stack_b)
+        return ;
     temp = *stack_a;
     *stack_a = *stack_b;
     *stack_b = (*stack_b)->next;
@@ -40,6 +44,8 @@ void sb(s_stack **stack_b)
 {
     s_stack *temp;
 
+    if (!*stack_b || !((*stack_b)->next))
+        return ;
     temp = *stack_b;
     *stack_b = (*stack_b)->next;
     temp->next = (*stack_b)->next;
@@ -52,6 +58,8 @@ void sa(s_stack **stack_a)
 {
     s_stack *temp;
 
+    if (!*stack_a || !((*stack_a)->next))
+        return ;
     temp = *stack_a;
     *stack_a = (*stack_a)->next;
     temp->next = (*stack_a)->next;
@@ -73,6 +81,8 @@ void ra(s_stack **stack_a)
     s_stack *temp;
     s_stack *walk;
 
+    if (!*stack_a || !((*stack_a)->next))
+        return ;
     temp = *stack_a;
     *stack_a = (*stack_a)->next;
     walk = *stack_a;
@@ -89,6 +99,8 @@ void rb(s_stack **stack_b)
     s_stack *temp;
     s_stack *walk;
 
+    if (!*stack_b || !((*stack_b)->next))
+        return ;
     temp = *stack_b;
     *stack_b = (*stack_b)->next;
     walk = *stack_b;
@@ -104,7 +116,8 @@ void rra(s_stack **stack)
 {
 	s_stack *prev;
 	s_stack *walk;
-
+    if (!*stack || !((*stack)->next))
+        return ;
 	prev = NULL;
 	walk = *stack;
 	while ((walk->next) != NULL)
@@ -123,6 +136,8 @@ void rrb(s_stack **stack)
 	s_stack *prev;
 	s_stack *walk;
 
+    if (!*stack || !((*stack)->next))
+        return ;    
 	prev = NULL;
 	walk = *stack;
 	while ((walk->next) != NULL)

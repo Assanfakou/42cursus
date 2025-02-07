@@ -6,55 +6,31 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 10:01:09 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/06 23:32:01 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/07 20:01:50 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
-void push_to_b(s_stack **a, s_stack **b, int small, int big)
+void push_to_a(s_stack **a, s_stack **b, int big_idx)
 {
-    int size_of_b;
+    int ops;
 
-    while (1)
+    ops = calc_ops(&b, big_idx);
+    while (ops > 0)
     {
-        size_of_b = listint_len(*b);
-        if ((*a)->num <= small)
-        {
-            pb(a, b);
-            rb(b);
-            return ;
-        }
-        else if ((*a)->num <= big)
-        {
-            pb(a, b);
-            if (size_of_b > 1 && (*b)->num < (*b)->next->num)
-                sb(b);
-            return ;
-        }
-        else
-            ra(a);
+        rb(b);
+        ops--;
+    }
+    while (ops < 0)
+    {
+        
     }
 }
-void sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr, int size_ofstack)
+void loop_in_b(s_stack **b, s_stack **a)
 {
-    int big;
-    int i;
-    if (size_ofstack >= 100)
-        big = size_ofstack / 13;
-    else
-        big = size_ofstack / 6;
-    i = 0;
-    while (listint_len(*stack_a) > 0)
-    {
-        print_listint(*stack_b);
-        ft_printf("^ b\n");
-        print_listint(*stack_a);
-        push_to_b(stack_a, stack_b, arr[i], arr[big]);
-        if (i < big)
-            i++;
-        if (big < listint_len(*stack_a))
-            big++;
-    }
+ 
+    while (listint_len(&b) > 0)
+        
 }
 int main(int ac, char **av)
 {
@@ -75,7 +51,8 @@ int main(int ac, char **av)
 //         i++;
 //     }
     sort_stack(&stack_a, &stack_b, arr, listint_len(stack_a));
-    // print_listint(stack_b);
+    print_listint(stack_b);
+    clear_stack(&stack_b);
 
 }
 
