@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/07 19:45:35 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/07 21:26:17 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 
 # ifndef I
-# define I 0 
+# define I 1 
 # endif
 typedef struct s_stack
 {
@@ -59,3 +59,5 @@ int calcul_ops(s_stack **b, int ind_big);
 int get_big_idx(s_stack **b);
 void push_to_b(s_stack **a, s_stack **b, int small, int big);
 void sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr, int size_ofstack);
+void push_to_a(s_stack **a, s_stack **b, int big_idx);
+void loop_in_b(s_stack **b, s_stack **a);

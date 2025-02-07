@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:43:40 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/07 19:44:48 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/07 21:41:45 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int calcul_ops(s_stack **b, int ind_big)
 {
     int size_of_b;
     
-    size_of_b = listint_len(&b);
+    size_of_b = listint_len(*b);
     if (ind_big > size_of_b / 2)
         return (ind_big - size_of_b);
     else
@@ -41,6 +41,7 @@ int get_big_idx(s_stack **b)
             big_idx = i;
         }
         i++;
+        walk = walk->next;
     }
     return (big_idx);
 }
@@ -88,4 +89,5 @@ void sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr, int size_ofstack
             big++;
     }
     free(arr);
+    loop_in_b(stack_b, stack_a);
 }
