@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 10:01:09 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/08 13:42:47 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/08 20:43:38 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,29 @@ void small_sort(s_stack **a, s_stack **b)
     while (listint_len(*a) > 3)
     {
         min_pos = position_of_min(a);
+        printf("min pos ..%d", min_pos);
         if (min_pos > listint_len(*a) / 2)
         {
             while (min_pos-- > 0)
                 ra(a);
         }
         else
-            while (min_pos++ < 0)
+            while (min_pos++ < listint_len(*a))
                 rra(a);
         pb(a, b);
     }
     while (listint_len(*b) > 0)
         pa(a, b);
+}
+void sort_every(s_stack **a, s_stack **b, int *arr)
+{
+        // ft_printf("[%d]", listint_len(*a));
+    if (listint_len(*a) >= 10)
+    {
+        sort_stack(a, b, arr, listint_len(*a));
+    }
+    else if (listint_len(*a) < 10)
+        small_sort(a, b);
 }
 int main(int ac, char **av)
 {
@@ -104,11 +115,10 @@ int main(int ac, char **av)
         clear_stack(&stack_a);
         return (0);
     }
-    sort_stack(&stack_a, &stack_b, arr, listint_len(stack_a));
+    sort_every(&stack_a, &stack_b, arr); 
     // print_listint(stack_b);
+    // sort_stack(&stack_a, &stack_b, arr, listint_len(stack_a));
     clear_stack(&stack_b);
     print_listint(stack_a);
     clear_stack(&stack_a);
 }
-
-
