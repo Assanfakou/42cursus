@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:49:31 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/08 10:51:08 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/08 12:49:24 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int pars_arr(char **arr, s_stack **stack)
         if (num > INT_MAX || num < INT_MIN)
             return (0);
         add_nodeint_end(stack, (int)num);
-        i++; 
+        i++;
     }
     return (1);
 }
