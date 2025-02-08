@@ -6,7 +6,11 @@
 /*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 10:01:09 by hfakou            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/02/08 20:43:38 by assankou         ###   ########.fr       */
+=======
+/*   Updated: 2025/02/08 13:42:47 by hfakou           ###   ########.fr       */
+>>>>>>> b016222b0d45d81a0627d89331b56e6bd0ea047b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +73,28 @@ void small_sort(s_stack **a, s_stack **b)
     while (listint_len(*a) > 3)
     {
         min_pos = position_of_min(a);
+<<<<<<< HEAD
         printf("min pos ..%d", min_pos);
+=======
+>>>>>>> b016222b0d45d81a0627d89331b56e6bd0ea047b
         if (min_pos > listint_len(*a) / 2)
         {
             while (min_pos-- > 0)
                 ra(a);
         }
         else
+<<<<<<< HEAD
             while (min_pos++ < listint_len(*a))
+=======
+            while (min_pos++ < 0)
+>>>>>>> b016222b0d45d81a0627d89331b56e6bd0ea047b
                 rra(a);
         pb(a, b);
     }
     while (listint_len(*b) > 0)
         pa(a, b);
 }
+<<<<<<< HEAD
 void sort_every(s_stack **a, s_stack **b, int *arr)
 {
         // ft_printf("[%d]", listint_len(*a));
@@ -93,6 +105,8 @@ void sort_every(s_stack **a, s_stack **b, int *arr)
     else if (listint_len(*a) < 10)
         small_sort(a, b);
 }
+=======
+>>>>>>> b016222b0d45d81a0627d89331b56e6bd0ea047b
 int main(int ac, char **av)
 {
     int j;
