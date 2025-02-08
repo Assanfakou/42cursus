@@ -3,6 +3,7 @@ run
 *.vscode
 *.zed
 *.o
-/pp
+push_swap/pp
 *.gch
 *.a
+push_swap/print

@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:43:40 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/07 21:41:45 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/08 10:51:26 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "push_swap.h"
 
 int calcul_ops(s_stack **b, int ind_big)
 {
@@ -85,7 +85,7 @@ void sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr, int size_ofstack
         push_to_b(stack_a, stack_b, arr[i], arr[big]);
         if (i < big)
             i++;
-        if (big < sizeof_a)
+        if (big < sizeof_a - 1)
             big++;
     }
     free(arr);

@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:49:31 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/05 09:55:28 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/08 10:51:08 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "push_swap.h"
 
 int pars_arr(char **arr, s_stack **stack)
 {
@@ -67,4 +67,17 @@ s_stack *pars_args(char **arg, int size)
         i++;
     }
     return (stackd);
+}
+int check_duplicat(int *arr, int size)
+{
+    int i;
+
+    i = 0;
+    while (i < size)
+    {
+        if (arr[i] == arr[i + 1])
+            return (0);
+        i++;
+    }
+    return (1);
 }

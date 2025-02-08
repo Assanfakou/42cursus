@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:04:55 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/04 11:48:52 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/08 10:51:47 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "push_swap.h"
 
 int string_leng(char *str, char c)
 {

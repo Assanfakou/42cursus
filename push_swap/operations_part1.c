@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations_part1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:07:57 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/07 16:31:40 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/08 11:08:02 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "push_swap.h"
 
 void pb(s_stack **stack_a, s_stack **stack_b)
 {
@@ -23,7 +23,7 @@ void pb(s_stack **stack_a, s_stack **stack_b)
     *stack_a = (*stack_a)->next;
     (*stack_b)->next = temp;
     if (I != 0)
-        printf("pb\n");
+        ft_printf("pb\n");
 }
 
 void pa(s_stack **stack_a, s_stack **stack_b)
@@ -37,7 +37,7 @@ void pa(s_stack **stack_a, s_stack **stack_b)
     *stack_b = (*stack_b)->next;
     (*stack_a)->next = temp;
     if (I != 0)
-        printf("pa\n");
+        ft_printf("pa\n");
 }
 
 void sb(s_stack **stack_b)
@@ -51,7 +51,7 @@ void sb(s_stack **stack_b)
     temp->next = (*stack_b)->next;
     (*stack_b)->next = temp;
     if (I != 0)
-        printf("sb\n");
+        ft_printf("sb\n");
 }
 
 void sa(s_stack **stack_a)
@@ -65,7 +65,7 @@ void sa(s_stack **stack_a)
     temp->next = (*stack_a)->next;
     (*stack_a)->next = temp;
     if (I != 0)
-        printf("sa\n");
+        ft_printf("sa\n");
 }
 
 void ss(s_stack **stack_a, s_stack **stack_b)
@@ -73,81 +73,5 @@ void ss(s_stack **stack_a, s_stack **stack_b)
     sa(stack_a);
     sb(stack_b);
     if (I != 0)
-        printf("ss\n");
-}
-
-void ra(s_stack **stack_a)
-{
-    s_stack *temp;
-    s_stack *walk;
-
-    if (!*stack_a || !((*stack_a)->next))
-        return ;
-    temp = *stack_a;
-    *stack_a = (*stack_a)->next;
-    walk = *stack_a;
-    while ((walk->next) != NULL)
-        walk = walk->next;
-    walk->next = temp;
-    temp->next = NULL;
-    if (I != 0)
-        printf("ra\n");
-}
-
-void rb(s_stack **stack_b)
-{
-    s_stack *temp;
-    s_stack *walk;
-
-    if (!*stack_b || !((*stack_b)->next))
-        return ;
-    temp = *stack_b;
-    *stack_b = (*stack_b)->next;
-    walk = *stack_b;
-    while ((walk->next) != NULL)
-        walk = walk->next;
-    walk->next = temp;
-    temp->next = NULL;
-    if (I != 0)
-        printf("rb\n");
-}
-
-void rra(s_stack **stack)
-{
-	s_stack *prev;
-	s_stack *walk;
-    if (!*stack || !((*stack)->next))
-        return ;
-	prev = NULL;
-	walk = *stack;
-	while ((walk->next) != NULL)
-	{
-		prev = walk;
-		walk = walk->next;
-	}
-	add_nodeint(stack, walk);
-	*stack = walk;
-	prev->next = NULL;
-	if (I != 0)
-        printf("rra\n");
-}
-void rrb(s_stack **stack)
-{
-	s_stack *prev;
-	s_stack *walk;
-
-    if (!*stack || !((*stack)->next))
-        return ;    
-	prev = NULL;
-	walk = *stack;
-	while ((walk->next) != NULL)
-	{
-		prev = walk;
-		walk = walk->next;
-	}
-	add_nodeint(stack, walk);
-	*stack = walk;
-	prev->next = NULL;
-	if (I != 0)
-        printf("rrb\n");
+        ft_printf("ss\n");
 }

@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 21:43:01 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/06 22:12:23 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/08 10:52:48 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "push_swap.h"
 
 int *fill_arr(s_stack *stack_h)
 {

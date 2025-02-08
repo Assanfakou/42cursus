@@ -6,12 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:54:44 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/05 09:54:53 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/08 10:52:13 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "push.h"
+#include "push_swap.h"
 
 int ft_strlen(char *str)
 {

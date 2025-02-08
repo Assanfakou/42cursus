@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:48:30 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/06 23:17:15 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/08 10:53:51 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "push_swap.h"
 
 s_stack *add_nodeint_end(s_stack **head, int n)
 {
@@ -85,15 +85,3 @@ void clear_stack(s_stack **stack)
     }
     free(*stack);
 }
-// int main ()
-// {
-//     s_stack *head;
-
-//     head = NULL;
-//     add_nodeint_end(&head, 12);
-//     add_nodeint_end(&head, 13);
-//     add_nodeint_end(&head, 14);
-//     add_nodeint_end(&head, 15);
-//     print_listint(head);
-//      clear_stack(&head);
-// }
