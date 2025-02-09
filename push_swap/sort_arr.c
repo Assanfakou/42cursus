@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 21:43:01 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/08 22:43:41 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/09 17:58:42 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ int *fill_arr(s_stack *stack_h)
     sort_arr(arr, size_lis);
     return (arr);
 }
+
 void sort_arr(int *arr, int size)
 {
     int i;
     int j;
 
     i = 0;
+   
     while (i < size)
     {
         int sorted = 0;

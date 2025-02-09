@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_pars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:54:44 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/08 19:21:10 by assankou         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:22:06 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int is_valid_input(char *input)
     }
     return (1);
 }
-    long ft_atol(const char *str)
+long ft_atol(const char *str)
 {
     long res;
     int signe;

@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:49:31 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/08 21:41:59 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/09 17:50:18 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int check_duplicat(int *arr, int size)
     int i;
 
     i = 0;
-    while (i < size)
+    while (i < size - 1)
     {
         if (arr[i] == arr[i + 1])
             return (0);

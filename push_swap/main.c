@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:40:39 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/08 23:01:39 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/09 18:01:06 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,10 @@ void sort_every(s_stack **a, s_stack **b, int *arr)
 {
         // ft_printf("[%d]", listint_len(*a));
     if (listint_len(*a) >= 10)
-    {
         sort_stack(a, b, arr, listint_len(*a));
-    }
     else if (listint_len(*a) < 10)
         small_sort(a, b);
+    free(arr);
 }
 int main(int ac, char **av)
 {
@@ -127,21 +126,23 @@ int main(int ac, char **av)
     stack_a = pars_args(&av[1], j);
     if (!stack_a)
     {
-        write(2, "Erour\n", 6);    
+        write(2, "Error\n", 7);    
         return (0);
     }
     arr = fill_arr(stack_a);
+    // for (int i = 0; i < listint_len(stack_a);  i++)
+    //     printf("[%d]\n", arr[i]);
     if (!check_duplicat(arr, listint_len(stack_a)))
     {
-        write(2, "Erour\n", 6);
+        write(2, "Error\n", 6);
         free(arr);
         clear_stack(&stack_a);
         return (0);
     }
-    sort_every(&stack_a, &stack_b, arr); 
+    sort_every(&stack_a, &stack_b, arr);
     // print_listint(stack_b);
     // sort_stack(&stack_a, &stack_b, arr, listint_len(stack_a));
     clear_stack(&stack_b);
-    print_listint(stack_a);
+    // print_listint(stack_a);
     clear_stack(&stack_a);
 }
