@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:43:40 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/09 18:03:43 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/11 21:28:38 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,11 @@ void sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr, int size_ofstack
     int big;
     int i;
     int sizeof_a;
-    if (size_ofstack > 100)
+    
+    if (size_ofstack >= 100)
         big = size_ofstack / 13;
     else
-        big = size_ofstack / 6;
+        big = size  _ofstack / 6;
     i = 0;
     sizeof_a = listint_len(*stack_a);
     while (listint_len(*stack_a) > 0)

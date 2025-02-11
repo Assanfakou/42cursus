@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.h                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/08 10:50:18 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/11 12:38:46 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void sb(s_stack **stack_b);
 void ss(s_stack **stack_a, s_stack **stack_b);
 
 void pa(s_stack **stack_a, s_stack **stack_b);
-void pb(s_stack **stack_a, s_stack **stack_b);
+    void pb(s_stack **stack_a, s_stack **stack_b);
 
 void ra(s_stack **stack_a);
 void rb(s_stack **stack_b);

@@ -6,10 +6,9 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:40:39 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/09 18:01:06 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/11 19:01:26 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -126,7 +125,7 @@ int main(int ac, char **av)
     stack_a = pars_args(&av[1], j);
     if (!stack_a)
     {
-        write(2, "Error\n", 7);    
+        write(2, "Error\n", 6);    
         return (0);
     }
     arr = fill_arr(stack_a);
