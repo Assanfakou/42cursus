@@ -95,11 +95,6 @@
 
 
 
-
-
-
-
-
 int ft_strlen(char *str)
 {
     int i;
@@ -109,32 +104,50 @@ int ft_strlen(char *str)
         i++;
     return (i);
 }
-int get_index(char *str, char c)
-{
-    int index;
 
-    index = 0;
-    while (index < ft_strlen(str))
-    {
-        if (str[index] == c)
-            return (index);
-        index++;
-    }
-    return (-1);
-}
 
 int check(char *str, char c)
 {
     int i;
 
     i = 0;
-    while (i < ft_strlen(str))
+    while (str[i])
     {
         if (str[i] == c)
             return (1);
         i++;
     }
     return (0);
+}
+
+int is_valid(char *str)
+{
+    int i;
+
+    i = 0;
+    int tol = ft_strlen(str);
+    while (i < tol)
+    {
+        if (str[i] == '-' || str[i] == '+')
+            return (0);
+        if (check(str + i + 1, str[i]))
+            return (0);
+        i++;
+    }
+    return (1);
+}   
+int get_index(char *str, char c)
+{
+    int index;
+
+    index = 0;
+    while (str[index])
+    {
+        if (str[index] == c)
+            return (index);
+        index++;
+    }
+    return (-1);
 }
 
 int atoi_base(char *str, char *base)
@@ -146,12 +159,14 @@ int atoi_base(char *str, char *base)
     int digit;
 
     i = 0;
-    signe = 0;
+    signe = 1;
     res = 0;
     tol = ft_strlen(base);
-    while ((str[i] >= 9 && str[i] <= 13) || str[i == ' '])
+    if (is_valid(base) == 0)
+        return (0);
+    while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
         i++;
-    if (str[i] == '-' || str[i] == '+')
+    while (str[i] == '-' || str[i] == '+')
     {
         if (str[i] == '-')
             signe *= -1;
@@ -162,7 +177,7 @@ int atoi_base(char *str, char *base)
         digit = get_index(base, str[i++]);
         if (digit == -1)
             break ;
-        res = res * tol + digit;
+        res = (res * tol) + digit;
     }
     return (signe * res);
 }

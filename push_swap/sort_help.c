@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:43:40 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/11 21:28:38 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/12 18:22:37 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr, int size_ofstack
     if (size_ofstack >= 100)
         big = size_ofstack / 13;
     else
-        big = size  _ofstack / 6;
+        big = size_ofstack / 6;
     i = 0;
     sizeof_a = listint_len(*stack_a);
     while (listint_len(*stack_a) > 0)
@@ -86,7 +86,8 @@ void sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr, int size_ofstack
         push_to_b(stack_a, stack_b, arr[i], arr[big]);
         if (i < big)
             i++;
-        if (big < sizeof_a - 1)
+        //rmoving -1 in the if
+        if (big < sizeof_a)
             big++;
     }
     loop_in_b(stack_b, stack_a);

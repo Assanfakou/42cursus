@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:40:39 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/11 19:01:26 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/12 17:59:49 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,20 +94,21 @@ void small_sort(s_stack **a, s_stack **b)
                 ra(a);
         }
         else
-            while (min_pos++ < listint_len(*a))
+            while (min_pos < listint_len(*a))
                 rra(a);
         pb(a, b);
     }
-    sort_three(a);
+    if (listint_len(*a) == 3)
+        sort_three(a);
     while (listint_len(*b) > 0)
         pa(a, b);
 }
 void sort_every(s_stack **a, s_stack **b, int *arr)
 {
         // ft_printf("[%d]", listint_len(*a));
-    if (listint_len(*a) >= 10)
+    if (listint_len(*a) > 10)
         sort_stack(a, b, arr, listint_len(*a));
-    else if (listint_len(*a) < 10)
+    else if (listint_len(*a) <= 10)
         small_sort(a, b);
     free(arr);
 }

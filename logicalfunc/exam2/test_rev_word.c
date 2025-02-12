@@ -20,7 +20,7 @@ int main(int ac, char **av)
             i--;
             while (av[1][l] != ' ' && av[1][l])
             {
-                write (1, &av[1][l], 1);
+                [l], 1);
                 l++;
             }
             if (i > 0)
