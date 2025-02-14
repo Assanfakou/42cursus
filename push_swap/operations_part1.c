@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:07:57 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:38:09 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 17:42:04 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 	*stack_b = *stack_a;
 	*stack_a = (*stack_a)->next;
 	(*stack_b)->next = temp;
-	if (I != 0)
-		ft_printf("pb\n");
+	write(1, "pb\n", 3);
 }
 
 void	pa(t_stack **stack_a, t_stack **stack_b)
@@ -36,8 +35,7 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 	*stack_a = *stack_b;
 	*stack_b = (*stack_b)->next;
 	(*stack_a)->next = temp;
-	if (I != 0)
-		ft_printf("pa\n");
+	write(1, "pa\n", 3);
 }
 
 void	sb(t_stack **stack_b)
@@ -50,8 +48,7 @@ void	sb(t_stack **stack_b)
 	*stack_b = (*stack_b)->next;
 	temp->next = (*stack_b)->next;
 	(*stack_b)->next = temp;
-	if (I != 0)
-		ft_printf("sb\n");
+	write(1, "sb\n", 3);
 }
 
 void	sa(t_stack **stack_a)
@@ -64,14 +61,5 @@ void	sa(t_stack **stack_a)
 	*stack_a = (*stack_a)->next;
 	temp->next = (*stack_a)->next;
 	(*stack_a)->next = temp;
-	if (I != 0)
-		ft_printf("sa\n");
-}
-
-void	ss(t_stack **stack_a, t_stack **stack_b)
-{
-	sa(stack_a);
-	sb(stack_b);
-	if (I != 0)
-		ft_printf("ss\n");
+	write(1, "sa\n", 3);
 }

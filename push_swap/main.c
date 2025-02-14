@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:40:39 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:31:41 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 17:55:49 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,22 @@ void	push_to_a(t_stack **a, t_stack **b, int big_idx)
 		rrb(b);
 	}
 	pa(a, b);
+}
+
+int	already_sorted(t_stack *stack_a)
+{
+	t_stack	*walk;
+
+	walk = stack_a;
+	if (!stack_a)
+		return (0);
+	while (walk->next)
+	{
+		if (walk->num > walk->next->num)
+			return (0);
+		walk = walk->next;
+	}
+	return (1);
 }
 
 void	sort_stack_by_size(t_stack **a, t_stack **b, int *arr)
@@ -62,6 +78,11 @@ int	main(int ac, char **av)
 		free(arr);
 		clear_stack(&stack_a);
 		return (0);
+	}
+	if (already_sorted(stack_a))
+	{
+		clear_stack(&stack_a);
+		return (1);
 	}
 	sort_stack_by_size(&stack_a, &stack_b, arr);
 	// print_listint(stack_a);

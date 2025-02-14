@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:48:30 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:37:01 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 17:54:09 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ size_t	print_listint(t_stack *h)
 	while (h)
 	{
 		i++;
-		ft_printf("%d -> ", h->num);
+		printf("%d -> ", h->num);
 		h = h->next;
 	}
-	ft_printf("\n");
+	printf("\n");
 	return (i);
 }
 

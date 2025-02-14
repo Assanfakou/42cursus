@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:25:40 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 17:54:05 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# ifndef I
-#  define I 1
-# endif
-
 typedef struct s_stack
 {
 	int				num;
@@ -30,7 +26,6 @@ typedef struct s_stack
 
 void				sa(t_stack **stack_a);
 void				sb(t_stack **stack_b);
-void				ss(t_stack **stack_a, t_stack **stack_b);
 
 void				pa(t_stack **stack_a, t_stack **stack_b);
 void				pb(t_stack **stack_a, t_stack **stack_b);
