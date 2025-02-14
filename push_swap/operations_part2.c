@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 10:58:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:35:20 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 01:46:25 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ra(t_stack **stack_a)
 	if (I != 0)
 		ft_printf("ra\n");
 }
-
+//test
 void	rb(t_stack **stack_b)
 {
 	t_stack	*temp;
