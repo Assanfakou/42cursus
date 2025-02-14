@@ -6,17 +6,17 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 00:15:27 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:15:04 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 01:29:55 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	position_of_min(s_stack **a)
+int	position_of_min(t_stack **a)
 {
 	int		i;
 	int		min_idx;
-	s_stack	*walk;
+	t_stack	*walk;
 	int		min;
 
 	i = 0;
@@ -36,7 +36,7 @@ int	position_of_min(s_stack **a)
 	return (min_idx);
 }
 
-void	sort_three(s_stack **s)
+void	sort_three(t_stack **s)
 {
 	int	no1;
 	int	no2;
@@ -53,7 +53,7 @@ void	sort_three(s_stack **s)
 		sa(s);
 }
 
-void	small_sort(s_stack **a, s_stack **b)
+void	small_sort(t_stack **a, t_stack **b)
 {
 	int	min_pos;
 

@@ -6,13 +6,13 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:40:39 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:17:16 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 01:31:41 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_to_a(s_stack **a, s_stack **b, int big_idx)
+void	push_to_a(t_stack **a, t_stack **b, int big_idx)
 {
 	int	ops;
 
@@ -30,7 +30,7 @@ void	push_to_a(s_stack **a, s_stack **b, int big_idx)
 	pa(a, b);
 }
 
-void	sort_stack_by_size(s_stack **a, s_stack **b, int *arr)
+void	sort_stack_by_size(t_stack **a, t_stack **b, int *arr)
 {
 	if (listint_len(*a) > 10)
 		sort_stack(a, b, arr, listint_len(*a));
@@ -43,8 +43,8 @@ int	main(int ac, char **av)
 {
 	int		j;
 	int		*arr;
-	s_stack	*stack_a;
-	s_stack	*stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;

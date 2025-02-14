@@ -6,13 +6,13 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:43:40 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:16:33 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 01:43:02 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	calcul_ops(s_stack **b, int ind_big)
+int	calcul_ops(t_stack **b, int ind_big)
 {
 	int	size_of_b;
 
@@ -23,12 +23,12 @@ int	calcul_ops(s_stack **b, int ind_big)
 		return (ind_big);
 }
 
-int	get_big_idx(s_stack **b)
+int	get_big_idx(t_stack **b)
 {
 	int		i;
 	int		big_idx;
 	int		big;
-	s_stack	*walk;
+	t_stack	*walk;
 
 	walk = *b;
 	i = 0;
@@ -47,7 +47,7 @@ int	get_big_idx(s_stack **b)
 	return (big_idx);
 }
 
-void	push_to_b(s_stack **a, s_stack **b, int small, int big)
+void	push_to_b(t_stack **a, t_stack **b, int small, int big)
 {
 	int	size_of_b;
 
@@ -72,7 +72,7 @@ void	push_to_b(s_stack **a, s_stack **b, int small, int big)
 	}
 }
 
-void	sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr,
+void	sort_stack(t_stack **stack_a, t_stack **stack_b, int *arr,
 		int size_ofstack)
 {
 	int	big;
@@ -96,7 +96,7 @@ void	sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr,
 	loop_in_b(stack_b, stack_a);
 }
 
-void	loop_in_b(s_stack **b, s_stack **a)
+void	loop_in_b(t_stack **b, t_stack **a)
 {
 	while (listint_len(*b) > 0)
 		push_to_a(a, b, get_big_idx(b));

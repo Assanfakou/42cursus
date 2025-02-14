@@ -6,16 +6,16 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 10:58:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:11:09 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 01:35:20 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(s_stack **stack_a)
+void	ra(t_stack **stack_a)
 {
-	s_stack	*temp;
-	s_stack	*walk;
+	t_stack	*temp;
+	t_stack	*walk;
 
 	if (!*stack_a || !((*stack_a)->next))
 		return ;
@@ -30,10 +30,10 @@ void	ra(s_stack **stack_a)
 		ft_printf("ra\n");
 }
 
-void	rb(s_stack **stack_b)
+void	rb(t_stack **stack_b)
 {
-	s_stack	*temp;
-	s_stack	*walk;
+	t_stack	*temp;
+	t_stack	*walk;
 
 	if (!*stack_b || !((*stack_b)->next))
 		return ;
@@ -48,10 +48,10 @@ void	rb(s_stack **stack_b)
 		ft_printf("rb\n");
 }
 
-void	rra(s_stack **stack)
+void	rra(t_stack **stack)
 {
-	s_stack	*prev;
-	s_stack	*walk;
+	t_stack	*prev;
+	t_stack	*walk;
 
 	if (!*stack || !((*stack)->next))
 		return ;
@@ -69,10 +69,10 @@ void	rra(s_stack **stack)
 		ft_printf("rra\n");
 }
 
-void	rrb(s_stack **stack)
+void	rrb(t_stack **stack)
 {
-	s_stack	*prev;
-	s_stack	*walk;
+	t_stack	*prev;
+	t_stack	*walk;
 
 	if (!*stack || !((*stack)->next))
 		return ;

@@ -6,13 +6,13 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 21:43:01 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:16:00 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 01:35:35 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*fill_arr(s_stack *stack_h)
+int	*fill_arr(t_stack *stack_h)
 {
 	int	*arr;
 	int	size_lis;

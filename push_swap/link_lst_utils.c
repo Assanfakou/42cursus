@@ -6,20 +6,20 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:48:30 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:10:27 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 01:37:01 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-s_stack	*add_nodeint_end(s_stack **head, int n)
+t_stack	*add_nodeint_end(t_stack **head, int n)
 {
-	s_stack	*last;
-	s_stack	*walk;
+	t_stack	*last;
+	t_stack	*walk;
 
 	if (!head)
 		return (NULL);
-	last = malloc(sizeof(s_stack));
+	last = malloc(sizeof(t_stack));
 	last->next = NULL;
 	last->num = n;
 	if (!*head)
@@ -34,7 +34,7 @@ s_stack	*add_nodeint_end(s_stack **head, int n)
 	return (last);
 }
 
-size_t	print_listint(s_stack *h)
+size_t	print_listint(t_stack *h)
 {
 	size_t	i;
 
@@ -49,7 +49,7 @@ size_t	print_listint(s_stack *h)
 	return (i);
 }
 
-s_stack	*add_nodeint(s_stack **head, s_stack *new)
+t_stack	*add_nodeint(t_stack **head, t_stack *new)
 {
 	if (!*head)
 	{
@@ -64,7 +64,7 @@ s_stack	*add_nodeint(s_stack **head, s_stack *new)
 	return (new);
 }
 
-int	listint_len(s_stack *h)
+int	listint_len(t_stack *h)
 {
 	int	i;
 
@@ -77,9 +77,9 @@ int	listint_len(s_stack *h)
 	return (i);
 }
 
-void	clear_stack(s_stack **stack)
+void	clear_stack(t_stack **stack)
 {
-	s_stack	*temp;
+	t_stack	*temp;
 
 	while (*stack)
 	{

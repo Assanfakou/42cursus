@@ -6,13 +6,13 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:49:31 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:11:46 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 01:35:49 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	pars_arr(char **arr, s_stack **stack)
+int	pars_arr(char **arr, t_stack **stack)
 {
 	int		i;
 	long	num;
@@ -33,7 +33,7 @@ int	pars_arr(char **arr, s_stack **stack)
 	return (1);
 }
 
-int	pars_str(char *input, s_stack **stack_s)
+int	pars_str(char *input, t_stack **stack_s)
 {
 	char	**arr;
 
@@ -52,10 +52,10 @@ int	pars_str(char *input, s_stack **stack_s)
 	return (1);
 }
 
-s_stack	*pars_args(char **arg, int size)
+t_stack	*pars_args(char **arg, int size)
 {
 	int		i;
-	s_stack	*stackd;
+	t_stack	*stackd;
 
 	stackd = NULL;
 	i = 0;

@@ -6,15 +6,15 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:07:57 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/08 11:08:02 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 01:38:09 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pb(s_stack **stack_a, s_stack **stack_b)
+void	pb(t_stack **stack_a, t_stack **stack_b)
 {
-	s_stack	*temp;
+	t_stack	*temp;
 
 	if (!*stack_a)
 		return ;
@@ -26,9 +26,9 @@ void	pb(s_stack **stack_a, s_stack **stack_b)
 		ft_printf("pb\n");
 }
 
-void	pa(s_stack **stack_a, s_stack **stack_b)
+void	pa(t_stack **stack_a, t_stack **stack_b)
 {
-	s_stack	*temp;
+	t_stack	*temp;
 
 	if (!*stack_b)
 		return ;
@@ -40,9 +40,9 @@ void	pa(s_stack **stack_a, s_stack **stack_b)
 		ft_printf("pa\n");
 }
 
-void	sb(s_stack **stack_b)
+void	sb(t_stack **stack_b)
 {
-	s_stack	*temp;
+	t_stack	*temp;
 
 	if (!*stack_b || !((*stack_b)->next))
 		return ;
@@ -54,9 +54,9 @@ void	sb(s_stack **stack_b)
 		ft_printf("sb\n");
 }
 
-void	sa(s_stack **stack_a)
+void	sa(t_stack **stack_a)
 {
-	s_stack	*temp;
+	t_stack	*temp;
 
 	if (!*stack_a || !((*stack_a)->next))
 		return ;
@@ -68,7 +68,7 @@ void	sa(s_stack **stack_a)
 		ft_printf("sa\n");
 }
 
-void	ss(s_stack **stack_a, s_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
