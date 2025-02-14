@@ -23,10 +23,10 @@ Push Swap is a program that takes a list of numbers as input and sorts them usin
 ## Installation
 
 ```bash
-git https://github.com/Assanfakou/42cursus
+git clone https://github.com/Assanfakou/42cursus
 cd 42cursus
 cd push_swap
-make
+make 
 ```
 
 ## Usage
