@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/11 12:38:46 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/14 00:18:09 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,9 @@ void push_to_b(s_stack **a, s_stack **b, int small, int big);
 void sort_stack(s_stack **stack_a, s_stack **stack_b, int *arr, int size_ofstack);
 void push_to_a(s_stack **a, s_stack **b, int big_idx);
 void loop_in_b(s_stack **b, s_stack **a);
+
+int	position_of_min(s_stack **a);
+void	sort_three(s_stack **s);
+void	small_sort(s_stack **a, s_stack **b);
 
 #endif
