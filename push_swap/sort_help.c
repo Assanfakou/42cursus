@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:43:40 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:43:02 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/15 17:41:30 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b, int *arr,
 		push_to_b(stack_a, stack_b, arr[i], arr[big]);
 		if (i < big)
 			i++;
-		if (big < sizeof_a)
+		if (big < sizeof_a - 1)
 			big++;
 	}
 	loop_in_b(stack_b, stack_a);
