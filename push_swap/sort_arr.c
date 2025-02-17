@@ -38,26 +38,21 @@ void	sort_arr(int *arr, int size)
 	int	i;
 	int	j;
 	int	temp;
-	int	sorted;
 
 	i = 0;
 	while (i < size - 1)
 	{
-		sorted = 0;
-		j = 0;
-		while (j < size - i - 1)
+		j = i + 1;
+		while (j < size)
 		{
-			if (arr[j] > arr[j + 1])
+			if (arr[i] > arr[j])
 			{
-				temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
-				sorted = 1;
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
 			}
 			j++;
 		}
-		if (sorted == 0)
-			break ;
 		i++;
 	}
 }
