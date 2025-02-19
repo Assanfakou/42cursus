@@ -42,6 +42,6 @@ int main (int ac, char **av)
     //         }
     //         j++;
     //     }
-    // }
+    }
     write(1, "\n", 1);
 }
