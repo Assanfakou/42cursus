@@ -16,18 +16,35 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <mlx.h>
+
+# define WINDOW 369
+# define TILE_SIZE 41
+# define LEFT 65361
+# define UP 65362 
+# define RIGHT 65363
+# define DOWN 65364
+# define ESC 65307
+# define WIDTH 9
+# define HEIGHT 9
 
 typedef struct s_game
 {
     void *win;
     void *mlx;
 
-    char **map;
+    char ma_p[9][9];
     int hight_img;
     int withe_with;
 
-    void *wll_img;
-    void *charachtr;
+    //pos payer
+    int pos_play_x;
+    int pos_play_y;
+
+    void *wall_img;
+    void *player_img;
 }       t_game;
+
+void draw_map(t_game *game);
 
 # endif
