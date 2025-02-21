@@ -43,6 +43,8 @@ typedef struct s_game
 
     void *wall_img;
     void *player_img;
+    void *coin_img;
+    void *exit_img;
 }       t_game;
 
 void draw_map(t_game *game);
