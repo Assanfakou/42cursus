@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/21 20:50:11 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/22 00:18:53 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,9 +163,10 @@ int main(void)
     game.coin_img_2 = mlx_xpm_file_to_image(game.mlx, "coin_pngs/AnyConv.com__coin6.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
     game.exit_img = mlx_xpm_file_to_image(game.mlx, "pngs/Door.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
 
-    draw_map(&game);
+    // draw_map(&game);
     // printf("x = %d, y = %d\n", game.pos_play_x, game.pos_play_y);
-    mlx_key_hook(game.win, handle_keypress, &game);
+    // mlx_key_hook(game.win, handle_keypress, &game);
+    mlx_string_put(game.mlx, game.win, 105, 105, 0x000000FF, "hello    world");
     mlx_loop(game.mlx);
     return (0);
 }
