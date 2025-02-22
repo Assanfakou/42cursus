@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/22 00:18:53 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/22 11:02:13 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,10 @@ void fill_map_struct(t_game *game)
         {'1', '1', '1', '1', '1', '1', '1', '1', '1'},
         {'1', 'E', '1', '1', '1', '1', '1', 'P', '1'},
         {'1', '0', '1', '1', '1', '0', '0', '0', '1'},
-        {'1', 'C', '1', '1', '0', 'C', '1', '0', '1'},
+        {'1', 'C', '1', '1', '0', '0', '1', '0', '1'},
         {'1', '0', '1', '0', '0', '1', '1', '0', '1'},
         {'1', '0', '0', '0', '1', '1', '1', '0', '1'},
-        {'1', '1', 'C', '1', '1', '1', '1', '0', '1'},
+        {'1', '0', '1', '1', '1', '1', '1', '0', '1'},
         {'1', '0', '0', '0', '0', '0', '0', '1', '1'},
         {'1', '1', '1', '1', '1', '1', '1', '1', '1'}
     };
@@ -132,11 +132,11 @@ void draw_map(t_game *game)
                 mlx_put_image_to_window(game->mlx, game->win, game->player_img, x * TILE_SIZE, y * TILE_SIZE);
             else if (game->ma_p[y][x] == 'C')
             {
-                    // mlx_put_image_to_window(game->mlx, game->win, game->coin_img_1, x * TILE_SIZE, y * TILE_SIZE);
+                    mlx_put_image_to_window(game->mlx, game->win, game->coin_img_1, x * TILE_SIZE, y * TILE_SIZE);
                 // while ('P' != 'C')
                 // {
-                    mlx_put_image_to_window(game->mlx, game->win, game->coin_img_2, x * TILE_SIZE, y * TILE_SIZE);
-                // }
+                    // mlx_put_image_to_window(game->mlx, game->win, game->coin_img_2, x * TILE_SIZE, y * TILE_SIZE);
+                // }    
             }
             else if (game->ma_p[y][x] == 'E')
                 mlx_put_image_to_window(game->mlx, game->win, game->exit_img, x * TILE_SIZE, y * TILE_SIZE);
@@ -158,9 +158,9 @@ int main(void)
     game.win = mlx_new_window(game.mlx, WIDTH * TILE_SIZE, HEIGHT * TILE_SIZE, "so_long");
 
     game.wall_img = mlx_xpm_file_to_image(game.mlx, "pngs/123.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
-    game.player_img = mlx_xpm_file_to_image(game.mlx, "pngs/Run.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
+    game.player_img = mlx_xpm_file_to_image(game.mlx, "pngs/p1.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
     game.coin_img_1 = mlx_xpm_file_to_image(game.mlx, "coin_pngs/AnyConv.com__coin2.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
-    game.coin_img_2 = mlx_xpm_file_to_image(game.mlx, "coin_pngs/AnyConv.com__coin6.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
+    // game.coin_img_2 = mlx_xpm_file_to_image(game.mlx, "coin_pngs/AnyConv.com__coin6.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
     game.exit_img = mlx_xpm_file_to_image(game.mlx, "pngs/Door.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
 
     // draw_map(&game);
