@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <mlx.h>
+# include "../../minlibx/mlx.h"
 
 # define WINDOW 369
 # define TILE_SIZE 45
