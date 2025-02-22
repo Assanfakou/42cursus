@@ -16,10 +16,10 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include "../../minlibx/mlx.h"
+# include "mlx_linux/mlx.h"
 
 # define WINDOW 369
-# define TILE_SIZE 45
+# define TILE_SIZE 42
 
 # define LEFT 65361
 # define UP 65362 
@@ -35,7 +35,7 @@ typedef struct s_game
     void *win;
     void *mlx;
 
-    char ma_p[9][9];
+    char ma_p[WIDTH][HEIGHT];
     int hight_img;
     int withe_with;
 
@@ -44,15 +44,29 @@ typedef struct s_game
     int pos_play_y;
 
     void *wall_img;
-    void *player_img;
+    
+    void *player_img_1;
+    void *player_img_2;
+    
     void *coin_img_1;
     void *coin_img_2;
-    void *exit_img;
+    int coin_pos_y;
+    int coin_pos_x;
+
+    void *current_anim;
+
+    int     current_frame;
+    int     frame_delay;
+    int     frame_countdown;
+
+    void *exit_img_close;
+    void *exit_img_open;
 }       t_game;
 
 void draw_map(t_game *game);
 int mv_player(int key_code, t_game *game);
 int handle_keypress(int keycode, t_game *game);
 void fill_map_struct(t_game *game);
+void render_the_animation(t_game *game);
 
 # endif

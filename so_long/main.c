@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/22 11:02:13 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/22 17:39:22 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void player_pos(t_game *game)
     int y;
 
     y = 0;
-    while (y < 9)
+    while (y < WIDTH)
     {
         x = 0;
-        while (x < 9)
+        while (x < HEIGHT)
         {
             if (game->ma_p[y][x] == 'P')
             {
@@ -62,10 +62,9 @@ int mv_player(int key_code, t_game *game)
 }
 int handle_keypress(int keycode, t_game *game)
 {
-       int coin = 0;
+    int coin = 0;
+    
     mv_player(keycode, game);
-    // if (game->ma_p[game->pos_play_y][game->pos_play_x] == 'C')
-    //                     coin++; // doesn't work
     if (keycode == UP || keycode == 'w')
         printf("tap UP\n");
     else if (keycode == RIGHT || keycode == 'd')
@@ -98,7 +97,7 @@ void fill_map_struct(t_game *game)
         {'1', '0', '1', '0', '0', '1', '1', '0', '1'},
         {'1', '0', '0', '0', '1', '1', '1', '0', '1'},
         {'1', '0', '1', '1', '1', '1', '1', '0', '1'},
-        {'1', '0', '0', '0', '0', '0', '0', '1', '1'},
+        {'1', '0', '0', '0', 'C', '0', '0', '1', '1'},
         {'1', '1', '1', '1', '1', '1', '1', '1', '1'}
     };
 
@@ -129,21 +128,64 @@ void draw_map(t_game *game)
             if (game->ma_p[y][x] == '1')
                 mlx_put_image_to_window(game->mlx, game->win, game->wall_img, x * TILE_SIZE, y * TILE_SIZE);
             else if (game->ma_p[y][x] == 'P')
-                mlx_put_image_to_window(game->mlx, game->win, game->player_img, x * TILE_SIZE, y * TILE_SIZE);
+                    mlx_put_image_to_window(game->mlx, game->win, game->player_img_1, x * TILE_SIZE, y * TILE_SIZE);
             else if (game->ma_p[y][x] == 'C')
             {
-                    mlx_put_image_to_window(game->mlx, game->win, game->coin_img_1, x * TILE_SIZE, y * TILE_SIZE);
-                // while ('P' != 'C')
-                // {
-                    // mlx_put_image_to_window(game->mlx, game->win, game->coin_img_2, x * TILE_SIZE, y * TILE_SIZE);
-                // }    
+                if (game->current_frame == 0)
+                    game->current_anim = game->coin_img_1;
+                else if (game->current_frame == 1)
+                    game->current_anim = game->coin_img_2;
+                mlx_put_image_to_window(game->mlx, game->win, game->current_anim, x * TILE_SIZE, y * TILE_SIZE);
             }
             else if (game->ma_p[y][x] == 'E')
-                mlx_put_image_to_window(game->mlx, game->win, game->exit_img, x * TILE_SIZE, y * TILE_SIZE);
+                mlx_put_image_to_window(game->mlx, game->win, game->exit_img_close, x * TILE_SIZE, y * TILE_SIZE);
             x++;
         }
         y++;
     }
+}   
+// void render_coins(t_game *game)
+// {
+//     int i;
+//     int y;
+
+//     i =0;
+//     while (i < WIDTH)
+//     {
+//         y = 0;
+//         while (y < HEIGHT)
+//         {
+//             if (game->ma_p[i][y] == 'C')
+//                 mlx_put_image_to_window(game->mlx, game->win, game->current_anim, i * TILE_SIZE, y * TILE_SIZE);
+//         //     y++;
+//         // }
+//         i++;
+//     }
+// }
+
+void update_animation(t_game *game)
+{
+    game->current_frame++;
+    if (game->current_frame >= game->frame_delay)
+        game->current_frame = 0;
+}
+void render_the_animation(t_game *game)
+{
+    if (game->current_frame == 0)
+        game->current_anim = game->coin_img_1;
+    else if (game->current_frame == 1)
+        game->current_anim = game->coin_img_2;
+    // mlx_put_image_to_window(game->mlx, game->win, game->current_anim, 100, 100);
+}
+int loop_rendering(t_game *game)
+{
+    update_animation(game);
+    mlx_clear_window(game->mlx, game->win);
+    // render_the_animation(game);
+    draw_map(game);
+    // render_coins(game);
+    usleep(100000);
+    return (0);
 }
 int main(void)
 {
@@ -158,15 +200,19 @@ int main(void)
     game.win = mlx_new_window(game.mlx, WIDTH * TILE_SIZE, HEIGHT * TILE_SIZE, "so_long");
 
     game.wall_img = mlx_xpm_file_to_image(game.mlx, "pngs/123.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
-    game.player_img = mlx_xpm_file_to_image(game.mlx, "pngs/p1.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
-    game.coin_img_1 = mlx_xpm_file_to_image(game.mlx, "coin_pngs/AnyConv.com__coin2.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
-    // game.coin_img_2 = mlx_xpm_file_to_image(game.mlx, "coin_pngs/AnyConv.com__coin6.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
-    game.exit_img = mlx_xpm_file_to_image(game.mlx, "pngs/Door.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
+    game.player_img_1 = mlx_xpm_file_to_image(game.mlx, "pngs/p1.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
+    game.player_img_2 = mlx_xpm_file_to_image(game.mlx, "pngs/Run.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
+    game.coin_img_1 = mlx_xpm_file_to_image(game.mlx, "coin_pngs/coin2.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
+    game.coin_img_2 = mlx_xpm_file_to_image(game.mlx, "coin_pngs/coin1.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
+    game.exit_img_close = mlx_xpm_file_to_image(game.mlx, "pngs/Doorclosed.xpm", &(int){TILE_SIZE}, &(int){TILE_SIZE});
 
-    // draw_map(&game);
+    game.current_frame = 0;
+    game.frame_delay = 4;
+    draw_map(&game);
     // printf("x = %d, y = %d\n", game.pos_play_x, game.pos_play_y);
-    // mlx_key_hook(game.win, handle_keypress, &game);
-    mlx_string_put(game.mlx, game.win, 105, 105, 0x000000FF, "hello    world");
+    
+    mlx_loop_hook(game.mlx, (int (*)(void *))loop_rendering, &game);
+    mlx_key_hook(game.win, handle_keypress, &game);
+    // mlx_string_put(game.mlx, game.win, 105, 105, 0x000000FF, "hello    world");
     mlx_loop(game.mlx);
-    return (0);
 }
