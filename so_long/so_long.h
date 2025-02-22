@@ -19,7 +19,7 @@
 # include "mlx_linux/mlx.h"
 
 # define WINDOW 369
-# define TILE_SIZE 42
+# define TILE_SIZE 43
 
 # define LEFT 65361
 # define UP 65362 
@@ -27,17 +27,18 @@
 # define DOWN 65364
 # define ESC 65307
 
-# define WIDTH 9
-# define HEIGHT 9
+# define WIDTH 20
+# define HEIGHT 10
 
 typedef struct s_game
 {
     void *win;
     void *mlx;
 
-    char ma_p[WIDTH][HEIGHT];
+    char ma_p[HEIGHT][WIDTH];
     int hight_img;
     int withe_with;
+    void *floor;
 
     //pos payer
     int pos_play_x;
@@ -68,5 +69,6 @@ int mv_player(int key_code, t_game *game);
 int handle_keypress(int keycode, t_game *game);
 void fill_map_struct(t_game *game);
 void render_the_animation(t_game *game);
+void player_pos(t_game *game);
 
 # endif
