@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/23 16:26:45 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/23 20:31:12 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 
 int handle_keypress(int keycode, t_game *game)
-{
-    int coin = 0;
-    
+{   
     mv_player(keycode, game);
     if (keycode == UP || keycode == 'w')
         printf("tap UP\n");
@@ -29,7 +27,7 @@ int handle_keypress(int keycode, t_game *game)
         printf("tap DOWN\n");
     else if (keycode == ESC || keycode == 113)
     {
-        printf("coins %d\n", coin);
+
         if (keycode == 113)
             printf("tap Q\n");
         else
@@ -94,7 +92,7 @@ void draw_map(t_game *game)
                     image_to_window(game, game->current_plyer, x, y);
             else if (game->ma_p[y][x] == 'C')
             {
-                render_the_animation_coin(game);
+                render_the_animation_coin(game, game->current_anim, game->coin_img);
                 image_to_window(game, game->current_anim, x, y);
             }
             // else if (game->ma_p[y][x] == '0')
@@ -111,12 +109,13 @@ void update_animation(t_game *game)
     if (game->current_frame >= game->frame_delay)
         game->current_frame = 0;
 }
-void render_the_animation_coin(t_game *game)
+void render_the_animation_coin(t_game *game, void *current, void **arr)
 {
+    // big problemmo here
     if (game->current_frame == 0)
-        game->current_anim = game->coin_img[0];
+        current = *arr[0];
     else if (game->current_frame == 1)
-        game->current_anim = game->coin_img[1];
+        current = *arr[1];
 }
 int loop_rendering(t_game *game)
 {

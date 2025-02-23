@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/23 16:08:52 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/23 20:29:30 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,14 @@ typedef struct s_game
 	int		frame_countdown;
 
 	void	*exit_img_close;
-	void	*exit_img_open;
+	void	*current_img;
 }			t_game;
 
 void		draw_map(t_game *game);
 void		mv_player(int key_code, t_game *game);
 int			handle_keypress(int keycode, t_game *game);
 void		fill_map_struct(t_game *game);
-void		render_the_animation_coin(t_game *game);
+void		render_the_animation_coin(t_game *game, void *current, void **arr);
 void		player_pos(t_game *game);
 
 void		image_to_window(t_game *game, void *image, int x, int y);
