@@ -85,4 +85,3 @@ void	rrb(t_stack **stack)
 	prev->next = NULL;
 	write(1, "rrb\n", 4);
 }
-
