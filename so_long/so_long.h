@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/23 20:29:30 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/24 13:27:28 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,17 @@ typedef struct s_game
 	void	*win;
 	void	*mlx;
 
+	void	*wall_img;
+
 	char	ma_p[HEIGHT][WIDTH];
 	int		hight_img;
 	int		withe_with;
-	void	*floor;
+	// void	*floor;
 
 	// pos payer
 	int		pos_play_x;
 	int		pos_play_y;
 
-	void	*wall_img;
 
 	void	*player_img[5];
 	void	*current_plyer;
@@ -59,27 +60,30 @@ typedef struct s_game
 	void	*coin_img[2];
 	int		coin_pos_y;
 	int		coin_pos_x;
+	void	*current_anim;
 
+	//coins calcul
 	int total_coin;
 	int counter_coin;
-
-	void	*current_anim;
 
 	int		current_frame;
 	int		frame_delay;
 	int		frame_countdown;
 
-	void	*exit_img_close;
-	void	*current_img;
+	void	*exit_img_green[4];
+	void	*exit_img_red[4];
+	void	*current_exit_img;
 }			t_game;
 
 void		draw_map(t_game *game);
 void		mv_player(int key_code, t_game *game);
 int			handle_keypress(int keycode, t_game *game);
 void		fill_map_struct(t_game *game);
-void		render_the_animation_coin(t_game *game, void *current, void **arr);
+void		render_the_animation_coin(t_game *game);
 void		player_pos(t_game *game);
 
 void		image_to_window(t_game *game, void *image, int x, int y);
+void		render_the_door_anima(t_game *game, void *curren, void **arr);
+
 
 #endif

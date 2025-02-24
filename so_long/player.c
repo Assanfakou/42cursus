@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/23 18:06:53 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/24 13:43:37 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,13 @@ void mv_player(int key_code, t_game *game)
         game->counter_coin++;
         printf("coins collected %d\n", game->counter_coin);
     }
-    if (game->counter_coin == game->total_coin)
-    {
-        mlx_destroy_window(game->mlx, game->win);
-        exit(1);
-    }
+    // if (game->counter_coin == game->total_coin)
+    // {
+    //     mlx_destroy_window(game->mlx, game->win);
+    //     exit(1);
+    // }
         // printf("x = %d, y = %d\n", game->pos_x, game->pos_play_y);
+    // if (game
     if (game->ma_p[pos_y][pos_x] != '1' && game->ma_p[pos_y][pos_x] != 'E')
     {
         game->ma_p[game->pos_play_y][game->pos_play_x] = '0';
