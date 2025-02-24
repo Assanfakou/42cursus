@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/24 18:42:48 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/24 22:09:52 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define GREEN				"\033[0;32m"
 # ifndef WINDOW	
 # define WINDOW 1000
 # endif
@@ -90,5 +91,7 @@ void		image_to_window(t_game *game, void *image, int x, int y);
 void		render_the_door_anima(t_game *game, void *curren, void **arr);
 void render_fire(t_game *game);
 void handler_of_player_win(t_game *game, int y, int x);
+void handler_of_palyer_lose(t_game *game, int y, int x);
+void	ft_victory(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/24 18:57:41 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/24 22:12:00 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void mv_player(int key_code, t_game *game)
         game->counter_coin++;
         printf("coins collected %d\n", game->counter_coin);
     }
+    handler_of_palyer_lose(game, pos_y, pos_x);
     handler_of_player_win(game, pos_y, pos_x);
     // if (game->counter_coin == game->total_coin)
     // {
@@ -81,30 +82,78 @@ void mv_player(int key_code, t_game *game)
         draw_map(game);
     }
 }
+void handler_of_palyer_lose(t_game *game, int y, int x)
+{
+     if (game->ma_p[y][x] == 'X' && game->total_coin == game->counter_coin)
+    {
+        printf("YOU LOOSE");
+        mlx_destroy_window(game->mlx, game->win);
+        exit(EXIT_SUCCESS);
+    }
+    if (game->ma_p[y][x] == 'X' && game->total_coin == game->counter_coin)
+    {
+        printf("YOU LOOSE");
+        mlx_destroy_window(game->mlx, game->win);
+        exit(EXIT_SUCCESS);
+    }
+    if (game->ma_p[y][x] == 'X' && game->total_coin == game->counter_coin)
+    {
+        printf("YOU LOOSE");
+        mlx_destroy_window(game->mlx, game->win);
+        exit(EXIT_SUCCESS);
+    }
+    if (game->ma_p[y][x] == 'X' && game->total_coin == game->counter_coin)
+    {
+        printf("YOU LOOSE");
+        mlx_destroy_window(game->mlx, game->win);
+        exit(EXIT_SUCCESS);
+    }
+}
+
 void handler_of_player_win(t_game *game, int y, int x)
 {
     if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
     {
-        printf("ongradulation");
+        ft_victory();
+        // printf("CONGRATUATION");
         mlx_destroy_window(game->mlx, game->win);
         exit(EXIT_SUCCESS);
     }
     if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
     {
-        printf("ongradulation");
+        ft_victory();
+        // printf("ongradulation");
         mlx_destroy_window(game->mlx, game->win);
         exit(EXIT_SUCCESS);
     }
     if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
     {
-        printf("ongradulation");
+        ft_victory();
+        // printf("ongradulation");
         mlx_destroy_window(game->mlx, game->win);
         exit(EXIT_SUCCESS);
     }
     if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
     {
-        printf("ongradulation");
+        ft_victory();
+        // printf("ongradulation");
         mlx_destroy_window(game->mlx, game->win);
         exit(EXIT_SUCCESS);
     }
+}
+void	ft_victory(void)
+{
+	// ft_printf(CYAN"\n			Movements: %d\n"RESET);
+	// ft_free_all_allocated_memory(game);
+	printf(GREEN"\n\
+    █████████████████████████████████████████████████████████████████\n\
+    ██                                                              ██\n\
+    ██  ███  ███  ██████  ██    ██     ██      ██ ██ ██    ██   ██  ██\n\
+    ██   ██  ██  ██    ██ ██    ██     ██      ██ ██ ███   ██   ██  ██\n\
+    ██    ████   █      █ ██    ██     ██  ██  ██ ██ ██ ██ ██   ██  ██\n\
+    ██     ██    ██    ██ ██    ██     ██ ████ ██ ██ ██  ████       ██\n\
+    ██     ██     ██████    ████        ███  ███  ██ ██   ███   ██  ██\n\
+    ██                                                              ██\n\
+    ██████████████████████████████████████████████████████████████████\n\n\
+");
 }
