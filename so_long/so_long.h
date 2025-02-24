@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/24 13:27:28 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:42:48 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_game
 	char	ma_p[HEIGHT][WIDTH];
 	int		hight_img;
 	int		withe_with;
-	// void	*floor;
+	void	*floor;
 
 	// pos payer
 	int		pos_play_x;
@@ -73,6 +73,10 @@ typedef struct s_game
 	void	*exit_img_green[4];
 	void	*exit_img_red[4];
 	void	*current_exit_img;
+
+	void	*fire[5];
+	void	*curent_fire;
+
 }			t_game;
 
 void		draw_map(t_game *game);
@@ -84,6 +88,7 @@ void		player_pos(t_game *game);
 
 void		image_to_window(t_game *game, void *image, int x, int y);
 void		render_the_door_anima(t_game *game, void *curren, void **arr);
-
+void render_fire(t_game *game);
+void handler_of_player_win(t_game *game, int y, int x);
 
 #endif

@@ -6,11 +6,12 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/24 13:43:37 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:57:41 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 void player_pos(t_game *game)
 {
     int x;
@@ -32,7 +33,6 @@ void player_pos(t_game *game)
         y++;
     }
 }
-
 void mv_player(int key_code, t_game *game)
 {
     int pos_x = game->pos_play_x;
@@ -63,6 +63,7 @@ void mv_player(int key_code, t_game *game)
         game->counter_coin++;
         printf("coins collected %d\n", game->counter_coin);
     }
+    handler_of_player_win(game, pos_y, pos_x);
     // if (game->counter_coin == game->total_coin)
     // {
     //     mlx_destroy_window(game->mlx, game->win);
@@ -70,7 +71,7 @@ void mv_player(int key_code, t_game *game)
     // }
         // printf("x = %d, y = %d\n", game->pos_x, game->pos_play_y);
     // if (game
-    if (game->ma_p[pos_y][pos_x] != '1' && game->ma_p[pos_y][pos_x] != 'E')
+    if (game->ma_p[pos_y][pos_x] != '1' && game->ma_p[pos_y][pos_x] != 'E' && game->ma_p[pos_y][pos_x] != 'X')
     {
         game->ma_p[game->pos_play_y][game->pos_play_x] = '0';
         game->pos_play_x = pos_x;
@@ -78,5 +79,32 @@ void mv_player(int key_code, t_game *game)
         game->ma_p[game->pos_play_y][game->pos_play_x] = 'P';
         mlx_clear_window(game->mlx, game->win);
         draw_map(game);
+    }
+}
+void handler_of_player_win(t_game *game, int y, int x)
+{
+    if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
+    {
+        printf("ongradulation");
+        mlx_destroy_window(game->mlx, game->win);
+        exit(EXIT_SUCCESS);
+    }
+    if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
+    {
+        printf("ongradulation");
+        mlx_destroy_window(game->mlx, game->win);
+        exit(EXIT_SUCCESS);
+    }
+    if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
+    {
+        printf("ongradulation");
+        mlx_destroy_window(game->mlx, game->win);
+        exit(EXIT_SUCCESS);
+    }
+    if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
+    {
+        printf("ongradulation");
+        mlx_destroy_window(game->mlx, game->win);
+        exit(EXIT_SUCCESS);
     }
 }

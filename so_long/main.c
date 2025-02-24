@@ -6,13 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/24 11:13:08 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:58:59 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "so_long.h"
-
 
 int handle_keypress(int keycode, t_game *game)
 {   
@@ -42,13 +40,13 @@ void fill_map_struct(t_game *game)
     int y;
     char map[HEIGHT][WIDTH] = {
     {'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'},
-    {'1', '0', 'C', '0', '0', '0', '0', '0', 'C', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'P', '1'},
-    {'1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1'},
-    {'1', 'C', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
+    {'1', '0', '0', '0', '0', '0', 'C', 'C', 'C', '0', '0', '0', '0', '0', 'P', '0', '0', '0', 'E', '1'},
+    {'1', '0', 'X', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1'},
+    {'1', 'E', '1', '0', '0', '0', '0', 'E', '0', '0', 'X', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
     {'1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '0', '1'},
     {'1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', 'E', '1', '0', '1'},
-    {'1', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '1'},
-    {'1', 'C', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1'},
+    {'1', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'E', '0', '0', '1', '0', '1'},
+    {'1', 'E', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1'},
     {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
     {'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'}
     };
@@ -71,9 +69,6 @@ void image_to_window(t_game *game, void *image, int x, int y)
 {
     mlx_put_image_to_window(game->mlx, game->win, image, x * SUB_PEX, y * SUB_PEX);
 }
-// void render_the_door_anima(t_game * game, void * curren, void ** arr)
-// {
-// }
 void draw_map(t_game *game)
 {
     int y;
@@ -103,8 +98,13 @@ void draw_map(t_game *game)
                 render_the_animation_coin(game);
                 image_to_window(game, game->current_anim, x, y);
             }
-            // else if (game->ma_p[y][x] == '0')
-                // image_to_window(game, game->floor, x, y);
+            else if (game->ma_p[y][x] == 'X')
+            {
+                render_fire(game);
+                image_to_window(game, game->curent_fire, x, y);
+            }
+            else if (game->ma_p[y][x] == '0')
+                image_to_window(game, game->floor, x, y);
             x++;
         }
         y++;
@@ -128,6 +128,17 @@ void update_animation(t_game *game)
 //     else if (game->current_frame == 4)
 //         game->current_exit_img = game->exit_img_green[3];
 // }
+void render_fire(t_game *game)
+{
+     if (game->current_frame == 0 )
+        game->curent_fire = game->fire[0];
+    if (game->current_frame == 1)
+        game->curent_fire = game->fire[1];
+    if (game->current_frame == 3)
+        game->curent_fire = game->fire[2];
+    if (game->current_frame == 4)
+        game->curent_fire = game->fire[3];
+}
 void render_the_animation_coin(t_game *game)
 {
     if (game->current_frame == 0)
@@ -140,7 +151,7 @@ void render_the_animation_coin(t_game *game)
         game->current_exit_img = game->exit_img_green[1];
     if (game->current_frame == 3)
         game->current_exit_img = game->exit_img_green[2];
-    if (game->current_frame == 4 && game->total_coin == game->counter_coin)
+    if (game->current_frame == 4)
         game->current_exit_img = game->exit_img_green[3];
     if (game->current_frame == 0 && game->total_coin != game->counter_coin)
         game->current_exit_img = game->exit_img_red[0];
@@ -151,13 +162,12 @@ void render_the_animation_coin(t_game *game)
     if (game->current_frame == 4 && game->total_coin != game->counter_coin)
         game->current_exit_img = game->exit_img_red[3];
 }
-int loop_rendering(t_game *game)
+void loop_rendering(t_game *game)
 {
     update_animation(game);
     mlx_clear_window(game->mlx, game->win);
     draw_map(game);
     usleep(100800);
-    return (0);
 }
 void file_to_image(t_game *game)
 {
@@ -187,8 +197,17 @@ void file_to_image(t_game *game)
     game->exit_img_red[1] = mlx_xpm_file_to_image(game->mlx, "gate/red_ex/2.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
     game->exit_img_red[2] = mlx_xpm_file_to_image(game->mlx, "gate/red_ex/3.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
     game->exit_img_red[3] = mlx_xpm_file_to_image(game->mlx, "gate/red_ex/4.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
-    // game->floor = mlx_xpm_file_to_image(game->mlx, "pngs/floor.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+// floor
+    game->floor = mlx_xpm_file_to_image(game->mlx, "pngs/floor.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+// fire   
+    game->fire[0] = mlx_xpm_file_to_image(game->mlx, "enimy/1.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->fire[1] = mlx_xpm_file_to_image(game->mlx, "enimy/2.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->fire[2] = mlx_xpm_file_to_image(game->mlx, "enimy/3.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->fire[3] = mlx_xpm_file_to_image(game->mlx, "enimy/4.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->fire[4] = mlx_xpm_file_to_image(game->mlx, "enimy/5.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+
 }
+
 int main(void)
 {
     t_game game;
