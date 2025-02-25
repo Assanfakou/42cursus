@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/24 22:12:00 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/25 23:51:11 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,28 +84,43 @@ void mv_player(int key_code, t_game *game)
 }
 void handler_of_palyer_lose(t_game *game, int y, int x)
 {
-     if (game->ma_p[y][x] == 'X' && game->total_coin == game->counter_coin)
+     if (game->ma_p[y][x] == 'X')
     {
-        printf("YOU LOOSE");
+        ft_victory(0);
+        mlx_free(game);
         mlx_destroy_window(game->mlx, game->win);
+        // mlx_clear_window(game->mlx, game->win);
+        mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
-    if (game->ma_p[y][x] == 'X' && game->total_coin == game->counter_coin)
+    if (game->ma_p[y][x] == 'X')
     {
-        printf("YOU LOOSE");
+        ft_victory(0);
+        mlx_free(game);
+
         mlx_destroy_window(game->mlx, game->win);
+        // mlx_clear_window(game->mlx, game->win);
+        mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
-    if (game->ma_p[y][x] == 'X' && game->total_coin == game->counter_coin)
+    if (game->ma_p[y][x] == 'X')
     {
-        printf("YOU LOOSE");
+        ft_victory(0);
+        mlx_free(game);
+
         mlx_destroy_window(game->mlx, game->win);
+        // mlx_clear_window(game->mlx, game->win);
+        mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
-    if (game->ma_p[y][x] == 'X' && game->total_coin == game->counter_coin)
+    if (game->ma_p[y][x] == 'X')
     {
-        printf("YOU LOOSE");
+        ft_victory(0);
+        mlx_free(game);
+
+                // mlx_clear_window(game->mlx, game->win);
         mlx_destroy_window(game->mlx, game->win);
+        mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
 }
@@ -114,46 +129,65 @@ void handler_of_player_win(t_game *game, int y, int x)
 {
     if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
     {
-        ft_victory();
+        ft_victory(1);
+        mlx_free(game);
         // printf("CONGRATUATION");
         mlx_destroy_window(game->mlx, game->win);
+        mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
     if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
     {
-        ft_victory();
+        ft_victory(1);
+        mlx_free(game);
         // printf("ongradulation");
         mlx_destroy_window(game->mlx, game->win);
+        mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
     if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
     {
-        ft_victory();
+        ft_victory(1);
+        mlx_free(game);
         // printf("ongradulation");
         mlx_destroy_window(game->mlx, game->win);
+        mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
     if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
     {
-        ft_victory();
+        ft_victory(1);
+        mlx_free(game);
+        mlx_destroy_display(game->mlx);
         // printf("ongradulation");
         mlx_destroy_window(game->mlx, game->win);
         exit(EXIT_SUCCESS);
     }
 }
-void	ft_victory(void)
+void	ft_victory(int check)
 {
-	// ft_printf(CYAN"\n			Movements: %d\n"RESET);
-	// ft_free_all_allocated_memory(game);
-	printf(GREEN"\n\
-    █████████████████████████████████████████████████████████████████\n\
-    ██                                                              ██\n\
-    ██  ███  ███  ██████  ██    ██     ██      ██ ██ ██    ██   ██  ██\n\
-    ██   ██  ██  ██    ██ ██    ██     ██      ██ ██ ███   ██   ██  ██\n\
-    ██    ████   █      █ ██    ██     ██  ██  ██ ██ ██ ██ ██   ██  ██\n\
-    ██     ██    ██    ██ ██    ██     ██ ████ ██ ██ ██  ████       ██\n\
-    ██     ██     ██████    ████        ███  ███  ██ ██   ███   ██  ██\n\
-    ██                                                              ██\n\
-    ██████████████████████████████████████████████████████████████████\n\n\
-");
+    if (check == 1)
+            printf(GREEN"\n\
+    #################################################################\n\
+    ##                                                              ##\n\
+    ##  ###  ###  ######  ##    ##     ##      ## ## ##    ##   ##  ##\n\
+    ##   ##  ##  ##    ## ##    ##     ##      ## ## ###   ##   ##  ##\n\
+    ##    ####   #      # ##    ##     ##  ##  ## ## ## ## ##   ##  ##\n\
+    ##     ##    ##    ## ##    ##     ## #### ## ## ##  ####       ##\n\
+    ##     ##     ######    ####        ###  ###  ## ##   ###   ##  ##\n\
+    ##                                                              ##\n\
+    ##################################################################\n\n");
+    else
+        printf(RED"\n\
+    ##############################################################################\n\
+    ##                                                                          ##\n\
+    ##   ###    ###  #######  ##     ##    ##       #######   ######  #######   ##\n\
+    ##    ###  ###  ##     ## ##     ##    ##      ##     ## ##    ## ##        ##\n\
+    ##     ######   ##     ## ##     ##    ##      ##     ## ##       ##        ##\n\
+    ##      ####    ##     ## ##     ##    ##      ##     ##  ######  ######    ##\n\
+    ##      ####    ##     ## ##     ##    ##      ##     ##       ## ##        ##\n\
+    ##      ####    ##     ## ##     ##    ##      ##     ## ##    ## ##        ##\n\
+    ##      ####     #######   #######     ######## #######   ######  #######   ##\n\
+    ##                                                                          ##\n\
+    ##############################################################################\n\n");
 }

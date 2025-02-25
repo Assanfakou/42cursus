@@ -6,23 +6,23 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/24 22:09:52 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/25 23:08:49 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG
 #define SO_LONG
 
-# include "mlx_linux/mlx.h"
+# include "mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 # define GREEN				"\033[0;32m"
+# define RED 				"\033[91m"
 # ifndef WINDOW	
 # define WINDOW 1000
 # endif
-
 # ifndef SUB_PEX
 # define SUB_PEX 43
 # endif
@@ -34,9 +34,9 @@
 # define ESC 65307
 
 # ifndef WIDTH
-# define WIDTH 20// 3
+# define WIDTH 22// 3
 # endif
-# define HEIGHT 10 // T
+# define HEIGHT 12 // T
 
 typedef struct s_game
 {
@@ -78,6 +78,7 @@ typedef struct s_game
 	void	*fire[5];
 	void	*curent_fire;
 
+	void 	*header;
 }			t_game;
 
 void		draw_map(t_game *game);
@@ -89,9 +90,10 @@ void		player_pos(t_game *game);
 
 void		image_to_window(t_game *game, void *image, int x, int y);
 void		render_the_door_anima(t_game *game, void *curren, void **arr);
-void render_fire(t_game *game);
-void handler_of_player_win(t_game *game, int y, int x);
-void handler_of_palyer_lose(t_game *game, int y, int x);
-void	ft_victory(void);
+void 		render_fire(t_game *game);
+void 		handler_of_player_win(t_game *game, int y, int x);
+void 		handler_of_palyer_lose(t_game *game, int y, int x);
+void		ft_victory(int check);
+void mlx_free(t_game *game);
 
 #endif

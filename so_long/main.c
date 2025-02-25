@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/24 20:58:32 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/02/25 23:59:07 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ int handle_keypress(int keycode, t_game *game)
             printf("tap Q\n");
         else
             printf("tap ESC\n");
+        mlx_free(game);
         mlx_destroy_window(game->mlx, game->win);
+        mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
     return (0);
@@ -40,16 +42,18 @@ void fill_map_struct(t_game *game)
     int y;
 
     char map[HEIGHT][WIDTH] = {
-    {'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'},
-    {'1', '0', '0', '0', '0', '0', 'C', 'C', 'C', '0', '0', '0', '0', '0', 'P', '0', '0', '0', 'E', '1'},
-    {'1', '0', 'X', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1'},
-    {'1', 'E', '1', '0', '0', '0', '0', 'E', '0', '0', 'X', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-    {'1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '0', '1'},
-    {'1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', 'E', '1', '0', '1'},
-    {'1', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'E', '0', '0', '1', '0', '1'},
-    {'1', 'E', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1'},
-    {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-    {'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'}
+    {'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'},
+    {'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'},
+    {'W', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'W'},
+    {'W', '1', '0', '0', '0', '0', '0', 'C', 'C', 'C', '0', '0', '0', '0', '0', 'P', '0', '0', '0', 'E', '1', 'W'},
+    {'W', '1', '0', 'X', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', 'W'},
+    {'W', '1', 'E', '1', '0', '0', '0', '0', 'E', '0', '0', 'X', '0', '0', '0', '0', '0', '0', '0', '0', '1', 'W'},
+    {'W', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '0', '1', 'W'},
+    {'W', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', 'E', '1', '0', '1', 'W'},
+    {'W', '1', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'E', '0', '0', '1', '0', '1', 'W'},
+    {'W', '1', 'E', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', 'W'},
+    {'W', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', 'W'},
+    {'W', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'W'}
     };
 
     y = 0;
@@ -99,13 +103,15 @@ void draw_map(t_game *game)
                 render_the_animation_coin(game);
                 image_to_window(game, game->current_anim, x, y);
             }
-            else if (game->ma_p[y][x] == 'X')
+            else if (game->ma_p[y][x] == 'X' || game->ma_p[y][x] == 'W')
             {
                 render_fire(game);
                 image_to_window(game, game->curent_fire, x, y);
             }
             else if (game->ma_p[y][x] == '0')
                 image_to_window(game, game->floor, x, y);
+            // else if (game->ma_p[y][x] == 'W')
+            //     image_to_window(game, game->header, x, y);
             x++;
         }
         y++;
@@ -165,10 +171,12 @@ void render_the_animation_coin(t_game *game)
 }
 void loop_rendering(t_game *game)
 {
+
     update_animation(game);
     mlx_clear_window(game->mlx, game->win);
     draw_map(game);
     usleep(100800);
+    // mlx_free(game);
 }
 void file_to_image(t_game *game)
 {
@@ -206,9 +214,36 @@ void file_to_image(t_game *game)
     game->fire[2] = mlx_xpm_file_to_image(game->mlx, "enimy/3.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
     game->fire[3] = mlx_xpm_file_to_image(game->mlx, "enimy/4.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
     game->fire[4] = mlx_xpm_file_to_image(game->mlx, "enimy/5.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
-
+// header
+    game->header = mlx_xpm_file_to_image(game->mlx, "enimy/5.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
 }
-
+void mlx_free(t_game *game)
+{
+    mlx_destroy_image(game->mlx, game->wall_img);
+    mlx_destroy_image(game->mlx, game->player_img[0]);
+    mlx_destroy_image(game->mlx, game->player_img[1]);
+    mlx_destroy_image(game->mlx, game->player_img[2]);
+    mlx_destroy_image(game->mlx, game->player_img[3]);
+    mlx_destroy_image(game->mlx, game->player_img[4]);
+    mlx_destroy_image(game->mlx, game->coin_img[0]);
+    mlx_destroy_image(game->mlx, game->coin_img[1]);
+    // mlx_destroy_image(game->mlx, game->current_plyer);
+    mlx_destroy_image(game->mlx, game->exit_img_green[0]);
+    mlx_destroy_image(game->mlx, game->exit_img_green[1]);
+    mlx_destroy_image(game->mlx, game->exit_img_green[2]);
+    mlx_destroy_image(game->mlx, game->exit_img_green[3]);
+    mlx_destroy_image(game->mlx, game->exit_img_red[0]);
+    mlx_destroy_image(game->mlx, game->exit_img_red[1]);
+    mlx_destroy_image(game->mlx, game->exit_img_red[2]);
+    mlx_destroy_image(game->mlx, game->exit_img_red[3]);
+    mlx_destroy_image(game->mlx, game->floor);
+    mlx_destroy_image(game->mlx, game->fire[0]);
+    mlx_destroy_image(game->mlx, game->fire[1]);
+    mlx_destroy_image(game->mlx, game->fire[2]);
+    mlx_destroy_image(game->mlx, game->fire[3]);
+    mlx_destroy_image(game->mlx, game->fire[4]);
+    mlx_destroy_image(game->mlx, game->header);
+}
 int main(void)
 {
     t_game game;
