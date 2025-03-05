@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/25 23:51:11 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/04 03:05:19 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,8 @@ void mv_player(int key_code, t_game *game)
         pos_x--;
     }
     if (game->ma_p[pos_y][pos_x] == 'C')
-    {
         game->counter_coin++;
-        printf("coins collected %d\n", game->counter_coin);
-    }
-    handler_of_palyer_lose(game, pos_y, pos_x);
-    handler_of_player_win(game, pos_y, pos_x);
-    // if (game->counter_coin == game->total_coin)
-    // {
-    //     mlx_destroy_window(game->mlx, game->win);
-    //     exit(1);
-    // }
-        // printf("x = %d, y = %d\n", game->pos_x, game->pos_play_y);
-    // if (game
+    handler_of_plyer_win_lose(game, pos_y, pos_x);
     if (game->ma_p[pos_y][pos_x] != '1' && game->ma_p[pos_y][pos_x] != 'E' && game->ma_p[pos_y][pos_x] != 'X')
     {
         game->ma_p[game->pos_play_y][game->pos_play_x] = '0';
@@ -82,7 +71,7 @@ void mv_player(int key_code, t_game *game)
         draw_map(game);
     }
 }
-void handler_of_palyer_lose(t_game *game, int y, int x)
+void handler_of_plyer_win_lose(t_game *game, int y, int x)
 {
      if (game->ma_p[y][x] == 'X')
     {
@@ -93,40 +82,6 @@ void handler_of_palyer_lose(t_game *game, int y, int x)
         mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
-    if (game->ma_p[y][x] == 'X')
-    {
-        ft_victory(0);
-        mlx_free(game);
-
-        mlx_destroy_window(game->mlx, game->win);
-        // mlx_clear_window(game->mlx, game->win);
-        mlx_destroy_display(game->mlx);
-        exit(EXIT_SUCCESS);
-    }
-    if (game->ma_p[y][x] == 'X')
-    {
-        ft_victory(0);
-        mlx_free(game);
-
-        mlx_destroy_window(game->mlx, game->win);
-        // mlx_clear_window(game->mlx, game->win);
-        mlx_destroy_display(game->mlx);
-        exit(EXIT_SUCCESS);
-    }
-    if (game->ma_p[y][x] == 'X')
-    {
-        ft_victory(0);
-        mlx_free(game);
-
-                // mlx_clear_window(game->mlx, game->win);
-        mlx_destroy_window(game->mlx, game->win);
-        mlx_destroy_display(game->mlx);
-        exit(EXIT_SUCCESS);
-    }
-}
-
-void handler_of_player_win(t_game *game, int y, int x)
-{
     if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
     {
         ft_victory(1);
@@ -136,34 +91,8 @@ void handler_of_player_win(t_game *game, int y, int x)
         mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
-    if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
-    {
-        ft_victory(1);
-        mlx_free(game);
-        // printf("ongradulation");
-        mlx_destroy_window(game->mlx, game->win);
-        mlx_destroy_display(game->mlx);
-        exit(EXIT_SUCCESS);
-    }
-    if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
-    {
-        ft_victory(1);
-        mlx_free(game);
-        // printf("ongradulation");
-        mlx_destroy_window(game->mlx, game->win);
-        mlx_destroy_display(game->mlx);
-        exit(EXIT_SUCCESS);
-    }
-    if (game->ma_p[y][x] == 'E' && game->total_coin == game->counter_coin)
-    {
-        ft_victory(1);
-        mlx_free(game);
-        mlx_destroy_display(game->mlx);
-        // printf("ongradulation");
-        mlx_destroy_window(game->mlx, game->win);
-        exit(EXIT_SUCCESS);
-    }
 }
+
 void	ft_victory(int check)
 {
     if (check == 1)

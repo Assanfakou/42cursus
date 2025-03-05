@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/25 23:08:49 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/05 21:22:53 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define GREEN				"\033[0;32m"
+# define GREEN				"\033[93m"
 # define RED 				"\033[91m"
 # ifndef WINDOW	
 # define WINDOW 1000
@@ -85,15 +85,15 @@ void		draw_map(t_game *game);
 void		mv_player(int key_code, t_game *game);
 int			handle_keypress(int keycode, t_game *game);
 void		fill_map_struct(t_game *game);
-void		render_the_animation_coin(t_game *game);
+void		render_the_animation(t_game *game);
 void		player_pos(t_game *game);
 
 void		image_to_window(t_game *game, void *image, int x, int y);
 void		render_the_door_anima(t_game *game, void *curren, void **arr);
 void 		render_fire(t_game *game);
-void 		handler_of_player_win(t_game *game, int y, int x);
-void 		handler_of_palyer_lose(t_game *game, int y, int x);
+void 		handler_of_plyer_win_lose(t_game *game, int y, int x);
 void		ft_victory(int check);
-void mlx_free(t_game *game);
+void 		mlx_free(t_game *game);
+void		file_to_image(t_game *game);
 
 #endif
