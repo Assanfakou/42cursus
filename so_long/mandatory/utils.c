@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/05 21:49:58 by hfakou            #+#    #+#             */
+/*   Updated: 2025/03/06 02:50:43 by hfakou           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void player_pos(t_game *game)
@@ -51,5 +63,5 @@ void file_to_image(t_game *game)
 }
 void image_to_window(t_game *game, void *image, int x, int y)
 {
-    mlx_put_image_to_window(game->mlx, game->win, image, x * SUB_PEX, y * SUB_PEX);
+    mlx_put_image_to_window(game->mlx, game->win, image, x * SUB_PEX, y * SUB_PEX + 60);
 }

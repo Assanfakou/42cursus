@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/05 21:50:34 by hfakou            #+#    #+#             */
+/*   Updated: 2025/03/06 03:02:56 by hfakou           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void fill_map_struct(t_game *game)
@@ -6,18 +18,16 @@ void fill_map_struct(t_game *game)
     int y;
 
     char map[HEIGHT][WIDTH] = {
-    {'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'},
-    {'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'},
-    {'W', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'W'},
-    {'W', '1', '0', '0', '0', '0', '0', 'C', 'C', 'C', '0', '0', '0', '0', '0', 'P', '0', '0', '0', 'E', '1', 'W'},
-    {'W', '1', '0', 'X', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', 'W'},
-    {'W', '1', 'E', '1', '0', '0', '0', '0', 'E', '0', '0', 'X', '0', '0', '0', '0', '0', '0', '0', '0', '1', 'W'},
-    {'W', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '0', '1', 'W'},
-    {'W', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', 'E', '1', '0', '1', 'W'},
-    {'W', '1', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'E', '0', '0', '1', '0', '1', 'W'},
-    {'W', '1', 'E', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', 'W'},
-    {'W', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', 'W'},
-    {'W', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'W'}
+    { '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'},
+    { '1', '0', '0', '0', '0', '0', 'C', 'C', 'C', '0', '0', '0', '0', '0', 'P', '0', '0', '0', 'E', '1'},
+    { '1', '0', 'X', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1'},
+    { '1', 'E', '1', '0', '0', '0', '0', 'E', '0', '0', 'X', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
+    { '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '0', '1'},
+    { '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', 'E', '1', '0', '1'},
+    { '1', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'E', '0', '0', '1', '0', '1'},
+    { '1', 'E', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1'},
+    { '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
+    { '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'}
     };
 
     y = 0;
@@ -37,16 +47,7 @@ void fill_map_struct(t_game *game)
 
 int handle_keypress(int keycode, t_game *game)
 {   
-    mv_player(keycode, game);
-    if (keycode == UP || keycode == 'w')
-        printf("tap UP\n");
-    else if (keycode == RIGHT || keycode == 'd')
-        printf("tap RIGHT\n");
-    else if (keycode == LEFT || keycode == 'a')
-        printf("tap LEFT\n");
-    else if (keycode == DOWN || keycode == 's')
-        printf("tap DOWN\n");
-    else if (keycode == ESC || keycode == 113)
+    if (keycode == ESC || keycode == 113)
     {
         if (keycode == 113)
             printf("tap Q\n");
@@ -57,11 +58,13 @@ int handle_keypress(int keycode, t_game *game)
         mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
+    else
+        mv_player(keycode, game);
     return (0);
 }
 void image_to_window(t_game *game, void *image, int x, int y)
 {
-    mlx_put_image_to_window(game->mlx, game->win, image, x * SUB_PEX, y * SUB_PEX);
+    mlx_put_image_to_window(game->mlx, game->win, image, x * SUB_PEX, y * SUB_PEX + 60);
 }
 
 void mlx_free(t_game *game)
@@ -85,10 +88,10 @@ void mlx_free(t_game *game)
     mlx_destroy_image(game->mlx, game->floor);
     mlx_destroy_image(game->mlx, game->fire[0]);
     mlx_destroy_image(game->mlx, game->fire[1]);
-    mlx_destroy_image(game->mlx, game->fire[2]);
+    mlx_destroy_image(game->mlx, game->fire[2]);    
     mlx_destroy_image(game->mlx, game->fire[3]);
     mlx_destroy_image(game->mlx, game->fire[4]);
-    mlx_destroy_image(game->mlx, game->header);
+    // mlx_destroy_image(game->mlx, game->header);
 }
 void file_to_image(t_game *game)
 {
@@ -99,10 +102,6 @@ void file_to_image(t_game *game)
     game->player_img[2] = mlx_xpm_file_to_image(game->mlx, "peter/back.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
     game->player_img[3] = mlx_xpm_file_to_image(game->mlx, "peter/left.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
     game->player_img[4] = mlx_xpm_file_to_image(game->mlx, "peter/right.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
-    // game->player_img[5] = mlx_xpm_file_to_image(game->mlx, "peter/6.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
-    // game->player_img[6] = mlx_xpm_file_to_image(game->mlx, "peter/7.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
-    // game->player_img[7] = mlx_xpm_file_to_image(game->mlx, "peter/8.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
-    // game->player_img[8] = mlx_xpm_file_to_image(game->mlx, "peter/9.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
 // coin images 
     game->coin_img[0] = mlx_xpm_file_to_image(game->mlx, "coin_pngs/coin1.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
     game->coin_img[1] = mlx_xpm_file_to_image(game->mlx, "coin_pngs/coin2.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
@@ -118,7 +117,7 @@ void file_to_image(t_game *game)
     game->exit_img_red[1] = mlx_xpm_file_to_image(game->mlx, "gate/red_ex/2.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
     game->exit_img_red[2] = mlx_xpm_file_to_image(game->mlx, "gate/red_ex/3.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
     game->exit_img_red[3] = mlx_xpm_file_to_image(game->mlx, "gate/red_ex/4.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
-// floor
+// floor    
     game->floor = mlx_xpm_file_to_image(game->mlx, "pngs/floor.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
 // fire   
     game->fire[0] = mlx_xpm_file_to_image(game->mlx, "enimy/1.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
@@ -127,5 +126,19 @@ void file_to_image(t_game *game)
     game->fire[3] = mlx_xpm_file_to_image(game->mlx, "enimy/4.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
     game->fire[4] = mlx_xpm_file_to_image(game->mlx, "enimy/5.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
 // header
-    game->header = mlx_xpm_file_to_image(game->mlx, "enimy/5.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->counter_bar = mlx_xpm_file_to_image(game->mlx, "counter/str1.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    
+    game->counter_num[0] = mlx_xpm_file_to_image(game->mlx, "counter/1.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->counter_num[1] = mlx_xpm_file_to_image(game->mlx, "counter/2.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->counter_num[2] = mlx_xpm_file_to_image(game->mlx, "counter/3.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->counter_num[3] = mlx_xpm_file_to_image(game->mlx, "counter/4.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->counter_num[4] = mlx_xpm_file_to_image(game->mlx, "counter/5.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->counter_num[5] = mlx_xpm_file_to_image(game->mlx, "counter/6.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->counter_num[6] = mlx_xpm_file_to_image(game->mlx, "counter/7.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->counter_num[7] = mlx_xpm_file_to_image(game->mlx, "counter/8.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->counter_num[8] = mlx_xpm_file_to_image(game->mlx, "counter/9.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+    game->counter_num[9] = mlx_xpm_file_to_image(game->mlx, "counter/10.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+
+        game->floor = mlx_xpm_file_to_image(game->mlx, "pngs/floor.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+
 }

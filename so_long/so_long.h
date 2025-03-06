@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/05 21:22:53 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/06 01:31:25 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # define GREEN				"\033[93m"
 # define RED 				"\033[91m"
 # ifndef WINDOW	
-# define WINDOW 1000
+# define WINDOW 10000
 # endif
 # ifndef SUB_PEX
-# define SUB_PEX 43
+# define SUB_PEX 42
 # endif
 
 # define LEFT 65361
@@ -34,9 +34,9 @@
 # define ESC 65307
 
 # ifndef WIDTH
-# define WIDTH 22// 3
+# define WIDTH 20// 3
 # endif
-# define HEIGHT 12 // T
+# define HEIGHT 10 // T
 
 typedef struct s_game
 {
@@ -78,7 +78,9 @@ typedef struct s_game
 	void	*fire[5];
 	void	*curent_fire;
 
-	void 	*header;
+	void	*counter_num[10];
+	void 	*counter_bar;
+	int key_count;
 }			t_game;
 
 void		draw_map(t_game *game);
@@ -95,5 +97,6 @@ void 		handler_of_plyer_win_lose(t_game *game, int y, int x);
 void		ft_victory(int check);
 void 		mlx_free(t_game *game);
 void		file_to_image(t_game *game);
+void    rander_steps_counter(t_game *game, int steps);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/04 03:05:19 by assankou         ###   ########.fr       */
+/*   Updated: 2025/03/06 03:07:57 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,30 +33,60 @@ void player_pos(t_game *game)
         y++;
     }
 }
+void    rander_steps_counter(t_game *game, int steps)
+{
+	mlx_put_image_to_window(game->mlx, game->win, game->counter_num[(steps / 1000) % 10], 124, 7);
+	mlx_put_image_to_window(game->mlx, game->win, game->counter_num[(steps / 100) % 10], 167, 7);
+	mlx_put_image_to_window(game->mlx, game->win, game->counter_num[(steps / 10) % 10], 209, 7);
+	mlx_put_image_to_window(game->mlx, game->win, game->counter_num[steps % 10], 252, 8);
+}
+
+void psaudo_clear(t_game *game)
+{
+     int y;
+    int x;
+
+    y = 0;
+    while (y < HEIGHT)
+    {
+        x = 0;
+        while (x < WIDTH)
+        {
+            if (game->ma_p[y][x] == '0')
+                image_to_window(game, game->floor, x, y);
+            x++;
+        }
+        y++;
+    }
+}
 void mv_player(int key_code, t_game *game)
 {
     int pos_x = game->pos_play_x;
     int pos_y = game->pos_play_y;
 
-    if (key_code == UP || key_code == 'w' && game->ma_p[pos_y - 1][pos_x] != '1')
+    if ((key_code == UP || key_code == 'w' ) && game->ma_p[pos_y - 1][pos_x] != '1')
     {
         game->current_plyer = game->player_img[2];
         pos_y--;
+                game->key_count++;
     }
-    if (key_code == DOWN || key_code == 's' && game->ma_p[pos_y + 1][pos_x] != '1')
+    if ((key_code == DOWN || key_code == 's') && game->ma_p[pos_y + 1][pos_x] != '1')
     {
         game->current_plyer = game->player_img[1];    
         pos_y++;
+                game->key_count++;
     }
-    if (key_code == RIGHT || key_code == 'd' && game->ma_p[pos_y][pos_x + 1] != '1')
+    if ((key_code == RIGHT || key_code == 'd') && game->ma_p[pos_y][pos_x + 1] != '1')
     {
         game->current_plyer = game->player_img[4];
         pos_x++;
+                game->key_count++;
     }
-    if (key_code == LEFT || key_code == 'a' && game->ma_p[pos_y + 1][pos_x - 1] != '1')
+    if ((key_code == LEFT || key_code == 'a') && game->ma_p[pos_y][pos_x - 1] != '1')
     {
         game->current_plyer = game->player_img[3];
         pos_x--;
+                game->key_count++;
     }
     if (game->ma_p[pos_y][pos_x] == 'C')
         game->counter_coin++;
@@ -67,9 +97,13 @@ void mv_player(int key_code, t_game *game)
         game->pos_play_x = pos_x;
         game->pos_play_y = pos_y;
         game->ma_p[game->pos_play_y][game->pos_play_x] = 'P';
-        mlx_clear_window(game->mlx, game->win);
+
+        rander_steps_counter(game , game->key_count);
         draw_map(game);
+        psaudo_clear(game);
+        printf("steps %d\n", game->key_count);
     }
+
 }
 void handler_of_plyer_win_lose(t_game *game, int y, int x)
 {

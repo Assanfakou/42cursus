@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/04 03:10:24 by assankou         ###   ########.fr       */
+/*   Updated: 2025/03/06 02:32:37 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,13 @@ void draw_map(t_game *game)
                 render_the_animation(game);
                 image_to_window(game, game->current_anim, x, y);
             }
-            else if (game->ma_p[y][x] == 'X' || game->ma_p[y][x] == 'W')
+            else if (game->ma_p[y][x] == 'X')
             {
                 render_fire(game);
                 image_to_window(game, game->curent_fire, x, y);
             }
-            else if (game->ma_p[y][x] == '0')
-                image_to_window(game, game->floor, x, y);
-            // else if (game->ma_p[y][x] == 'W')
-            //     image_to_window(game, game->header, x, y);
+            // else if (game->ma_p[y][x] == '0')
+            //     image_to_window(game, game->floor, x, y);
             x++;
         }
         y++;
@@ -100,12 +98,11 @@ void loop_rendering(t_game *game)
 {
 
     update_animation(game);
-    mlx_clear_window(game->mlx, game->win);
+    //mlx_clear_window(game->mlx, game->win);
     draw_map(game);
-    usleep(100800);
+    usleep(100000);
     // mlx_free(game);
 }
-
 
 int main(void)
 {
@@ -113,19 +110,25 @@ int main(void)
 
     game.total_coin = 0;
     game.counter_coin = 0;
-
+    game.key_count = 0;
     fill_map_struct(&game);
     game.mlx = mlx_init();
-    game.win = mlx_new_window(game.mlx, WIDTH * SUB_PEX, HEIGHT * SUB_PEX, "so_long");
+    game.win = mlx_new_window(game.mlx, WIDTH * SUB_PEX, HEIGHT * SUB_PEX + 60 ,"so_long");
+
+
     file_to_image(&game);
     game.current_frame = 0;
     game.frame_delay = 4;
     draw_map(&game);
+             //mlx_put_image_to_window(game->mlx, game->win, game->counter_bar, 0 * SUB_PEX, 0 * SUB_PEX);
+    mlx_put_image_to_window(game.mlx, game.win, game.counter_bar, 0 * SUB_PEX, 0 * SUB_PEX);
     printf("total ;%d", game.total_coin);
     // printf("coin ;%d", game.counter_coin);
     // printf("x = %d, y = %d\n", game.pos_play_x, game.pos_play_y);    
     mlx_loop_hook(game.mlx, (int (*)(void *))loop_rendering, &game);
     mlx_key_hook(game.win, handle_keypress, &game);
-    // mlx_string_put(game.mlx, game.win, 105, 105, 0x000000FF, "hello world");
     mlx_loop(game.mlx);
+    
+    //mlx_put_image_to_window(game.mlx, game.win, game.counter_bar, 0 * SUB_PEX, 0 * SUB_PEX);
+
 }
