@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/05 21:42:02 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/06 23:54:30 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,14 @@
 
 int handle_keypress(int keycode, t_game *game)
 {   
-    mv_player(keycode, game);
-    if (keycode == UP || keycode == 'w')
-        printf("tap UP\n");
-    else if (keycode == RIGHT || keycode == 'd')
-        printf("tap RIGHT\n");
-    else if (keycode == LEFT || keycode == 'a')
-        printf("tap LEFT\n");
-    else if (keycode == DOWN || keycode == 's')
-        printf("tap DOWN\n");
-    else if (keycode == ESC || keycode == 113)
+    if (keycode == ESC)
     {
-        if (keycode == 113)
-            printf("tap Q\n");
-        else
-            printf("tap ESC\n");
+        printf("tap ESC\n");
         mlx_free(game);
-        mlx_destroy_window(game->mlx, game->win);
-        mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
+    else
+        mv_player(keycode, game);
     return (0);
 }
 void fill_map_struct(t_game *game)
@@ -89,8 +77,6 @@ void draw_map(t_game *game)
                     image_to_window(game, game->current_plyer, x, y);
             else if (game->map[y][x] == 'C')
                 image_to_window(game, game->coin_img, x, y);
-            else if (game->map[y][x] == '0')
-                image_to_window(game, game->floor, x, y);
             x++;
         }
         y++;
@@ -103,6 +89,7 @@ int main(void)
 
     game.total_coin = 0;
     game.counter_coin = 0;
+    game.counter_steps = 0;
 
     fill_map_struct(&game);
     game.mlx = mlx_init();

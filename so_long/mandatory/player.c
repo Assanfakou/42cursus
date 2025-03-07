@@ -6,36 +6,58 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/05 21:42:21 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/07 00:02:11 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void clear_way(t_game *game)
+{
+    int y;
+    int x;
+
+    y = 0;
+    while (y < HEIGHT)
+    {
+        x = 0;
+        while (x < WIDTH)
+        {
+            if (game->map[y][x] == '0')
+                image_to_window(game, game->floor, x, y);
+            x++;
+        }
+        y++;
+    }
+}
 void mv_player(int key_code, t_game *game)
 {
     int pos_x = game->pos_play_x;
     int pos_y = game->pos_play_y;
 
-    if (key_code == UP || key_code == 'w' && game->map[pos_y - 1][pos_x] != '1')
+    if ((key_code == UP ||  key_code == 'w') && game->map[pos_y - 1][pos_x] != '1')
     {
         game->current_plyer = game->player_img[2];
         pos_y--;
+        game->counter_steps++;
     }
-    if (key_code == DOWN || key_code == 's' && game->map[pos_y + 1][pos_x] != '1')
+    if ((key_code == DOWN || key_code == 's') && game->map[pos_y + 1][pos_x] != '1')
     {
         game->current_plyer = game->player_img[1];    
         pos_y++;
+        game->counter_steps++;    
     }
-    if (key_code == RIGHT || key_code == 'd' && game->map[pos_y][pos_x + 1] != '1')
+    if ((key_code == RIGHT || key_code == 'd') && game->map[pos_y][pos_x + 1] != '1')
     {
         game->current_plyer = game->player_img[4];
         pos_x++;
+        game->counter_steps++;
     }
-    if (key_code == LEFT || key_code == 'a' && game->map[pos_y + 1][pos_x - 1] != '1')
+    if ((key_code == LEFT || key_code == 'a') && game->map[pos_y][pos_x - 1] != '1')
     {
         game->current_plyer = game->player_img[3];
         pos_x--;
+        game->counter_steps++;
     }
     if (game->map[pos_y][pos_x] == 'C')
     {
@@ -49,8 +71,9 @@ void mv_player(int key_code, t_game *game)
         game->pos_play_x = pos_x;
         game->pos_play_y = pos_y;
         game->map[game->pos_play_y][game->pos_play_x] = 'P';
-        mlx_clear_window(game->mlx, game->win);
+        printf("steps : %d\n", game->counter_steps);
         draw_map(game);
+        clear_way(game);
     }
 }
 void handler_of_player_win_lose(t_game *game, int y, int x)
@@ -59,9 +82,6 @@ void handler_of_player_win_lose(t_game *game, int y, int x)
     {
         ft_victory(1);
         mlx_free(game);
-        // printf("CONGRATUATION");
-        mlx_destroy_window(game->mlx, game->win);
-        mlx_destroy_display(game->mlx);
         exit(EXIT_SUCCESS);
     }
 }
@@ -79,17 +99,4 @@ void	ft_victory(int check)
     ##     ##     ######    ####        ###  ###  ## ##   ###   ##  ##\n\
     ##                                                              ##\n\
     ##################################################################\n\n");
-    else
-        printf(RED"\n\
-    ##############################################################################\n\
-    ##                                                                          ##\n\
-    ##   ###    ###  #######  ##     ##    ##       #######   ######  #######   ##\n\
-    ##    ###  ###  ##     ## ##     ##    ##      ##     ## ##    ## ##        ##\n\
-    ##     ######   ##     ## ##     ##    ##      ##     ## ##       ##        ##\n\
-    ##      ####    ##     ## ##     ##    ##      ##     ##  ######  ######    ##\n\
-    ##      ####    ##     ## ##     ##    ##      ##     ##       ## ##        ##\n\
-    ##      ####    ##     ## ##     ##    ##      ##     ## ##    ## ##        ##\n\
-    ##      ####     #######   #######     ######## #######   ######  #######   ##\n\
-    ##                                                                          ##\n\
-    ##############################################################################\n\n");
 }

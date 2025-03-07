@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/06 23:24:54 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/07 03:32:27 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "../libft/libft.h"
 
-# define GREEN				"\033[6m"
+# define GREEN				"\033[93m"
 # define RED 				"\033[91m"
 # ifndef WINDOW	
-# define WINDOW 10
+# define WINDOW 10000
 # endif
 # ifndef SUB_PEX
-# define SUB_PEX 43
+# define SUB_PEX 42
 # endif
 
 # define LEFT 65361
@@ -45,23 +46,28 @@ typedef struct s_game
 
 	void	*wall_img;
 
-	char	map[HEIGHT][WIDTH];
+	char **map;
+	char	ma_p[HEIGHT][WIDTH];
 	int		hight_img;
 	int		withe_with;
 	void	*floor;
 
+	//with && hight
+	int		with;
+	int 	hight;
+	
 	// pos payer
 	int		pos_play_x;
 	int		pos_play_y;
 
+
 	void	*player_img[5];
 	void	*current_plyer;
 
-	void	*coin_img;
-
+	void	*coin_img[2];
+	int		coin_pos_y;
+	int		coin_pos_x;
 	void	*current_anim;
-
-	int 	counter_steps;
 
 	//coins calcul
 	int total_coin;
@@ -71,27 +77,33 @@ typedef struct s_game
 	int		frame_delay;
 	int		frame_countdown;
 
-	void	*exit_img_green;
+	void	*exit_img_green[4];
+	void	*exit_img_red[4];
 	void	*current_exit_img;
 
-	void	*fire;
+	void	*fire[5];
+	void	*curent_fire;
+
+	void	*counter_num[10];
+	void 	*counter_bar;
+	int		key_count;
 }			t_game;
 
 void		draw_map(t_game *game);
 void		mv_player(int key_code, t_game *game);
 int			handle_keypress(int keycode, t_game *game);
 void		fill_map_struct(t_game *game);
-void		render_the_animation_coin(t_game *game);
+void		render_the_animation(t_game *game);
 void		player_pos(t_game *game);
 
 void		image_to_window(t_game *game, void *image, int x, int y);
 void		render_the_door_anima(t_game *game, void *curren, void **arr);
 void 		render_fire(t_game *game);
-void 		handler_of_player_win_lose(t_game *game, int y, int x);
+void 		handler_of_plyer_win_lose(t_game *game, int y, int x);
 void		ft_victory(int check);
-void		mlx_free(t_game *game);
+void 		mlx_free(t_game *game);
 void		file_to_image(t_game *game);
-void		clear_way(t_game *game);
-
+void    	rander_steps_counter(t_game *game, int steps);
+void		counter_bar_fto_img(t_game *game);
 
 #endif
