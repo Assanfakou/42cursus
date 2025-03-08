@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 02:21:17 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/08 07:57:39 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int main(int ac, char **av)
     game.total_coin = 0;
     game.counter_coin = 0;
     game.key_count = 0;
-    fill_map_struct(&game);
+    coins_num(&game);
     game.mlx = mlx_init();
     game.win = mlx_new_window(game.mlx, game.with * SUB_PEX, game.hight * SUB_PEX + 60, "so_long");
 

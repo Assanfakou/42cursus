@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 03:04:07 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/08 07:57:18 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ typedef struct l_check_game
 void		draw_map(t_game *game);
 void		mv_player(int key_code, t_game *game);
 int			handle_keypress(int keycode, t_game *game);
-void		fill_map_struct(t_game *game);
+void		coins_num(t_game *game);
 void		render_the_animation(t_game *game);
 void		player_pos(t_game *game);
 

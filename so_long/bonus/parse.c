@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 01:27:04 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 03:04:38 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/08 07:48:01 by assankou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,11 @@ void arounded_by_walls(t_game *game)
     int last_row;
     int i;
 
-    last_colone = game->with;
-    last_row = game->hight;
+    last_colone = game->hight;
+    last_row = game->with;
+    printf("last colone %d\n", last_colone); 
+    printf("last row %d\n", last_row); 
+
     i = 0;
     while (i < last_row)
     {
@@ -70,7 +73,7 @@ void arounded_by_walls(t_game *game)
     while (i < last_colone)
     {
         if (game->map[i][0] != '1' || game->map[i][last_row - 1] != '1')
-            handle_error_exit(game, "The map is not closed by walls somwhere");
+            handle_error_exit(game, "The map is not closed by walls somwhere2");
         i++;
     }
 }
@@ -108,7 +111,7 @@ void     fill_map(t_game *game, char *filepath)
     game->map = alloc_map(fd, game->hight);
     game->with = ft_strlen(game->map[0]);
     count_charachters(game, &check);
-    arounded_by_walls(game);
+    // arounded_by_walls(game);
     check_erours(game, &check);
     close(fd);
 }
@@ -173,24 +176,3 @@ void count_charachters(t_game *game, t_check_game *check)
         x++;
     }
 }
-
-// int main (int ac, char **av)
-// {
-//     t_game game;
-//     int fd = open("file.ber", O_RDONLY);
-//     fill_map(&game, av[1]);
-//     // int lines = game->hight;
-
-//     int i = 0;
-//     while (i < game.hight)
-//     {
-//         int j = 0;
-//         while (j < game.with)
-//         {
-//             printf("%c", game.map[i][j]);
-//             j++;
-//         }
-//         printf("\n");
-//         i++;
-//     }
-// }
