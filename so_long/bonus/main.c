@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 07:57:39 by assankou         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:29:26 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void draw_map(t_game *game)
         y++;
     }
 }
+
 void render_fire(t_game *game)
 {
     if (game->current_frame == 0 )
@@ -62,6 +63,7 @@ void render_fire(t_game *game)
     if (game->current_frame == 4)
         game->curent_fire = game->fire[3];
 }
+
 void update_animation(t_game *game)
 {
     game->current_frame++;
@@ -92,6 +94,7 @@ void render_the_animation(t_game *game)
     if (game->current_frame == 3 && (game->total_coin != game->counter_coin))
         game->current_exit_img = game->exit_img_red[3];
 }
+
 void loop_rendering(t_game *game)
 {
     update_animation(game);
@@ -103,7 +106,7 @@ int main(int ac, char **av)
 {
     t_game game;
 
-    fill_map(&game, av[1]);    
+    fill_map(&game, av[1]);
     game.total_coin = 0;
     game.counter_coin = 0;
     game.key_count = 0;

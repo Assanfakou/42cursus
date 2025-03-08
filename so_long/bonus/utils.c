@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: assankou <assankou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 21:50:34 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 07:57:58 by assankou         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:29:18 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void mlx_free(t_game *game)
     mlx_destroy_image(game->mlx, game->coin_img[1]);
     free_map(game);
 }
+
 void file_to_image(t_game *game)
 {
     game->wall_img = mlx_xpm_file_to_image(game->mlx, "pngs/123.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
@@ -103,6 +104,7 @@ void file_to_image(t_game *game)
     game->floor = mlx_xpm_file_to_image(game->mlx, "pngs/floor.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
     counter_bar_fto_img(game);
 }
+
 void counter_bar_fto_img(t_game *game)
 {
     game->counter_bar = mlx_xpm_file_to_image(game->mlx, "counter/str1.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});

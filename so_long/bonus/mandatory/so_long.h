@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 18:06:19 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/06 23:24:54 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../libft/libft.h"
 
 # define GREEN				"\033[6m"
 # define RED 				"\033[91m"
@@ -46,13 +45,10 @@ typedef struct s_game
 
 	void	*wall_img;
 
-	char	**map;
+	char	map[HEIGHT][WIDTH];
 	int		hight_img;
 	int		withe_with;
 	void	*floor;
-
-	int		with;
-	int 	hight;
 
 	// pos payer
 	int		pos_play_x;
@@ -81,18 +77,10 @@ typedef struct s_game
 	void	*fire;
 }			t_game;
 
-typedef struct l_check_game
-{
-	int player_check;
-	int coin_check;
-	int exit_check;
-	int wall_check;
-}		t_check_game;
-
 void		draw_map(t_game *game);
 void		mv_player(int key_code, t_game *game);
 int			handle_keypress(int keycode, t_game *game);
-void 		coins_num(t_game *game);
+void		fill_map_struct(t_game *game);
 void		render_the_animation_coin(t_game *game);
 void		player_pos(t_game *game);
 
@@ -105,13 +93,5 @@ void		mlx_free(t_game *game);
 void		file_to_image(t_game *game);
 void		clear_way(t_game *game);
 
-int check_rectangular(t_game *game);
-void check_erours(t_game *game, t_check_game *check);
-void count_charachters(t_game *game, t_check_game *check);
-void 	fill_map(t_game *game, char *filepath);
-void	handle_error_exit(t_game *game, char *error);
-char **alloc_map(int fd, int lines);
-int count_line(char *file_path);
-void free_map(t_game *game);
-void arounded_by_walls(t_game *game);
+
 #endif

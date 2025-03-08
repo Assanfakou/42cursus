@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 02:20:58 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/08 18:16:48 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void player_pos(t_game *game)
         y++;
     }
 }
+
 void    rander_steps_counter(t_game *game, int steps)
 {
 	mlx_put_image_to_window(game->mlx, game->win, game->counter_num[(steps / 1000) % 10], 124, 7);
@@ -59,30 +60,32 @@ void psaudo_clear(t_game *game)
         y++;
     }
 }
+void mv_pla
+
 void mv_player(int key_code, t_game *game)
 {
     int pos_x = game->pos_play_x;
     int pos_y = game->pos_play_y;
 
-    if ((key_code == UP || key_code == 'w') && game->map[pos_y - 1][pos_x] != '1')
+    if (key_code == 'w' && game->map[pos_y - 1][pos_x] != '1')
     {
         game->current_plyer = game->player_img[2];
         pos_y--;
         game->key_count++;
     }
-    if ((key_code == DOWN || key_code == 's') && game->map[pos_y + 1][pos_x] != '1')
+    if (key_code == 's' && game->map[pos_y + 1][pos_x] != '1')
     {
         game->current_plyer = game->player_img[1];    
         pos_y++;
         game->key_count++;
     }
-    if ((key_code == RIGHT || key_code == 'd') && game->map[pos_y][pos_x + 1] != '1')
+    if (key_code == 'd' && game->map[pos_y][pos_x + 1] != '1')
     {
         game->current_plyer = game->player_img[4];
         pos_x++;
         game->key_count++;
     }
-    if ((key_code == LEFT || key_code == 'a') && game->map[pos_y][pos_x - 1] != '1')
+    if (key_code == 'a' && game->map[pos_y][pos_x - 1] != '1')
     {
         game->current_plyer = game->player_img[3];
         pos_x--;
@@ -104,6 +107,7 @@ void mv_player(int key_code, t_game *game)
         ft_printf("steps %d\n", game->key_count);
     }
 }
+
 void handler_of_plyer_win_lose(t_game *game, int y, int x)
 {
     if (game->map[y][x] == 'X')
