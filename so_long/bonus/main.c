@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/07 01:15:32 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/08 02:21:17 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void draw_map(t_game *game)
 
     player_pos(game);
     y = 0;
-    while (y < HEIGHT)
+    while (y < game->hight)
     {
         x = 0;
-        while (x < WIDTH)
+        while (x < game->with)
         {
-            if (game->ma_p[y][x] == '1')
+            if (game->map[y][x] == '1')
                 image_to_window(game, game->wall_img, x, y);
-            else if (game->ma_p[y][x] == 'E')
+            else if (game->map[y][x] == 'E')
             {
                 if (game->total_coin == game->counter_coin)
                     render_the_animation(game);
@@ -34,14 +34,14 @@ void draw_map(t_game *game)
                     render_the_animation(game);
                 image_to_window(game, game->current_exit_img, x, y);
             }
-            else if (game->ma_p[y][x] == 'P')
+            else if (game->map[y][x] == 'P')
                     image_to_window(game, game->current_plyer, x, y);
-            else if (game->ma_p[y][x] == 'C')
+            else if (game->map[y][x] == 'C')
             {
                 render_the_animation(game);
                 image_to_window(game, game->current_anim, x, y);
             }
-            else if (game->ma_p[y][x] == 'X')
+            else if (game->map[y][x] == 'X')
             {
                 render_fire(game);
                 image_to_window(game, game->curent_fire, x, y);
@@ -99,16 +99,17 @@ void loop_rendering(t_game *game)
     usleep(100000);
 }
 
-int main(void)
+int main(int ac, char **av)
 {
     t_game game;
 
+    fill_map(&game, av[1]);    
     game.total_coin = 0;
     game.counter_coin = 0;
     game.key_count = 0;
     fill_map_struct(&game);
     game.mlx = mlx_init();
-    game.win = mlx_new_window(game.mlx, WIDTH * SUB_PEX, HEIGHT * SUB_PEX + 60, "so_long");
+    game.win = mlx_new_window(game.mlx, game.with * SUB_PEX, game.hight * SUB_PEX + 60, "so_long");
 
     file_to_image(&game);
     game.current_frame = 0;
