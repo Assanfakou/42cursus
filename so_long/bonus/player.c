@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 18:16:48 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/08 19:30:30 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void psaudo_clear(t_game *game)
         y++;
     }
 }
-void mv_pla
 
 void mv_player(int key_code, t_game *game)
 {

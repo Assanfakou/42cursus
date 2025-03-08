@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 17:27:24 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/08 19:16:13 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	clear_way(t_game *game)
 		y++;
 	}
 }
-
+void ft_()
+{}
 void	mv_player(int key_code, t_game *game)
 {
 	int	pos_x;

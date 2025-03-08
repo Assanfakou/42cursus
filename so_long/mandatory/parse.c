@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 01:27:04 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 18:07:00 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/08 19:08:02 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	count_charachters(t_game *game, t_check_game *check)
 			if (game->map[x][y] == 'P')
 				check->player_check++;
 			if (game->map[x][y] == '1')
-				check->enimy_check++;
+				check->wall_check++;
 			if (game->map[x][y] == 'E')
 				check->exit_check++;
 			y++;
