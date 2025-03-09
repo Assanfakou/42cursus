@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 01:27:04 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 17:53:44 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/09 02:25:23 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int count_line(char *file_path)
     char *line;
 
     fd = open(file_path, O_RDONLY);
+    if (fd < 0)
+        exit(EXIT_FAILURE);
     line = get_next_line(fd);
     line_num = 0;
     while (line != NULL)
@@ -55,10 +57,10 @@ char **alloc_map(int fd, int lines)
 void     fill_map(t_game *game, char *filepath)
 {
     int fd;
-    char **map;
     t_check_game check;
 
-    if (!ft_strnstr(filepath, ".ber", ft_strlen(filepath)))
+    if (ft_strlen(filepath) < 4
+    || ft_strncmp(filepath + (ft_strlen(filepath) - 4), ".ber", ft_strlen(filepath)) != 0)
     {
         ft_putendl_fd("Error", 2);
         ft_putendl_fd("the file name incorrect", 2);
@@ -66,6 +68,8 @@ void     fill_map(t_game *game, char *filepath)
     }
     ft_bzero(&check, sizeof(t_check_game));
     fd = open(filepath, O_RDONLY);
+    if (fd < 0)
+        exit(EXIT_FAILURE);
     game->hight = count_line(filepath);
     game->map = alloc_map(fd, game->hight);
     game->with = ft_strlen(game->map[0]);

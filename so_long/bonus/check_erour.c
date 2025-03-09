@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 17:29:50 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 17:51:58 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/09 02:18:29 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void arounded_by_walls(t_game *game)
         i++;
     }
 }
+
 void free_map(t_game *game)
 {
     int i;
@@ -50,6 +51,7 @@ void free_map(t_game *game)
     }
     free(game->map);
 }
+
 void	handle_error_exit(t_game *game, char *error)
 {
 	free_map(game);
@@ -77,6 +79,7 @@ int check_rectangular(t_game *game)
     }
     return (1);
 }
+
 void check_erours(t_game *game, t_check_game *check)
 {
     if (check->exit_check > 1)

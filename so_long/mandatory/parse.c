@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 01:27:04 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 19:08:02 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/09 02:17:17 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ char	**alloc_map(int fd, int lines)
 void	fill_map(t_game *game, char *filepath)
 {
 	int				fd;
-	char			**map;
 	t_check_game	check;
 
-	if (!ft_strnstr(filepath, ".ber", ft_strlen(filepath)))
+	if (ft_strlen(filepath) < 4 ||
+	ft_strncmp(filepath + (ft_strlen(filepath) - 4), ".ber", ft_strlen(filepath)) != 0)
     {
         ft_putendl_fd("Error", 2);
         ft_putendl_fd("the file name incorrect", 2);

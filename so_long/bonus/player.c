@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 19:30:30 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/09 01:43:31 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,43 +61,47 @@ void psaudo_clear(t_game *game)
     }
 }
 
-void mv_player(int key_code, t_game *game)
+void decide_player(int key_code, t_game *game)
 {
-    int pos_x = game->pos_play_x;
-    int pos_y = game->pos_play_y;
-
-    if (key_code == 'w' && game->map[pos_y - 1][pos_x] != '1')
+    if (key_code == 'w' && game->map[game->pos_y - 1][game->pos_x] != '1')
     {
         game->current_plyer = game->player_img[2];
-        pos_y--;
+        game->pos_y--;
         game->key_count++;
     }
-    if (key_code == 's' && game->map[pos_y + 1][pos_x] != '1')
+    if (key_code == 's' && game->map[game->pos_y + 1][game->pos_x] != '1')
     {
         game->current_plyer = game->player_img[1];    
-        pos_y++;
+        game->pos_y++;
         game->key_count++;
     }
-    if (key_code == 'd' && game->map[pos_y][pos_x + 1] != '1')
+    if (key_code == 'd' && game->map[game->pos_y][game->pos_x + 1] != '1')
     {
         game->current_plyer = game->player_img[4];
-        pos_x++;
+        game->pos_x++;
         game->key_count++;
     }
-    if (key_code == 'a' && game->map[pos_y][pos_x - 1] != '1')
+    if (key_code == 'a' && game->map[game->pos_y][game->pos_x - 1] != '1')
     {
         game->current_plyer = game->player_img[3];
-        pos_x--;
+        game->pos_x--;
         game->key_count++;
     }
-    if (game->map[pos_y][pos_x] == 'C')
+}
+void mv_player(int key_code, t_game *game)
+{
+    game->pos_x = game->pos_play_x;
+    game->pos_y = game->pos_play_y;
+    decide_player(key_code, game);
+    if (game->map[game->pos_y][game->pos_x] == 'C')
         game->counter_coin++;
-    handler_of_plyer_win_lose(game, pos_y, pos_x);
-    if ((game->map[pos_y][pos_x] != '1' && game->map[pos_y][pos_x] != 'E') && game->map[pos_y][pos_x] != 'X')
+    handler_of_plyer_win_lose(game, game->pos_y, game->pos_x);
+    if ((game->map[game->pos_y][game->pos_x] != '1' && game->map[game->pos_y][game->pos_x] != 'E')
+    && game->map[game->pos_y][game->pos_x] != 'X')
     {
         game->map[game->pos_play_y][game->pos_play_x] = '0';
-        game->pos_play_x = pos_x;
-        game->pos_play_y = pos_y;
+        game->pos_play_x = game->pos_x;
+        game->pos_play_y = game->pos_y;
         game->map[game->pos_play_y][game->pos_play_x] = 'P';
 
         rander_steps_counter(game , game->key_count);

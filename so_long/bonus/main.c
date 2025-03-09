@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 17:29:26 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/09 02:07:00 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ int main(int ac, char **av)
 {
     t_game game;
 
+    if (ac != 2)
+        return (1);
     fill_map(&game, av[1]);
     game.total_coin = 0;
     game.counter_coin = 0;

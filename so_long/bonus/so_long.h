@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 17:53:46 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/09 02:12:40 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ typedef struct s_game
 	void	*current_anim;
 
 	//coins calcul
+	int pos_x;
+	int pos_y;
 	int total_coin;
 	int counter_coin;
 
@@ -123,5 +125,6 @@ char **alloc_map(int fd, int lines);
 int count_line(char *file_path);
 void free_map(t_game *game);
 void arounded_by_walls(t_game *game);
+void decide_player(int key_code, t_game *game);
 
 #endif
