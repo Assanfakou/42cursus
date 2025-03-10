@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 01:27:04 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/09 02:17:17 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/10 08:12:33 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int	count_line(char *file_path)
 	char	*line;
 
 	fd = open(file_path, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putendl_fd("Error : No such file or directory", 2);
+		exit(EXIT_FAILURE);
+	}
 	line = get_next_line(fd);
 	line_num = 0;
 	while (line != NULL)
@@ -26,6 +31,11 @@ int	count_line(char *file_path)
 		free(line);
 		line = get_next_line(fd);
 		line_num++;
+	}
+	if (line_num == 0)
+	{
+		ft_putendl_fd("Error : The file is empty", 2);
+		exit(EXIT_FAILURE);
 	}
 	close(fd);
 	return (line_num);
@@ -39,7 +49,7 @@ char	**alloc_map(int fd, int lines)
 
 	map = malloc(sizeof(char *) * (lines + 1));
 	if (!map)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	line = get_next_line(fd);
 	i = 0;
 	while (line)
@@ -57,20 +67,27 @@ void	fill_map(t_game *game, char *filepath)
 	int				fd;
 	t_check_game	check;
 
-	if (ft_strlen(filepath) < 4 ||
-	ft_strncmp(filepath + (ft_strlen(filepath) - 4), ".ber", ft_strlen(filepath)) != 0)
-    {
-        ft_putendl_fd("Error", 2);
-        ft_putendl_fd("the file name incorrect", 2);
-        exit(EXIT_FAILURE);
-    }
-    ft_bzero(&check, sizeof(t_check_game));
 	fd = open(filepath, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putendl_fd("Error : No such file or directory", 2);
+		exit(EXIT_FAILURE);
+	}
+	if (ft_strlen(filepath) < 4 || ft_strncmp(filepath + (ft_strlen(filepath)
+				- 4), ".ber", 4) != 0)
+	{
+		ft_putendl_fd("Error", 2);
+		ft_putendl_fd("the file name incorrect", 2);
+		exit(EXIT_FAILURE);
+	}
+	ft_bzero(&check, sizeof(t_check_game));
 	game->hight = count_line(filepath);
 	game->map = alloc_map(fd, game->hight);
 	game->with = ft_strlen(game->map[0]);
-	count_charachters(game, &check);
+	if (check_rectangular(game) == 0)
+		handle_error_exit(game, "The map most be rectangular");
 	check_erours(game, &check);
+	check_valid_path(game);
 	close(fd);
 }
 
@@ -78,8 +95,6 @@ void	count_charachters(t_game *game, t_check_game *check)
 {
 	int	y;
 	int	x;
-	int	hight;
-	int	with;
 
 	x = 0;
 	while (x < game->hight)
@@ -89,12 +104,14 @@ void	count_charachters(t_game *game, t_check_game *check)
 		{
 			if (game->map[x][y] == 'C')
 				check->coin_check++;
-			if (game->map[x][y] == 'P')
+			else if (game->map[x][y] == 'P')
 				check->player_check++;
-			if (game->map[x][y] == '1')
+			else if (game->map[x][y] == '1')
 				check->wall_check++;
-			if (game->map[x][y] == 'E')
+			else if (game->map[x][y] == 'E')
 				check->exit_check++;
+			else if (game->map[x][y] != '0')
+				handle_error_exit(game, "There is an anonyme charachter");
 			y++;
 		}
 		x++;

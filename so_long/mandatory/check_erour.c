@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 17:08:21 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/08 17:10:16 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/10 07:33:26 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ void	arounded_by_walls(t_game *game)
 	}
 }
 
-void	free_map(t_game *game)
+void	free_map(t_game *game, char **map)
 {
 	int	i;
 
 	i = 0;
 	while (i < game->hight)
 	{
-		free(game->map[i]);
+		free(map[i]);
 		i++;
 	}
-	free(game->map);
+	free(map);
 }
 
 void	handle_error_exit(t_game *game, char *error)
 {
-	free_map(game);
+	free_map(game, game->map);
 	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(error, 2);
 	exit(EXIT_FAILURE);
@@ -79,15 +79,16 @@ int	check_rectangular(t_game *game)
 
 void	check_erours(t_game *game, t_check_game *check)
 {
+	arounded_by_walls(game);
+	count_charachters(game, check);
 	if (check->exit_check > 1)
 		handle_error_exit(game, "It most be there one exit point");
+	else if (check->coin_check == 0)
+		handle_error_exit(game, "There is no coin in the map");
 	else if (check->player_check > 1)
 		handle_error_exit(game, "It most be there one Player");
 	else if (check->exit_check == 0)
 		handle_error_exit(game, "There is no exit point in the giving map");
 	else if (check->player_check == 0)
 		handle_error_exit(game, "There is no player in the giving map");
-	else if (check_rectangular(game) == 0)
-		handle_error_exit(game, "The map most be rectangular");
-	arounded_by_walls(game);
 }

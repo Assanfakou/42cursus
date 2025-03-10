@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:50 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/07 02:06:20 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/10 07:29:48 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../libft.h"
-
 
 char	*_ft_strchr(char *str, char to_find);
 size_t	_ft_strlen(const char *str);
