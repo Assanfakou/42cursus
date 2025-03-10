@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 08:12:39 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/10 20:57:35 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ char		**alloc_map(int fd, int lines);
 int			count_line(char *file_path);
 void		free_map(t_game *game, char **map);
 void		arounded_by_walls(t_game *game);
-void		decide_player(int key_code, t_game *game);
+int		decide_player(int key_code, t_game *game);
 
 void		flood_fill(char **map, int y, int x);
 void		check_valid_path(t_game *game);

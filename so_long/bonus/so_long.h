@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 06:47:40 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/10 22:00:09 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ void		handler_of_plyer_win_lose(t_game *game, int y, int x);
 void		ft_victory(int check);
 void		mlx_free(t_game *game);
 void		file_to_image(t_game *game);
+void alloc_gate(t_game *game);
+void alloc_enimy(t_game *game);
+
 void		rander_steps_counter(t_game *game, int steps);
 void		counter_bar_fto_img(t_game *game);
 
