@@ -6,13 +6,13 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 04:10:09 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 21:32:58 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/10 23:37:47 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**secondary_map(t_game *game) 
+char	**secondary_map(t_game *game)
 {
 	char	**second_map;
 	int		y;

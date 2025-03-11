@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 22:17:49 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/11 01:50:27 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,9 @@ int	handle_keypress(int keycode, t_game *game)
 	return (0);
 }
 
-void	coins_num(t_game *game)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < game->hight)
-	{
-		x = 0;
-		while (x < game->with)
-		{
-			if (game->map[y][x] == 'C')
-				game->total_coin++;
-			x++;
-		}
-		y++;
-	}
-}
-
 void	draw_map(t_game *game)
 {
-	int	y;
-	int	x;
-
+	int (y), (x);
 	player_pos(game);
 	y = 0;
 	while (y < game->hight)
@@ -58,7 +37,11 @@ void	draw_map(t_game *game)
 			if (game->map[y][x] == '1')
 				image_to_window(game, game->wall_img, x, y);
 			else if (game->map[y][x] == 'E')
+			{
+				game->exit_pos_x = x;
+				game->exit_pos_y = y;
 				image_to_window(game, game->exit_img_green, x, y);
+			}
 			else if (game->map[y][x] == 'P')
 				image_to_window(game, game->current_plyer, x, y);
 			else if (game->map[y][x] == 'C')
@@ -68,7 +51,6 @@ void	draw_map(t_game *game)
 		y++;
 	}
 }
-
 
 int	main(int ac, char **av)
 {
@@ -88,7 +70,6 @@ int	main(int ac, char **av)
 	game.current_frame = 0;
 	game.frame_delay = 4;
 	draw_map(&game);
-	printf("total ;%d", game.total_coin);
 	mlx_key_hook(game.win, handle_keypress, &game);
 	mlx_loop(game.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 20:57:35 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/11 01:33:28 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,25 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define GREEN "\033[6m"
-# define RED "\033[91m"
+# ifndef GREEN
+#  define GREEN "\033[6m"
+# endif
+
+# ifndef RED
+#  define RED "\033[91m"
+# endif
+
 # ifndef WINDOW
 #  define WINDOW 10
 # endif
+
 # ifndef SUB_PEX
 #  define SUB_PEX 43
 # endif
 
-# define LEFT 65361
-# define UP 65362
-# define RIGHT 65363
-# define DOWN 65364
-# define ESC 65307
+# ifndef ESC
+#  define ESC 65307
+# endif
 
 typedef struct s_game
 {
@@ -54,6 +59,9 @@ typedef struct s_game
 	// pos payer
 	int		pos_play_x;
 	int		pos_play_y;
+
+	int		exit_pos_x;
+	int		exit_pos_y;
 
 	void	*player_img[5];
 	void	*current_plyer;
@@ -111,7 +119,7 @@ char		**alloc_map(int fd, int lines);
 int			count_line(char *file_path);
 void		free_map(t_game *game, char **map);
 void		arounded_by_walls(t_game *game);
-int		decide_player(int key_code, t_game *game);
+int			decide_player(int key_code, t_game *game);
 
 void		flood_fill(char **map, int y, int x);
 void		check_valid_path(t_game *game);

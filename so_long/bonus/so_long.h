@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 22:00:09 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/11 01:59:39 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@
 
 # define GREEN "\033[93m"
 # define RED "\033[91m"
+
 # ifndef WINDOW
 #  define WINDOW 10000
 # endif
+
 # ifndef SUB_PEX
 #  define SUB_PEX 42
 # endif
 
-# define LEFT 65361
-# define UP 65362
-# define RIGHT 65363
-# define DOWN 65364
-# define ESC 65307
+# ifndef ESC
+#  define ESC 65307
+# endif
 
 typedef struct s_game
 {
@@ -40,8 +40,6 @@ typedef struct s_game
 	void	*mlx;
 
 	void	*wall_img;
-
-	// int		hight_img;
 
 	// with && hight
 	int		with;
@@ -52,6 +50,9 @@ typedef struct s_game
 	// pos payer
 	int		pos_play_x;
 	int		pos_play_y;
+
+	int		exit_pos_x;
+	int		exit_pos_y;
 
 	int		pos_x;
 	int		pos_y;
@@ -104,12 +105,13 @@ void		player_pos(t_game *game);
 void		image_to_window(t_game *game, void *image, int x, int y);
 void		render_the_door_anima(t_game *game, void *curren, void **arr);
 void		render_fire(t_game *game);
+void		loop_rendering(t_game *game);
 void		handler_of_plyer_win_lose(t_game *game, int y, int x);
 void		ft_victory(int check);
 void		mlx_free(t_game *game);
 void		file_to_image(t_game *game);
-void alloc_gate(t_game *game);
-void alloc_enimy(t_game *game);
+void		alloc_gate(t_game *game);
+void		alloc_enimy(t_game *game);
 
 void		rander_steps_counter(t_game *game, int steps);
 void		counter_bar_fto_img(t_game *game);

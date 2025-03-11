@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 22:26:12 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/11 01:23:29 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	clear_way(t_game *game)
 	int	y;
 	int	x;
 
+	if (game->map[game->exit_pos_y][game->exit_pos_x] != 'P')
+		game->map[game->exit_pos_y][game->exit_pos_x] = 'E';
 	y = 0;
 	while (y < game->hight)
 	{
@@ -27,11 +29,14 @@ void	clear_way(t_game *game)
 				image_to_window(game, game->floor, x, y);
 			else if (game->map[y][x] == 'P')
 				image_to_window(game, game->current_plyer, x, y);
+			else if (game->map[y][x] == 'E')
+				image_to_window(game, game->exit_img_green, x, y);
 			x++;
 		}
 		y++;
 	}
 }
+
 int	decide_player(int key_code, t_game *game)
 {
 	if (key_code == 'w' && game->map[game->pos_y - 1][game->pos_x] != '1')
@@ -68,18 +73,14 @@ void	mv_player(int key_code, t_game *game)
 	if (decide_player(key_code, game) == 1)
 	{
 		game->counter_steps++;
-		ft_printf("sreps %d\n", game->counter_steps);
+		ft_printf("steps %d\n", game->counter_steps);
 	}
 	if (game->map[game->pos_y][game->pos_x] == 'C')
 		game->counter_coin++;
 	handler_of_player_win_lose(game, game->pos_y, game->pos_x);
 	if (game->map[game->pos_y][game->pos_x] != '1')
 	{
-		if (game->map[game->pos_y][game->pos_x] == 'E')
-				game->map[game->pos_play_y][game->pos_play_x] = 'E'; // make a position of exit
-		else
-			game->map[game->pos_play_y][game->pos_play_x] = '0';
-		draw_map(game);
+		game->map[game->pos_play_y][game->pos_play_x] = '0';
 		game->pos_play_x = game->pos_x;
 		game->pos_play_y = game->pos_y;
 		game->map[game->pos_play_y][game->pos_play_x] = 'P';

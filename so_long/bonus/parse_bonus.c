@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 01:27:04 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 21:32:50 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/10 23:38:47 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	count_line(char *file_path)
 	int		fd;
 	char	*line;
 
-	fd = open(file_path, O_RDONLY); 
+	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
 		exit(EXIT_FAILURE);
 	line = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 21:49:58 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 20:30:14 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/11 01:23:45 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,25 @@ void	player_pos(t_game *game)
 	}
 }
 
+void	coins_num(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < game->hight)
+	{
+		x = 0;
+		while (x < game->with)
+		{
+			if (game->map[y][x] == 'C')
+				game->total_coin++;
+			x++;
+		}
+		y++;
+	}
+}
+
 void	mlx_free(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->wall_img);
@@ -53,8 +72,8 @@ void	mlx_free(t_game *game)
 
 void	file_to_image(t_game *game)
 {
-	game->wall_img = mlx_xpm_file_to_image(game->mlx,
-			"textures/pngs/123.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
+	game->wall_img = mlx_xpm_file_to_image(game->mlx, "textures/pngs/123.xpm",
+			&(int){SUB_PEX}, &(int){SUB_PEX});
 	game->player_img[0] = mlx_xpm_file_to_image(game->mlx,
 			"textures/peter/straight.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
 	game->player_img[1] = mlx_xpm_file_to_image(game->mlx,
@@ -66,12 +85,10 @@ void	file_to_image(t_game *game)
 	game->player_img[4] = mlx_xpm_file_to_image(game->mlx,
 			"textures/peter/right.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
 	game->coin_img = mlx_xpm_file_to_image(game->mlx,
-			"textures/coin_pngs/coin1.xpm", &(int){SUB_PEX},
-			&(int){SUB_PEX});
+			"textures/coin_pngs/coin1.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
 	game->current_plyer = game->player_img[0];
 	game->exit_img_green = mlx_xpm_file_to_image(game->mlx,
-			"textures/gate/green_ex/1.xpm", &(int){SUB_PEX},
-			&(int){SUB_PEX});
+			"textures/gate/green_ex/1.xpm", &(int){SUB_PEX}, &(int){SUB_PEX});
 	game->floor = mlx_xpm_file_to_image(game->mlx, "textures/pngs/floor.xpm",
 			&(int){SUB_PEX}, &(int){SUB_PEX});
 }
