@@ -19,6 +19,15 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+
+# ifndef WINDOW_HIGHT
+# define WINDOW_HIGHT 1800
+# endif
+
+# ifndef WINDOW_WIDTH
+#  define WINDOW_WIDTH 3200
+# endif
+
 # ifndef GREEN
 #  define GREEN "\033[6m"
 # endif

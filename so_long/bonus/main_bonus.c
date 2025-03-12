@@ -52,7 +52,10 @@ int	main(int ac, char **av)
 	game.key_count = 0;
 	coins_num(&game);
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, game.with * SUB_PEX, game.hight
+	if (game.with <= 6)
+		game.win = mlx_new_window(game.mlx, game.with * SUB_PEX + 75, game.hight * SUB_PEX + 60, "so_long");
+	else
+		game.win = mlx_new_window(game.mlx, game.with * SUB_PEX, game.hight
 			* SUB_PEX + 60, "so_long");
 	file_to_image(&game);
 	game.current_frame = 0;

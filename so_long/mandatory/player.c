@@ -101,7 +101,7 @@ void	handler_of_player_win_lose(t_game *game, int y, int x)
 void	ft_victory(int check)
 {
 	if (check == 1)
-		printf(GREEN "\n\
+		printf("\n\
     #################################################################\n\
     ##                                                              ##\n\
     ##  ###  ###  ######  ##    ##     ##      ## ## ##    ##   ##  ##\n\

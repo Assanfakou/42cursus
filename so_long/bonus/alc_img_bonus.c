@@ -101,5 +101,5 @@ void	counter_bar_fto_img(t_game *game)
 void	image_to_window(t_game *game, void *image, int x, int y)
 {
 	mlx_put_image_to_window(game->mlx, game->win, image, x * SUB_PEX, y
-		* SUB_PEX + 60);
+	* SUB_PEX + 60);
 }

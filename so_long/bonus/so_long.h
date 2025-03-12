@@ -19,11 +19,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define GREEN "\033[93m"
-# define RED "\033[91m"
-
 # ifndef WINDOW
 #  define WINDOW 10000
+# endif
+
+# ifndef WINDOW_HIGHT
+# define WINDOW_HIGHT 1800
+# endif
+
+# ifndef WINDOW_WIDTH
+#  define WINDOW_WIDTH 3200
 # endif
 
 # ifndef SUB_PEX

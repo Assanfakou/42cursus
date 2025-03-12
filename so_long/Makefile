@@ -18,7 +18,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 NAME = so_long
 
-all: $(LIBFT) $(NAME)
+ali: $(LIBFT) $(NAME)
 
 $(LIBFT):
 	${MAKE} -C $(LIBFT_DIR)
@@ -30,10 +30,10 @@ $(NAME): $(LIBFT) $(OBG_SRC)
 	$(CC) $(CFLAGS) $(OBG_SRC) -L $(LIBFT_DIR) -lft $(MLX_FLAGS) -o $(NAME)
 
 clean:
-	rm $(OBG_SRC) $(OBG_BNS)
-	rm $(LIBFT_DIR)/*.o
+	$(RM) $(OBG_SRC) $(OBG_BNS)
+	$(MAKE) fclean -C $(LIBFT_DIR)
 
 fclean: clean
-	rm so_long
-	rm $(LIBFT)
+	$(RM) so_long
+	$(RM) $(LIBFT)
 re: fclean all

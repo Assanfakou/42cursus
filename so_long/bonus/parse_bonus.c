@@ -74,10 +74,15 @@ void	fill_map(t_game *game, char *filepath)
 	game->map = alloc_map(fd, game->hight);
 	game->with = ft_strlen(game->map[0]);
 	if (check_rectangular(game) == 0)
-		handle_error_exit(game, "The map most be rectangular");
+		handle_error_exit(game, "The map must be rectangular");
 	count_charachters(game, &check);
 	arounded_by_walls(game);
 	check_erours(game, &check);
+	if (game->hight > WINDOW_HIGHT || game->with > WINDOW_WIDTH)
+	{
+		check_valid_path(game);
+		handle_error_exit(game, "THE map is valid but too long");
+	}
 	check_valid_path(game);
 	close(fd);
 }
