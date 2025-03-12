@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 05:23:42 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 08:34:20 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/12 20:36:45 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,6 @@ void checker_bns(t_stack **stack_a, t_stack **stack_b)
         free(line);
         line = get_next_line(0);
     }
-    if (check_duplicat(stack_a) == 0)
-    {
-        free(line);
-        write(2, "Error2\n", 6);
-        exit(EXIT_FAILURE);
-    } 
     if (already_sorted(*stack_a) == 1)
         write(1, "OK\n", 3);
     else

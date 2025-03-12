@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:40:39 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 08:03:51 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/12 20:40:23 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ int	main(int ac, char **av)
 	if (!stack_a)
 	{
 		write(2, "Error\n", 6);
+		return (0);
+	}
+	arr = fill_arr(stack_a);
+	if (!check_duplicat(arr, listint_len(stack_a)))
+	{
+		write(2, "Error\n", 6);
+		free(arr);
+		clear_stack(&stack_a);
 		return (0);
 	}
 	if (already_sorted(stack_a))

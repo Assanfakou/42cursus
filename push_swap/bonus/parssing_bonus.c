@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:49:31 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 08:33:34 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/12 20:18:42 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,16 @@ t_stack	*pars_args(char **arg, int size)
 	return (stackd);
 }
 
-int	check_duplicat(t_stack **stack_a)
+int	check_duplicat(int *arr, int size)
 {
 	int	i;
-	t_stack *walk;
 
-	walk = *stack_a;
 	i = 0;
-	while (walk)
+	while (i < size - 1)
 	{
-		if (walk->num == walk->next->num)
+		if (arr[i] == arr[i + 1])
 			return (0);
-		walk = walk->next;
+		i++;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 08:38:37 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/12 20:22:33 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_stack				*pars_args(char **arg, int size);
 void				free_arr(char **arr);
 int					*fill_arr(t_stack *stack_h);
 void				sort_arr(int *arr, int size);
-int					check_duplicat(t_stack **stack_a);
+int					check_duplicat(int *arr, int size);
 
 int					calcul_ops(t_stack **b, int ind_big);
 int					get_big_idx(t_stack **b);
