@@ -1,35 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   p_swap_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:40:39 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 06:45:34 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/12 08:03:51 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-void	push_to_a(t_stack **a, t_stack **b, int big_idx)
-{
-	int	ops;
-
-	ops = calcul_ops(b, big_idx);
-	while (ops > 0)
-	{
-		ops--;
-		rb(b);
-	}
-	while (ops < 0)
-	{
-		ops++;
-		rrb(b);
-	}
-	pa(a, b);
-}
-// ading some functins here to header
 int	already_sorted(t_stack *stack_a)
 {
 	t_stack	*walk;
@@ -46,15 +28,6 @@ int	already_sorted(t_stack *stack_a)
 	return (1);
 }
 
-void	sort_stack_by_size(t_stack **a, t_stack **b, int *arr)
-{
-	if (listint_len(*a) > 10)
-		sort_stack(a, b, arr, listint_len(*a));
-	else if (listint_len(*a) <= 10)
-		small_sort(a, b);
-	free(arr);
-}
-
 int	main(int ac, char **av)
 {
 	int (*arr);
@@ -67,19 +40,11 @@ int	main(int ac, char **av)
 		write(2, "Error\n", 6);
 		return (0);
 	}
-	arr = fill_arr(stack_a);
-	if (!check_duplicat(arr, listint_len(stack_a)))
-	{
-		write(2, "Error\n", 6);
-		free(arr);
-		clear_stack(&stack_a);
-		return (0);
-	}
 	if (already_sorted(stack_a))
 	{
 		clear_stack(&stack_a);
 		return (1);
 	}
-	sort_stack_by_size(&stack_a, &stack_b, arr);
+	checker_bns(&stack_a, &stack_b);
 	clear_stack(&stack_a);
 }

@@ -3380,7 +3380,7 @@ fi
 done
 
 ((val--))
-media=$(($media/$val))
+media=$(($media+$val))
 printf "${CYAN}\n\nMax: $alta${DEF_COLOR}\n"
 printf "${CYAN}Min: $baja${DEF_COLOR}\n"
 printf "${CYAN}Average: $media${DEF_COLOR}\n"

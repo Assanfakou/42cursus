@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 15:41:16 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/08 16:38:11 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/12 04:42:24 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int	ft_putnum_uhex(unsigned int nbr)
 	if (nbr >= 16)
 		r = ft_putnum_uhex(nbr / 16);
 	r += ft_putchar(bas[nbr % 16]);
-	return (r);
+	return (r); 
 }
