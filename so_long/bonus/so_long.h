@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/11 01:59:39 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/12 21:21:00 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void		player_pos(t_game *game);
 void		image_to_window(t_game *game, void *image, int x, int y);
 void		render_the_door_anima(t_game *game, void *curren, void **arr);
 void		render_fire(t_game *game);
-void		loop_rendering(t_game *game);
+int			loop_rendering(t_game *game);
 void		handler_of_plyer_win_lose(t_game *game, int y, int x);
 void		ft_victory(int check);
 void		mlx_free(t_game *game);

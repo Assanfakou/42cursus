@@ -18,12 +18,12 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 NAME = so_long
 
-ali: $(LIBFT) $(NAME)
+all: $(LIBFT) $(NAME)
 
 $(LIBFT):
 	${MAKE} -C $(LIBFT_DIR)
 
-bonus: $(OBG_SRC) $(OBG_BNS)
+bonus: $(LIBFT) $(OBG_BNS)
 	$(CC) $(CFLAGS) $(OBG_BNS) -L $(LIBFT_DIR) -lft $(MLX_FLAGS) -o $(NAME)
 
 $(NAME): $(LIBFT) $(OBG_SRC)

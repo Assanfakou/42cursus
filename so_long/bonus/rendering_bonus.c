@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 01:36:10 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/11 01:55:43 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/12 21:25:00 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ void	render_the_animation(t_game *game)
 		game->current_exit_img = game->exit_img_red[3];
 }
 
-void	loop_rendering(t_game *game)
+int	loop_rendering(t_game *game)
 {
 	update_animation(game);
 	draw_map(game);
 	usleep(100000);
+	return (0);
 }

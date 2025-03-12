@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/11 02:38:54 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/12 21:29:02 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int ac, char **av)
 	coins_num(&game);
 	game.mlx = mlx_init();
 	if (game.with <= 6)
-		game.win = mlx_new_window(game.mlx, game.with * SUB_PEX + 75, game.hight * SUB_PEX + 60, "so_long");
+		game.win = mlx_new_window(game.mlx, game.with * SUB_PEX + 120, game.hight * SUB_PEX + 60, "so_long");
 	else
 		game.win = mlx_new_window(game.mlx, game.with * SUB_PEX, game.hight
 			* SUB_PEX + 60, "so_long");
@@ -63,7 +63,7 @@ int	main(int ac, char **av)
 	draw_map(&game);
 	mlx_put_image_to_window(game.mlx, game.win, game.counter_bar, 0 * SUB_PEX, 0
 		* SUB_PEX);
-	mlx_loop_hook(game.mlx, (int (*)(void *))loop_rendering, &game);
+	mlx_loop_hook(game.mlx, loop_rendering, &game);
 	mlx_key_hook(game.win, handle_keypress, &game);
 	mlx_loop(game.mlx);
 }
