@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 01:27:04 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/13 05:38:38 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 08:21:21 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ int	count_line(char *file_path)
 		line_num++;
 	}
 	close(fd);
+	if (!line_num)
+	{
+		ft_putendl_fd("Error\nEmpty file", 2);
+		exit(EXIT_FAILURE);
+	}
 	return (line_num);
 }
 
