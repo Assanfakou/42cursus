@@ -6,12 +6,12 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/11 01:33:28 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 05:12:48 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG
-# define SO_LONG
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
 # include "../libft/libft.h"
 # include "mlx.h"
@@ -19,9 +19,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-
 # ifndef WINDOW_HIGHT
-# define WINDOW_HIGHT 1800
+#  define WINDOW_HIGHT 1800
 # endif
 
 # ifndef WINDOW_WIDTH

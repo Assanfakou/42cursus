@@ -2,7 +2,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-MLX_FLAGS = -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz 
+MLX_FLAGS = -lXext -lX11 -lm -lmlx -lz
 
 SRC = mandatory/check_erour.c mandatory/parse.c mandatory/player.c mandatory/utils.c mandatory/main.c mandatory/flood_fill.c 
 
@@ -17,13 +17,17 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 NAME = so_long
+BONUS = .bns
 
-all: $(LIBFT) $(NAME)
+all:  $(NAME)
+
+bonus: $(LIBFT) $(BONUS)	
 
 $(LIBFT):
 	${MAKE} -C $(LIBFT_DIR)
 
-bonus: $(LIBFT) $(OBG_BNS)
+$(BONUS): $(LIBFT) $(OBG_BNS)
+	@touch $(BONUS)
 	$(CC) $(CFLAGS) $(OBG_BNS) -L $(LIBFT_DIR) -lft $(MLX_FLAGS) -o $(NAME)
 
 $(NAME): $(LIBFT) $(OBG_SRC)
@@ -31,9 +35,17 @@ $(NAME): $(LIBFT) $(OBG_SRC)
 
 clean:
 	$(RM) $(OBG_SRC) $(OBG_BNS)
-	$(MAKE) fclean -C $(LIBFT_DIR)
+	$(MAKE) clean -C $(LIBFT_DIR)
+
 
 fclean: clean
-	$(RM) so_long
+	$(RM) $(NAME)
 	$(RM) $(LIBFT)
+
 re: fclean all
+
+.SECONDARY: $(OBG_BNS) $(OBG_SRC)
+
+.PHONY: clean fclean all bonus
+
+ 

@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 01:27:04 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 08:12:33 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 05:04:04 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,6 @@ void	fill_map(t_game *game, char *filepath)
 	if (check_rectangular(game) == 0)
 		handle_error_exit(game, "The map must be rectangular");
 	check_erours(game, &check);
-	if (game->hight > WINDOW_HIGHT || game->with > WINDOW_WIDTH)
-	{
-		check_valid_path(game);
-		handle_error_exit(game, "THE map is valid but too long");
-	}
 	check_valid_path(game);
 	close(fd);
 }

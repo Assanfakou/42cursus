@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 21:21:00 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 05:12:22 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG
-# define SO_LONG
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../libft/libft.h"
 # include "mlx.h"
@@ -24,7 +24,7 @@
 # endif
 
 # ifndef WINDOW_HIGHT
-# define WINDOW_HIGHT 1800
+#  define WINDOW_HIGHT 1800
 # endif
 
 # ifndef WINDOW_WIDTH

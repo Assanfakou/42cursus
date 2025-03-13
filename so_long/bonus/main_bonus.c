@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 21:29:02 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 05:42:48 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	draw_map(t_game *game)
 {
@@ -53,10 +53,11 @@ int	main(int ac, char **av)
 	coins_num(&game);
 	game.mlx = mlx_init();
 	if (game.with <= 6)
-		game.win = mlx_new_window(game.mlx, game.with * SUB_PEX + 120, game.hight * SUB_PEX + 60, "so_long");
+		game.win = mlx_new_window(game.mlx, game.with * SUB_PEX + 170,
+				game.hight * SUB_PEX + 60, "so_long");
 	else
 		game.win = mlx_new_window(game.mlx, game.with * SUB_PEX, game.hight
-			* SUB_PEX + 60, "so_long");
+				* SUB_PEX + 60, "so_long");
 	file_to_image(&game);
 	game.current_frame = 0;
 	game.frame_delay = 6;

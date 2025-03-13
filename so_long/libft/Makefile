@@ -41,4 +41,5 @@ fclean : clean
 re : fclean $(NAME)
 
 .PHONY : all NAME clean fclean re bonus
+.SECONDARY: $(OBJ)
   

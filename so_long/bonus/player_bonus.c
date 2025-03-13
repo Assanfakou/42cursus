@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:28:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/11 01:41:41 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 05:11:22 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	player_pos(t_game *game)
 {

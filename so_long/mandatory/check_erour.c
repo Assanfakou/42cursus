@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 17:08:21 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 07:33:26 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 05:04:18 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	arounded_by_walls(t_game *game)
 	while (i < last_colone)
 	{
 		if (game->map[i][0] != '1' || game->map[i][last_row - 1] != '1')
-			handle_error_exit(game, "The map is not closed by walls somewhere2");
+			handle_error_exit(game, "The map is not closed by walls somewhere");
 		i++;
 	}
 }
@@ -81,6 +81,11 @@ void	check_erours(t_game *game, t_check_game *check)
 {
 	arounded_by_walls(game);
 	count_charachters(game, check);
+	if (game->hight > WINDOW_HIGHT || game->with > WINDOW_WIDTH)
+	{
+		check_valid_path(game);
+		handle_error_exit(game, "THE map is valid but too long");
+	}
 	if (check->exit_check > 1)
 		handle_error_exit(game, "It must be there one exit point");
 	else if (check->coin_check == 0)

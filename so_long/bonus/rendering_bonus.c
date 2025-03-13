@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 01:36:10 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 21:25:00 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 05:11:19 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	render_fire(t_game *game)
 {

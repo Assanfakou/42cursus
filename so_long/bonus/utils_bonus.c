@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 21:50:34 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/11 01:57:35 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 05:11:15 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	coins_num(t_game *game)
 {

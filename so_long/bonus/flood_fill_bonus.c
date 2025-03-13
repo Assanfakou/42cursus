@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 04:10:09 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 23:37:47 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 05:11:36 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 char	**secondary_map(t_game *game)
 {

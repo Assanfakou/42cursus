@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 01:27:04 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/10 23:38:47 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 05:38:38 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	count_line(char *file_path)
 {
@@ -78,11 +78,6 @@ void	fill_map(t_game *game, char *filepath)
 	count_charachters(game, &check);
 	arounded_by_walls(game);
 	check_erours(game, &check);
-	if (game->hight > WINDOW_HIGHT || game->with > WINDOW_WIDTH)
-	{
-		check_valid_path(game);
-		handle_error_exit(game, "THE map is valid but too long");
-	}
 	check_valid_path(game);
 	close(fd);
 }

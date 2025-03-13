@@ -6,11 +6,11 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 01:38:56 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/11 01:45:13 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 05:41:19 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	file_to_image(t_game *game)
 {
@@ -101,5 +101,5 @@ void	counter_bar_fto_img(t_game *game)
 void	image_to_window(t_game *game, void *image, int x, int y)
 {
 	mlx_put_image_to_window(game->mlx, game->win, image, x * SUB_PEX, y
-	* SUB_PEX + 60);
+		* SUB_PEX + 60);
 }
