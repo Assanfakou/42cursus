@@ -49,7 +49,6 @@ void	sb(t_stack **stack_b)
 	temp->next = (*stack_b)->next;
 	(*stack_b)->next = temp;
 	write(1, "sb\n", 3);
-	
 }
 
 void	sa(t_stack **stack_a)

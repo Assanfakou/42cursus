@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:49:31 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 20:18:42 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 01:22:10 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	pars_str(char *input, t_stack **stack_s)
 	}
 	if (!pars_arr(arr, stack_s))
 	{
-		free(arr);
+		free_arr(arr);
 		return (0);
 	}
 	free_arr(arr);

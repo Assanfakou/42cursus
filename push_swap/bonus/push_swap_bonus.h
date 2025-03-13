@@ -6,13 +6,14 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 20:22:33 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 00:40:15 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
 
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -64,10 +65,9 @@ void				loop_in_b(t_stack **b, t_stack **a);
 int					position_of_min(t_stack **a);
 void				sort_three(t_stack **s);
 void				small_sort(t_stack **a, t_stack **b);
-int	already_sorted(t_stack *stack_a);
+int					already_sorted(t_stack *stack_a);
 
-
-void dl_nln(char *str);
-void checker_bns(t_stack **stack_a, t_stack **stack_b);
-
+void 				checker_bns(t_stack **stack_a, t_stack **stack_b);
+void				statements(char *line, t_stack **stack_a, t_stack **stack_b);
+int					ft_strcmp(char *s1, char *s2);
 #endif

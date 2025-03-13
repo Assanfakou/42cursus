@@ -46,7 +46,6 @@ void	sb(t_stack **stack_b)
 	*stack_b = (*stack_b)->next;
 	temp->next = (*stack_b)->next;
 	(*stack_b)->next = temp;
-	
 }
 
 void	sa(t_stack **stack_a)
@@ -61,7 +60,7 @@ void	sa(t_stack **stack_a)
 	(*stack_a)->next = temp;
 }
 
-void ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);

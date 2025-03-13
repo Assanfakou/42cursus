@@ -6,14 +6,14 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 17:54:05 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 00:39:37 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../ft_printf/ft_printf.h"
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -64,5 +64,7 @@ void				loop_in_b(t_stack **b, t_stack **a);
 int					position_of_min(t_stack **a);
 void				sort_three(t_stack **s);
 void				small_sort(t_stack **a, t_stack **b);
+void	sort_stack_by_size(t_stack **a, t_stack **b, int *arr);
+int	already_sorted(t_stack *stack_a);
 
 #endif
