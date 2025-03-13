@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/13 05:12:48 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 09:04:47 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # include <unistd.h>
 
 # ifndef WINDOW_HIGHT
-#  define WINDOW_HIGHT 1800
+#  define WINDOW_HIGHT 1800 * 42
 # endif
 
 # ifndef WINDOW_WIDTH
-#  define WINDOW_WIDTH 3200
+#  define WINDOW_WIDTH 3200 * 42
 # endif
 
 # ifndef GREEN
