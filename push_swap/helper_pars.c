@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:54:44 by hfakou            #+#    #+#             */
-/*   Updated: 2025/02/14 01:09:39 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/14 09:24:03 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ int	is_valid_input(char *input)
 	return (1);
 }
 
+long	nbr_overflow(int sign, long nbr)
+{
+	if ((sign > 0 && nbr > INT_MAX) || (sign < 0 && (long)(nbr * -1) < INT_MIN))
+		return (1);
+	return (0);
+}
+
 long	ft_atol(const char *str)
 {
 	long	res;
@@ -69,9 +76,11 @@ long	ft_atol(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		res = res * 10 + (str[i] - '0');
+		if (nbr_overflow(signe, res))
+			return (res * signe);
 		i++;
 	}
-	return (res * signe);
+	return (((long)res * signe));
 }
 
 void	free_arr(char **arr)

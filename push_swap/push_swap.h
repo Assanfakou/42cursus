@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:08:05 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/13 00:39:37 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/14 07:39:37 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void				loop_in_b(t_stack **b, t_stack **a);
 int					position_of_min(t_stack **a);
 void				sort_three(t_stack **s);
 void				small_sort(t_stack **a, t_stack **b);
-void	sort_stack_by_size(t_stack **a, t_stack **b, int *arr);
-int	already_sorted(t_stack *stack_a);
+void				sort_stack_by_size(t_stack **a, t_stack **b, int *arr);
+int					already_sorted(t_stack *stack_a);
+void				ft_exit(t_stack **stack, int *arr);
 
 #endif
