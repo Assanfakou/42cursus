@@ -2,7 +2,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-MLX_FLAGS = -lXext -lX11 -lm -lmlx -lz
+MLX_FLAGS = -lXext -lX11 -lmlx
 
 SRC = mandatory/check_erour.c mandatory/parse.c mandatory/player.c mandatory/utils.c mandatory/main.c mandatory/flood_fill.c 
 

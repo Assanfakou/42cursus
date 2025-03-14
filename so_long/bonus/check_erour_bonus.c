@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 17:29:50 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/13 08:04:02 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 22:28:44 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	check_erours(t_game *game, t_check_game *check)
 		handle_error_exit(game, "There is no player in the giving map");
 	else if (check->exit_check == 0)
 		handle_error_exit(game, "There is no exit point in the giving map");
-	if (game->hight > WINDOW_HIGHT || game->with > WINDOW_WIDTH)
+	if (game->hight > WINDOW_HIGHT / 42 || game->with > WINDOW_WIDTH / 42)
 	{
 		check_valid_path(game);
 		handle_error_exit(game, "THE map is valid but too long");

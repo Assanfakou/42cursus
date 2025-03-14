@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 04:41:32 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/14 00:04:59 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ void	draw_map(t_game *game)
 	}
 }
 
+int	distroy_cross(t_game *game)
+{
+	mlx_free(game);
+	exit(EXIT_SUCCESS);
+}
+
 int	main(int ac, char **av)
 {
 	t_game	game;
@@ -71,5 +77,6 @@ int	main(int ac, char **av)
 	game.frame_delay = 4;
 	draw_map(&game);
 	mlx_key_hook(game.win, handle_keypress, &game);
+	mlx_hook(game.win, 17, 0, distroy_cross, &game);
 	mlx_loop(game.mlx);
 }

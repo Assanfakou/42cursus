@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:25:52 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/13 07:32:22 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/14 00:07:55 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,18 @@ void	draw_map(t_game *game)
 	}
 }
 
+int	distroy_cross(t_game *game)
+{
+	mlx_free(game);
+	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	exit(EXIT_SUCCESS);
+}
+
 int	main(int ac, char **av)
 {
-	t_game	game;
-
+	t_game (game);
 	if (ac != 2)
 		return (1);
 	fill_map(&game, av[1]);
@@ -66,5 +74,6 @@ int	main(int ac, char **av)
 		* SUB_PEX);
 	mlx_loop_hook(game.mlx, loop_rendering, &game);
 	mlx_key_hook(game.win, handle_keypress, &game);
+	mlx_hook(game.win, 17, 0, distroy_cross, &game);
 	mlx_loop(game.mlx);
 }

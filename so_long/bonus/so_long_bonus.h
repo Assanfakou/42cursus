@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:33:00 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/13 05:12:22 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/14 00:08:07 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 
 # ifndef WINDOW
-#  define WINDOW 10000
+#  define WINDOW 1000
 # endif
 
 # ifndef WINDOW_HIGHT
@@ -137,4 +137,5 @@ void		check_valid_path(t_game *game);
 void		finding_player(t_game *game, int *y, int *x);
 char		**secondary_map(t_game *game);
 
+int			distroy_cross(t_game *game);
 #endif

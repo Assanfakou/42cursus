@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 17:08:21 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/13 08:47:52 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/13 22:22:33 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,16 @@ void	check_erours(t_game *game, t_check_game *check)
 	arounded_by_walls(game);
 	count_charachters(game, check);
 	if (check->exit_check > 1)
-	handle_error_exit(game, "It must be there one exit point");
+		handle_error_exit(game, "It must be there one exit point");
 	else if (check->coin_check == 0)
-	handle_error_exit(game, "There is no coin in the map");
+		handle_error_exit(game, "There is no coin in the map");
 	else if (check->player_check > 1)
-	handle_error_exit(game, "It must be there one Player");
+		handle_error_exit(game, "It must be there one Player");
 	else if (check->exit_check == 0)
-	handle_error_exit(game, "There is no exit point in the giving map");
+		handle_error_exit(game, "There is no exit point in the giving map");
 	else if (check->player_check == 0)
-	handle_error_exit(game, "There is no player in the giving map");
-	if (game->hight > WINDOW_HIGHT || game->with > WINDOW_WIDTH)
+		handle_error_exit(game, "There is no player in the giving map");
+	if (game->hight > WINDOW_HIGHT / 42 || game->with > WINDOW_WIDTH / 42)
 	{
 		check_valid_path(game);
 		handle_error_exit(game, "THE map is valid but too long");
