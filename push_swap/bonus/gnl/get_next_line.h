@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:50 by hfakou            #+#    #+#             */
-/*   Updated: 2024/12/26 21:49:44 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/15 14:12:33 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*ft_strdup(const char *str);
 char	*ft_strdup_nln(const char *str);
 char	*get_next_line(int fd);
 char	*ft_strjoin(const char *s1, const char *s2);
+void	_ft_exit(char **static_buffer);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 69

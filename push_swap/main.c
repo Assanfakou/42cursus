@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:40:39 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/14 06:53:15 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/15 12:29:02 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	sort_stack_by_size(t_stack **a, t_stack **b, int *arr)
 	free(arr);
 }
 
-void ft_exit(t_stack **stack, int *arr)
+void	ft_exit(t_stack **stack, int *arr)
 {
 	write(2, "Error\n", 6);
 	clear_stack(stack);
@@ -76,7 +76,7 @@ int	main(int ac, char **av)
 	stack_a = pars_args(&av[1], ac - 1);
 	if (!stack_a)
 	{
-		write(2, "Error\n", 6);			
+		write(2, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
 	arr = fill_arr(stack_a);

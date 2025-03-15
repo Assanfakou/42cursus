@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:49:31 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/14 07:38:39 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/15 10:56:49 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	pars_arr(char **arr, t_stack **stack)
 	int		i;
 	long	num;
 
-	if (!arr || !*arr)
-		return (0);
 	i = 0;
 	while (arr[i])
 	{
@@ -27,7 +25,7 @@ int	pars_arr(char **arr, t_stack **stack)
 		num = ft_atol(arr[i]);
 		if (num > (long)INT_MAX || num < (long)INT_MIN)
 			return (0);
-		add_nodeint_end(stack, (int)num);
+		add_nodeint_end(stack, num);
 		i++;
 	}
 	return (1);

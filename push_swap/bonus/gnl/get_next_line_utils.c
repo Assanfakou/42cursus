@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:00:43 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 07:15:14 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/15 12:04:07 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,35 +114,3 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	final_string[i] = '\0';
 	return (final_string);
 }
-
-// char *ft_strduptoc(const char *str, char c)
-// {
-// 	size_t s;
-// 	size_t robe;
-// 	char *allocated;
-
-// 	if (!str)
-// 		return (NULL);
-// 	robe = 0;
-// 	while (str[robe] && str[robe] != c)
-// 		robe++;
-// 	if (str[robe] != c)
-// 		return (NULL);
-//     if (c == '\0')
-// 			allocated = malloc(sizeof(char) * (robe + 1));
-//     else
-// 	{
-//         allocated = malloc(sizeof(char) * (robe + 2));
-// 		if (allocated == NULL)
-// 			return (NULL);
-// 	}
-// 	s = 0;
-// 	while (s <= robe)
-// 	{
-// 		allocated[s] = str[s];
-// 		s++;
-// 	}
-//     if (c != '\0')
-// 			allocated[s] = '\0';
-// 	return (allocated);
-// }

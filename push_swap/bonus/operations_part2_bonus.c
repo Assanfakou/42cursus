@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 10:58:45 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 07:10:21 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/15 14:18:26 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,10 @@ void	rrb(t_stack **stack)
 	add_nodeint(stack, walk);
 	*stack = walk;
 	prev->next = NULL;
+}
+
+void	rrr(t_stack **stack_a, t_stack **stack_b)
+{
+	rra(stack_a);
+	rrb(stack_b);
 }

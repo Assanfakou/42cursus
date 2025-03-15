@@ -6,13 +6,13 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:54:44 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/14 09:19:48 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/15 12:25:37 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-static int	_ft_strlen(char *str)
+int	_ft_strlen(char *str)
 {
 	int	i;
 
@@ -49,13 +49,6 @@ int	is_valid_input(char *input)
 	return (1);
 }
 
-long	nbr_overflow(int sign, long nbr)
-{
-	if ((sign > 0 && nbr > INT_MAX) || (sign < 0 && (long)(nbr * -1) < INT_MIN))
-		return (1);
-	return (0);
-}
-
 long	ft_atol(const char *str)
 {
 	long	res;
@@ -76,7 +69,8 @@ long	ft_atol(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		res = res * 10 + (str[i] - '0');
-		if (nbr_overflow(signe, res))
+		if ((signe > 0 && res > INT_MAX) || (signe < 0
+				&& (long)(res * -1) < INT_MIN))
 			return (res * signe);
 		i++;
 	}

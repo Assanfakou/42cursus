@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:49:31 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/13 01:22:10 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/15 11:56:25 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	pars_arr(char **arr, t_stack **stack)
 	int		i;
 	long	num;
 
-	if (!arr || !*arr)
-		return (0);
 	i = 0;
 	while (arr[i])
 	{

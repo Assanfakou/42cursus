@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 22:28:48 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 08:20:06 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/15 16:02:39 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,15 @@ char	*read_result(ssize_t bytes_read, char **static_buf, char **read_buf)
 	return (NULL);
 }
 
+void	_ft_exit(char **static_buffer)
+{
+	if (*static_buffer)
+	{
+		free(*static_buffer);
+		*static_buffer = NULL;
+	}
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*static_buffer;
@@ -94,12 +103,7 @@ char	*get_next_line(int fd)
 	char		*temp_buffer;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > INT_MAX)
-	{
-		if (static_buffer)
-			free(static_buffer);
-		static_buffer = NULL;
-		return (NULL);
-	}
+		return (_ft_exit(&static_buffer), NULL);
 	buffer = ft_calloc((size_t)(BUFFER_SIZE + 1), 1);
 	while (buffer)
 	{

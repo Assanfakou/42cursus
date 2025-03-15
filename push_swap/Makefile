@@ -1,6 +1,6 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -ggdb3 -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRC_FIL = main.c small_sort.c operations_part1.c operations_part2.c fsplit.c parssing.c link_lst_utils.c helper_pars.c sort_arr.c sort_help.c 
 
@@ -17,7 +17,9 @@ CHECK_NAME = checker
 
 all : $(NAME)
 
-bonus: $(OBJ_BNS)
+bonus: $(CHECK_NAME)
+
+$(CHECK_NAME): $(OBJ_BNS)
 	$(CC) $(CFLAGS) $(OBJ_BNS) -o $(CHECK_NAME)
 
 $(NAME): $(OBJ_FILE)
@@ -25,9 +27,11 @@ $(NAME): $(OBJ_FILE)
 
 clean :
 	$(RM) $(OBJ_FILE) $(OBJ_BNS)
+
 fclean : clean
 	$(RM) $(NAME) $(CHECK_NAME)
 	
 re: fclean all
 
+.SECONDARY: $(OBJ_BNS) $(OBJ_FILE)
 .PHONY: all clean fclean

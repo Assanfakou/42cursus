@@ -6,7 +6,7 @@
 /*   By: hfakou <hfakou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:04:55 by hfakou            #+#    #+#             */
-/*   Updated: 2025/03/12 07:03:32 by hfakou           ###   ########.fr       */
+/*   Updated: 2025/03/15 11:29:40 by hfakou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,11 @@ void	fill_str(char *dest, char *src, int leg)
 
 void	ft_free(char **str, int i)
 {
-	while (i > 0)
-		free(str[--i]);
+	while (i >= 0)
+	{
+		free(str[i]);
+		i--;
+	}
 	free(str);
 }
 
@@ -86,7 +89,7 @@ char	**fsplit(char *str, char c)
 			str++;
 		word_len = word_lengt(str, c);
 		all[i] = malloc(sizeof(char) * (word_len) + 1);
-		if (!str[i])
+		if (!all[i])
 			return (ft_free(all, i), NULL);
 		fill_str(all[i++], str, word_len);
 		str += word_len;
